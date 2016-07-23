@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layout1"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingBottom="60dip" >
+
+        <TextView
+            android:id="@+id/textTitle"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center_horizontal"
+            android:layout_margin="20px"
+            android:text="@string/SdCardTitle"
+            android:textSize="30sp"
+            android:visibility="visible" />
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+            	android:layout_margin="10px"
+            	android:text="@string/sdcard_str"
+            	android:textSize="22sp"
+                android:visibility="visible" />
+
+        <ScrollView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/sdresultText"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="10px"
+                android:textSize="22sp"
+                android:textColor="#ff0000"
+                android:visibility="visible" />
+        </ScrollView>
+
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+            	android:layout_margin="10px"
+            	android:text="@string/sdcard2_str"
+            	android:textSize="22sp"
+                android:visibility="visible" />
+
+         <ScrollView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/sd2resultText"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="10px"
+                android:textSize="22sp"
+                android:textColor="#ff0000"
+                android:visibility="visible" />
+        </ScrollView>
+    </LinearLayout>
+
+    <include
+        android:id="@+id/btns"
+        layout="@xml/control_buttons" />
+
+</RelativeLayout>

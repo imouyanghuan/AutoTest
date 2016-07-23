@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layout_satellites"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical" >
+
+        <com.DeviceTest.SatelliteSkyView
+            android:id="@+id/sky_view"
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1" />
+
+        <com.DeviceTest.SatelliteSignalView
+            android:id="@+id/signal_view"
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="2" />
+
+        <include
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            layout="@layout/ygps_layout_info"
+            android:visibility="gone" />
+
+        <include
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            layout="@layout/ygps_layout_nmea"
+            android:visibility="gone" />
+
+        <include
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            layout="@layout/ygps_layout_auto_test"
+            android:visibility="gone" />
+
+        <include
+            android:id="@+id/btns"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            layout="@xml/control_buttons" />
+    </LinearLayout>
+
+</LinearLayout>

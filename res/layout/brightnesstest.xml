@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layout1"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingBottom="60dip" >
+
+        <TextView
+            android:id="@+id/backLightTitle"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center_horizontal"
+            android:paddingTop="10px"
+            android:text="@string/BrightnessTitle"
+            android:textSize="25sp"
+            android:visibility="visible" />
+
+        <TextView
+            android:id="@+id/backLightSubTitle"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center_horizontal"
+            android:paddingTop="10px"
+            android:text="@string/BrightnessSubTitle"
+            android:textColor="#ff0000"
+            android:textSize="20sp"
+            android:visibility="visible" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="70dp"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:background="#ff0000" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="70dp"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:background="#00ff00" />
+        </LinearLayout>
+        
+           <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="70dp"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:background="#0000ff" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="70dp"
+                android:layout_margin="10dp"
+                android:layout_weight="1"
+                android:background="#ffffff" />
+        </LinearLayout>
+        
+       <TextView
+        android:id="@+id/progressText"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:paddingTop="20px"
+        android:textSize="22sp"
+        android:visibility="visible" />
+
+
+
+    <ProgressBar
+        android:id="@+id/brightnessBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/linearLayout1"
+        android:orientation="horizontal" />
+    </LinearLayout>
+
+        <include layout="@xml/control_buttons" />
+
+</RelativeLayout>

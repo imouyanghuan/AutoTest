@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layout1"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingBottom="60dip" >
+
+        <TextView
+            android:id="@+id/SimCardTestTitle"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center_horizontal"
+            android:paddingTop="20px"
+            android:text="@string/SimCardTestTitle"
+            android:textSize="30sp"
+            android:visibility="visible" />
+
+        <TextView
+            android:id="@+id/text"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center_vertical"
+            android:gravity="center_horizontal"
+            android:paddingTop="80px"
+            android:textSize="22sp"
+            android:visibility="visible" />
+    </LinearLayout>
+
+    <include
+        android:id="@+id/btns"
+        layout="@xml/control_buttons" />
+
+</RelativeLayout>

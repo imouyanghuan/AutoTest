@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout1"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent" >
+
+        <TextView
+            android:id="@+id/txtTitle"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="20dp"
+            android:gravity="center"
+            android:text="@string/SpeakerTitle"
+            android:textSize="30sp" />
+
+        <TextView
+            android:id="@+id/txtContent"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txtTitle"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:textColor="#ff0000"
+            android:textSize="22sp" />
+
+        <include
+            android:id="@+id/spk_btn"
+            layout="@xml/control_buttons" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:orientation="horizontal" >
+
+            <Button
+                android:id="@+id/spk_btn_left"
+                android:layout_width="0dip"
+                android:layout_height="80dp"
+                android:layout_weight="1"
+                android:text="@string/Left"
+                android:textSize="22sp" />
+
+            <Button
+                android:id="@+id/spk_btn_right"
+                android:layout_width="0dip"
+                android:layout_height="80dp"
+                android:layout_weight="1"
+                android:text="@string/Right"
+                android:textSize="22sp" />
+        </LinearLayout>
+        <!-- speakerphone -->
+
+        <Button
+            android:id="@+id/set_speakerphone_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/spk_btn"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="80dp"
+            android:text="@string/SetSpeakerphoneOn"
+            android:visibility="gone" />
+    </RelativeLayout>
+
+</LinearLayout>

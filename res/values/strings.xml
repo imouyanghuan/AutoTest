@@ -1,0 +1,492 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">设备测试工具</string>
+    <string name="SpeakerTitle">扬声器测试</string>
+    <string name="SpeakerContent">是否听到声音?</string>
+    <string name="Left">左</string>
+    <string name="Right">右</string>
+    <string name="SpeakerTip">左：男, 右：女</string>
+    <string name="SetSpeakerphoneOn">扬声器已打开</string>
+    <string name="SetSpeakerphoneOff">扬声器已关闭</string>
+    <string name="BrightnessTitle">背光测试</string>
+    <string name="BrightnessTitleStop">停止背光测试</string>
+    <string name="BrightnessSubTitle">请观察背光的变化</string>
+    <string name="BluetoothTitle">蓝牙测试</string>
+    <string name="BluetoothSubTitle">提示：为节省时间，请在测试点旁开启一台蓝牙设备用于本机搜索</string>
+    <string name="BluetoothAdapterFail">获取适配器失败!</string>
+    <string name="BluetoothScan">搜索设备...</string>
+    <string name="BluetoothInit">请等待设备初始化.</string>
+    <string name="BluetoothOpenF">打开蓝牙失败！</string>
+    <string name="BluetoothFindF">查找设备失败.</string>
+    <string name="BluetoothDeviceIsOpen">蓝牙设备已正常打开</string>
+    <string name="BluetoothFindS">找到设备....\n 测试通过!</string>
+    <string name="BluetoothMAC">蓝牙 MAC: </string>
+    <string name="CameraTitle">摄像头测试</string>
+    <string name="CameratextMsgText">请点击屏幕打开摄像头</string>
+    <string name="GpsTestTitle">Gps C/No 测试</string>
+    <string name="GpsTestSubTitle">请察看设备</string>
+    <string name="GpsTestResult">请等待设备初始化</string>
+    <string name="GpsLocationTestTitle">Gps 定位测试</string>
+    <string name="GpsLocationTestSubTitle">请观察设备</string>
+    <string name="GpsLocationTestResult">请等待初始化设备</string>
+    <string name="GpsWaitforLocationData">等待位置数据...</string>
+    <string name="GpsOff">Gps 未启用！触摸屏，转到设置打开 GPS。</string>
+    <string name="GpsWaitforNMEAInformation">等待 NMEA 信息</string>
+    <string name="gpstextx">X axis C/No:</string>
+    <string name="gpstexty">Y axis C/No:</string>
+    <string name="gpstestx">Test X axis</string>
+    <string name="gpstesty">Test Y axis</string>
+    <string name="HeadsetMicTitle">耳机录音测试</string>
+    <string name="HeadsetMicSubTitle">请录一段话，耳机将播放录音内容。</string>
+    <string name="LcdTestTitle">显示屏测试</string>
+    <string name="LcdTestStart">点击屏幕开始测试</string>
+    <string name="PhoneMictTitle">录音测试</string>
+    <string name="PhoneMicSubTitle">请说话，马上开始录音,录音后将自动播放刚才说的内容</string>
+    <string name="PowertestTitle">电池信息</string>
+    <string name="PowertestSubTitle"></string>
+    <string name="AcUnplug">未充电测试(unplug ac):</string>
+    <string name="AcPlugin">充电测试(plug in ac):</string>
+    <string name="ChargeState">电池状态</string>
+    <string name="Voltage">电池电压:</string>
+    <string name="Capacity">电池电量:</string>
+    <string name="Plug">电池连接:</string>
+    <string name="SdCardTitle">SD卡测试</string>
+    <string name="SdCardSubTitle">请察看设备</string>
+    <string name="SdCardFail">失败！找不到SD卡</string>
+    <string name="SdCardFind">发现SD卡，容量大小 ： </string>
+    <string name="SdCardAvailable"> , 可用空间 : </string>
+    <string name="TouchtestTitle">触屏测试</string>
+    <string name="TouchtestSubTitle">请先做单点滑动测试，再做多点测试</string>
+    <string name="EnterTesTouchcell">进入触屏格子</string>
+    <string name="EnterTesMaxPoint">进入多点测试</string>
+    <string name="Reset">重置</string>
+    <string name="VersionTitle">版本测试</string>
+    <string name="ClientVersion">客户版本号：</string>
+    <string name="Firmwareversion">固件版本:</string>
+    <string name="Kernelversion">内核版本:</string>
+    <string name="Basebandversion">基带版本:</string>
+    <string name="Buildversion">产品版本:</string>
+    <string name="imei_version">IMEI:</string>
+    <string name="set_imei">已自动写入可用IMEI码（重启可见）</string>
+    <string name="VibrationTest">震动测试</string>
+    <string name="VibrationContent">请判断当前设备是否正在震动</string>
+    <string name="wififindtest">已找到Wifi</string>
+    <string name="Wifitest">无线测试</string>
+    <string name="WifiSubText">请查看设备</string>
+    <string name="WifiResultText">请等待设备初始化</string>
+    <string name="WifiError">无线测试失败!</string>
+    <string name="WifiFind">找到网络-</string>
+    <string name="WifiTry">尝试连接到 </string>
+    <string name="WifiConnect">已连接到 </string>
+    <string name="WifiConnectErr">找不到一个可连接的路由！</string>
+    <string name="WifiPing">Ping 测试 : </string>
+    <string name="WifiHttp">Http 连接测试: </string>
+    <string name="WifiIsOpen">Wifi设备已经打开</string>
+    <string name="WifiSignal3">信号(强)</string>
+    <string name="WifiSignal2">信号(中)</string>
+    <string name="WifiSignal1">信号(弱)</string>
+    <string name="WifiSignal0">信号(差)</string>
+    <string name="WifiMAC">WIFI MAC: </string>
+    <string name="Wifi_test_environment_tips">提示: wifi测试环境需要提供开放AP</string>
+    <string name="SensorTest">感应器测试</string>
+    <string name="num200">200</string>
+    <string name="gsensorvalue">gsensor值: </string>
+    <string name="Accelerometer">=== 加速仪 === </string>
+    <string name="name_acc"> 名字:</string>
+    <string name="vendor_acc"> 厂家:</string>
+    <string name="version_acc">版本:</string>
+    <string name="maxRange_acc">最大值:</string>
+    <string name="resolution_acc">解析度:</string>
+    <string name="power_acc">电源:</string>
+    <string name="sensor_x">x:</string>
+    <string name="sensor_y">y:</string>
+    <string name="sensor_z">z:</string>
+    <string name="Orientation">=== 方向 === </string>
+    <string name="Azimuth"> 方位角:</string>
+    <string name="Pitch"> Pitch:</string>
+    <string name="Roll"> Roll:</string>
+    <string name="Light">=== 光感 === </string>
+    <string name="lightvalue">光感（没变化表示测试失败）</string>
+    <string name="Proximity">=== Proximity === </string>
+    <string name="Magnetic_Field">=== Magnetic_Field === </string>
+    <string name="Temperature">=== Temperature === </string>
+    <string name="Gyroscope">=== 陀螺仪  === </string>
+    <string name="Gsensor_x">x轴朝上(x:9,y:0,z:0)</string>
+    <string name="Gsensor_y">y轴朝上(x:0,y:9,z:0)</string>
+    <string name="Gsensor_z">z轴朝上(x:0,y:0,z:9)</string>
+    <string name="GsensorTest">重力感应测试</string>
+    <string name="MsensorTest">磁感应测试</string>
+    <string name="GyroscopeTest">陀螺仪测试</string>
+    <string name="LightsensorTest">光感应测试</string>
+    <string name="KeyboardTestTitle">按键测试</string>
+    <string name="KeyboardTestSubTitle">请测试所有按键</string>
+    <string name="VolUp">Vol+</string>
+    <string name="VolDown">Vol-</string>
+    <string name="Back">Back</string>
+    <string name="Menu">Menu</string>
+    <string name="Home">Home</string>
+    <string name="FlashLightTest">FlashLight Test</string>
+    <string name="FlashLightTestSubText">Please observe the flashlight of your device when
+		you touch the buttons</string>
+    <string name="OpenFlashLight">Open Flash Light</string>
+    <string name="ShutDownFlashLight">Shut Down Flash Light</string>
+    <string name="SimCardTestTitle">SIM 卡测试</string>
+    <string name="MrioUSBTitle">Mrio USB Test</string>
+    <string name="MrioUSBsubTitle">Plug in usb and unplug usb</string>
+    <string name="UsbUnplug">Unplug usb test:</string>
+    <string name="UsbPlugin">Plug in usb test:</string>
+    <string name="FMRadioTestTitle">FM 收音机测试</string>
+    <string name="FMRadioTextMsgText">请触摸屏幕，打开 FM 收音机</string>
+    <string name="CirTestTitle">Cir Test</string>
+    <string name="CirSend">Send</string>
+    <string name="CpuInfo">CPU info</string>
+    <string name="MemInfo">MEM info</string>
+    <string name="DmiInfo">DMI info</string>
+    <string name="IrdaTestTitle">IrDA Test</string>
+    <string name="SirSend">Sir Send</string>
+    <string name="SirReceive">Sir Receive</string>
+    <string name="SirTest">Sir Test</string>
+    <string name="FirSend">Fir Send</string>
+    <string name="FirReceive">Fir Receive</string>
+    <string name="FirTest">Fir Test</string>
+    <string name="InsertSdCard">请插入SD卡!</string>
+    <string name="SdCardNospace">SD卡没有空间!</string>
+    <string name="RecordTest">录音测试</string>
+    <string name="HeadsetRecodrSuccess">录音成功！开始回放.</string>
+    <string name="HeadsetInsertEarphone">请插入耳机!</string>
+    <string name="HeadsetRerecording">重录</string>
+    <string name="RecordError">录音失败！</string>
+    <string name="LedTestTitle">Led Test</string>
+    <string name="Red">RED</string>
+    <string name="Green">GREEN</string>
+    <string name="Blue">BLUE</string>
+    <string name="HdmiTestTitle">HDMI测试</string>
+    <string name="HdmiNoInsert">请插入HDMI并点击屏幕开始测试！</string>
+    <string name="HdmiPrepare">HDMI初始化... 请等待3秒左右.</string>
+    <string name="HdmiResult">测试完成 \n屏幕能正常显示吗?</string>
+    <string name="HdmiStart">开始测试!</string>
+    <string name="HdmiStartFail">启动失败! 请确认HDMI是否插入.</string>
+    <string name="storageTestTitle">存储器信息</string>
+    <string name="nand_flash">USB存储器（nand flash）</string>
+    <string name="internal_storage">内部存储器（data分区）</string>
+    <string name="nand_unavailable">不可用</string>
+    <string name="StorageTestTitle">存储读写测试</string>
+    <string name="StorageSDNoFind">SD卡路径未找到...\n</string>
+    <string name="StorageSDCopyF">复制到SD卡失败!\n</string>
+    <string name="StorageSDCopyS">复制到SD卡成功!\n</string>
+    <string name="StorageUsbNoFind">Usb host路径未找到...\n</string>
+    <string name="StorageUsbCopyF">复制到UbsHost 失败!\n</string>
+    <string name="StorageUsbCopyS">复制到UbsHost 成功!\n</string>
+    <string name="RuninTestTitle">Run In Test</string>
+    <string name="stop">Stop</string>
+    <string name="start">Start</string>
+    <string name="btnPassText">通过</string>
+    <string name="btnFailText">失败</string>
+    <string name="btnSkipText">返回上一项测试</string>
+    <string name="OKText">OK!</string>
+    <string name="Testall">Test all</string>
+    <string name="Cancel">关闭</string>
+    <string name="Clear">清除</string>
+    <string name="showFistTest">显示测试首界面</string>
+    <string name="Uninstall">卸载</string>
+    <string name="success">成功</string>
+    <string name="fail">失败</string>
+    <string name="Version">V20151120</string>
+    <string name="UsbHostTestTitle">Usb Host测试</string>
+    <string name="Hardware">硬件 : </string>
+    <string name="HostStorageState">存储状态 : </string>
+    <string name="Writable">写测试 : </string>
+    <string name="WriteData">写数据! </string>
+    <string name="ReadData">读数据! </string>
+    <string name="MakeDir">创建文件夹 </string>
+    <string name="CreateFile">创建新文件 </string>
+    <string name="FileDel">删除文件 </string>
+    <string name="DirDel">删除文件夹 </string>
+    <string name="Compare">文件比较 </string>
+    <string name="HardwareSupport">硬件 : 支持. \n发现设备 : /dev/block/</string>
+    <string name="HardwareNoSupport">硬件 : 找不到设备!(默认支持U盘设备) \n请插入U盘设备并等待5秒左右.</string>
+    <string name="total_space">总存储空间</string>
+    <string name="available_space">可用存储空间</string>
+    <string name="camera_switch">切换</string>
+    <string name="SingleTest">单项测试</string>
+    <string name="testall">测试选中的选项</string>
+    <string name="nocamera">没有摄像头</string>
+    <string name="btnRetest">重测</string>
+    <string name="btnreturnText">返回测试界面</string>
+    <string name="barcode_version">条码:</string>
+    <string name="calibration_status">校准标志位:</string>
+    <string name="final_status">最终结果:</string>
+
+    <!-- SIM -->
+    <string name="sim_test_passed">已检测到插入SIM卡，测试通过！</string>
+    <string name="sim_test_failed">未检测到SIM卡，测试失败！</string>
+    <string name="test_passed">测试通过!</string>
+    <string name="test_failed">测试失败!</string>
+    <!--  -->
+    <string name="device_info_default">未知</string>
+    <string name="radioInfo_unknown">未知</string>
+    <string name="radioInfo_service_in">正在使用中</string>
+    <string name="radioInfo_service_out">不在服务区</string>
+    <string name="radioInfo_service_emergency">只能拨打紧急呼救电话</string>
+    <string name="radioInfo_service_off">关闭无线通信</string>
+    <string name="radioInfo_data_disconnected">已断开连接</string>
+    <string name="radioInfo_data_connecting">正在连接</string>
+    <string name="radioInfo_data_connected">已连接</string>
+    <string name="radioInfo_data_suspended">已暂停</string>
+    <string name="radioInfo_display_dbm">dBm</string>
+    <string name="radioInfo_display_asu">asu</string>
+    <string name="signal_status_test">信号状态测试</string>
+    <string name="proximity_sensor_test">距离传感器测试</string>
+    <string name="signal_cannot_get_imsi">无法取得IMSI！请插入 SIM 卡，重启设备测试.</string>
+    <!-- 网络 信号强度 手机网络类型 服务状态 -->
+    <string name="status_operator" msgid="2274875196954742087">"网络"</string>
+    <string name="status_sim_imei" msgid="2274875196954742087">"SIM IMEI"</string>
+    <string name="status_signal_strength" msgid="3732655254188304547">"信号强度"</string>
+    <string name="status_network_type" msgid="3279383550222116235">"手机网络类型"</string>
+    <string name="status_service_state" msgid="2323931627519429503">"服务状态"</string>
+    <!-- 距离传感器 -->
+    <string name="proximitysensor_tip">请用手遮盖设备顶部（传感器位置）</string>
+    <string name="proximitysensor_tip_error">您的设备不支持该功能！</string>
+    <string name="proximitysensor_distance">距离：</string>
+
+    <!-- 听筒 -->
+    <string name="handset">听筒测试</string>
+    <string name="handset_tip">点击开始后，对着麦克风说话，声音从听筒中传出。</string>
+    <string name="handset_tip_new">请判断当前声音是否从听筒中传出。\n(提示：测试听筒模式请勿接入耳机\n  由于听筒声音比较小，耳朵需要靠近听筒位置)</string>
+    <string name="handset_start">开始</string>
+    <string name="handset_stop">停止</string>
+    <!-- 菜单 -->
+    <string name="item_delete">删除SD卡测试记录</string>
+    <string name="item_save">保存测试记录至SD卡</string>
+    <string name="not_sd">sd卡不存在，无法操作！</string>
+    <string name="out_success">成功保存测试记录至 %s目录下！</string>
+    <string name="out_fail">保存失败！</string>
+    <string name="delete_success">删除成功！</string>
+    <string name="delete_fail">删除失败！</string>
+    <string name="not_save">SD无保存测试记录！</string>
+    <string name="not_test">无测试记录！</string>
+    <string name="item_view">查看测试记录</string>
+    <string name="item_extgps">GPS详情</string>
+    <string name="not_test_save">无测试保存记录！</string>
+    <string name="view_lastest">最新测试记录</string>
+    <string name="sdcard_str">SD卡1：</string>
+    <string name="sdcard2_str">SD卡2：</string>
+    <string name="Car">Car</string>
+    <string name="Ok">Ok</string>
+
+    <!-- YGPS -->
+    <string name="copyright_info_text">Copyright © 2009 Ludwig M Brinckmann
+		ludwigbrinckmann@gmail.com
+
+		The source code for this application is
+		available from
+		http://www.yunnanexplorer.com/
+
+		This program is free
+		software: you can redistribute it and/or modify
+		it under the terms of
+		the GNU General Public License as published by
+		the Free Software
+		Foundation, either version 3 of the License, or
+		(at your option) any
+		later version.
+
+		This program is distributed in the hope that it will be
+		useful,
+		but WITHOUT ANY WARRANTY; without even the implied warranty of
+		MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+		GNU
+		General Public License for more details.
+
+		You should have received a
+		copy of the GNU General Public License
+		along with this program. If not,
+		see http://www.gnu.org/licenses/.
+
+		This program incorporates code by J
+		Latimer released under the following
+		license:
+
+		Copyright © 2008 Jon
+		Larimer jlarimer@gmail.com
+
+		Licensed under the Apache License, Version
+		2.0 (the "License");
+		you may not use this file except in compliance
+		with the License.
+		You may obtain a copy of the License at
+
+		http://www.apache.org/licenses/LICENSE-2.0
+
+		Unless required by
+		applicable law or agreed to in writing, software
+		distributed under the
+		License is distributed on an "AS IS" BASIS,
+		WITHOUT WARRANTIES OR
+		CONDITIONS OF ANY KIND, either express or
+		implied.
+		See the License for
+		the specific language governing permissions and
+		limitations under the
+		License.</string>
+    <string name="empty"></string>
+    <string name="menu_copyright">Copyright</string>
+    <string name="menu_ublox">Initialize GPS Chip</string>
+    <string name="menu_settings">Ublox Settings</string>
+    <string name="menu_showloc">显示位置</string>
+    <string name="menu_hideloc">隐藏位置</string>
+    <string name="menu_info">Info</string>
+    <string name="menu_satellite">Satellite</string>
+    <string name="title_time">Time:</string>
+    <string name="time"></string>
+    <string name="title_lat">Latitude:</string>
+    <string name="latitude"></string>
+    <string name="title_lon">Longitude:</string>
+    <string name="first_latitude_text">First Latitude:</string>
+    <string name="first_longtitude_text">First Longitude:</string>
+    <string name="longitude"></string>
+    <string name="title_alt">Altitude:</string>
+    <string name="altitude"></string>
+    <string name="title_acc">Accuracy:</string>
+    <string name="accuracy"></string>
+    <string name="title_bear">Bearing:</string>
+    <string name="bearing"></string>
+    <string name="title_speed">Speed:</string>
+    <string name="speed"></string>
+    <string name="nema"></string>
+    <string name="debug"></string>
+    <string name="title_ttff">TTFF:</string>
+    <string name="title_fix">Fix:</string>
+    <string name="ttff"></string>
+    <string name="fix"></string>
+    <string name="title_provider">Provider:</string>
+    <string name="title_status">Status:</string>
+    <string name="provider"></string>
+    <string name="status"></string>
+    <string name="title_distance">Distance:</string>
+    <string name="distance"></string>
+    <string name="title_date">Date:</string>
+    <string name="date"></string>
+    <string name="title_chip_version">Chip version:</string>
+    <string name="chipversion">UNKNOWN</string>
+    <string name="title_mnl_version">MNL version:</string>
+    <string name="mnlversion">UNKNOWN</string>
+    <string name="hot">hot</string>
+    <string name="warm">warm</string>
+    <string name="cold">cold</string>
+    <string name="full">full</string>
+    <string name="restart">AGPS restart</string>
+    <string name="satellites">Satellites</string>
+    <string name="information">Information</string>
+    <string name="gps_test">GPS Test</string>
+    <string name="nmea_log">NMEA Log</string>
+    <string name="nmea_start">start</string>
+    <string name="nmea_stop">stop</string>
+    <string name="nmea_clear">clear</string>
+    <string name="nmea_save">save</string>
+    <string name="nmea_hint">The NMEA log below is being saved:</string>
+    <string name="gps_test_start">Start</string>
+    <string name="gps_test_times">Times 0 – 999:</string>
+    <string name="gps_test_interval">Interval 0 – 999(s):</string>
+    <string name="no_sdcard">Please check the SD card.</string>
+    <string name="gps_test_current_times">Current Times:</string>
+    <string name="need_3d_fix">Need 3D Fix</string>
+    <string name="last_ttff">Last TTFF:</string>
+    <string name="reconnect_countdown">Reconnect count down:</string>
+    <string name="gps_test_stop">Stop</string>
+    <string name="gps_test_mean_ttff">Mean TTFF:</string>
+    <string name="nmea_dbg_dbg">Undried</string>
+    <string name="nmea_dbg_nmea">Undried</string>
+    <string name="nmea_dbg_dbg_file">Undried</string>
+    <string name="nmea_dbg_nmea_file">Undried</string>
+    <string name="hot_still">Undried</string>
+    <string name="gps_hw_test">Undried</string>
+    <string name="gps_jamming_scan">JAM scan</string>
+    <string name="jamming_scan_times">20</string>
+    <string name="ygps_copyright_infor">YGPS Copyright Information</string>
+    <string name="toast_input_times">Please input test times</string>
+    <string name="toast_input_range">Please input a number between 0 and 999</string>
+    <string name="toast_input_interval">Please input interval</string>
+    <string name="btn_name_dbg2socket_enable">Enable dbg2socket [Need Restart]</string>
+    <string name="btn_name_dbg2socket_disable">Disable dbg2socket [Need Restart]</string>
+    <string name="btn_name_nmea2socket_enable">Enable nmea2socket [Need Restart]</string>
+    <string name="btn_name_nmea2socket_disable">Disable nmea2socket [Need Restart]</string>
+    <string name="btn_name_dbg2file_enable">Enable dbg2file [Need Restart]</string>
+    <string name="btn_name_dbg2file_disable">Disable dbg2file [Need Restart]</string>
+    <string name="btn_name_dbg2ddms_disable">Disable dbg2ddms [Need Restart]</string>
+    <string name="btn_name_dbg2ddms_enable">Enable dbg2ddms [Need Restart]</string>
+    <string name="btn_name_hotstill_disable">Disable Hotstill [Need Restart]</string>
+    <string name="btn_name_hotstill_enable">Enable Hotstill [Need Restart]</string>
+    <string name="btn_name_dbg2gpsdoctor_enable">Enable dbg2GPSDoctor [Need Restart]</string>
+    <string name="btn_name_dbg2gpsdoctor_disable">Disable dbg2GPSDoctor [Need Restart]</string>
+    <string name="toast_save_log_succeed_to">Save NmeaLog to %1$s Succeed!</string>
+    <string name="toast_save_log_succeed">Save NmeaLog failed</string>
+    <string name="toast_save_log_failed">Save NmeaLog failed</string>
+    <string name="toast_create_file_failed">Create new file failed</string>
+    <string name="toast_nmealog_save_at">NMEA log saved at %1$s</string>
+    <string name="toast_no_log">There is no log to save!</string>
+    <string name="toast_exceed_time">Exceed %1$s seconds</string>
+    <string name="toast_test_interrupted">GPS auto test interrupted</string>
+    <string name="toast_jamming_succeed">Jamming scan setting success</string>
+    <string name="toast_jamming_failed">Jamming scan setting fail</string>
+    <string name="toast_first_fix">GPS Fix after %1$d %2$s</string>
+    <string name="menu_run_bg_disable">Disable Run in BG. [Need Restart.]</string>
+    <string name="menu_run_bg_enable">Enable Run in BG. [Need Restart.]</string>
+    <string name="provider_status_enabled">%1$s enabled</string>
+    <string name="provider_status_disabled">%1$s disabled</string>
+    <string name="gps_status_started">STARTED</string>
+    <string name="gps_status_stopped">STOPPED</string>
+    <string name="gps_status_first_fix">FIRST_FIX</string>
+    <string name="gps_status_unavailable">UNAVAILABLE</string>
+    <string name="gps_status_available">AVAILABLE</string>
+    <string name="gps_status_unknown">UNKNOWN</string>
+    <string name="time_unit_ms">&#160;ms</string>
+    <string name="dialog_title_stop">Stopping</string>
+    <string name="dialog_message_stop">Please wait …</string>
+    <string name="dialog_title_error">Error</string>
+    <string name="dialog_message_error">Error dialog ID</string>
+    <string name="command_error">Command error</string>
+    <string name="gps_test_running_warn">Please stop GPS test</string>
+
+    <!-- Below lines added by TChip ZJ -->
+    <string name="title_fm_transmit">FM发射测试</string>
+    <string name="transmit_frequency">当前发射频率</string>
+    <string name="music_playing">正在播放:(左-男声:《单身情歌》 右-女声:《单眼皮女生》)</string>
+    <string name="open_fm_and_test">请将FM接收器调至以上频段进行收听</string>
+    <string name="title_goc_bt">蓝牙测试(GocSdk.BT)</string>
+    <string name="bt_test_hint">提示：请在测试点旁开启一台手机蓝牙设备(且对其他设备可见)</string>
+    <string name="bt_scanning_with_result">测试通过，已扫描到%d台设备</string>
+    <string name="bt_scan_finish_with_result">扫描结束，共扫描到%d台设备</string>
+    <string name="bt_scan_finish_not_find">测试失败，未扫描到设备</string>
+    <string name="bt_scan_start">正在扫描…</string>
+    <string name="title_edog_test">电子狗测试</string>
+    <string name="edog_test_hint">以上文本框有数据持续打印，表明电子狗工作正常</string>
+    <string name="title_record_test">摄像头测试</string>
+    <string name="record_test_hint">请检测后拉、前置摄像头：</string>
+    <string name="record_test_hint_back">1.后拉：连接倒车线，观察倒车界面是否正常预览</string>
+    <string name="record_test_hint_front">2.前置：点击主页键回到主界面，观察录像是否正常预览</string>
+    <string name="record_test_hint_end">二者都正常预览测试通过，否则失败。</string>
+    <string name="fre_875">87.5\n|</string>
+    <string name="fre_900">90.0\n|</string>
+    <string name="fre_920">92.0\n|</string>
+    <string name="fre_940">94.0\n|</string>
+    <string name="fre_960">96.0\n|</string>
+    <string name="fre_980">98.0\n|</string>
+    <string name="fre_1000">100.0 \n|</string>
+    <string name="fre_1020">102.0 \n|</string>
+    <string name="fre_1040">104.0 \n|</string>
+    <string name="fre_1060">106.0 \n|</string>
+    <string name="fre_1080">108.0 \n|</string>
+    <string name="item_dsa_copy">DSA拷贝</string>
+    <string name="dsa_title">DSA数据拷贝</string>
+    <string name="dsa_coping">正在拷贝DSA数据，请稍候…</string>
+    <string name="dsa_copy_from_sd1">从SD卡1拷贝</string>
+    <string name="dsa_copy_from_sd2">从SD卡2拷贝</string>
+    <string name="dsa_success">拷贝成功</string>
+    <string name="dsa_fail">拷贝失败</string>
+    <string name="item_autonavi_copy">地图拷贝</string>
+    <string name="autonavi_title">高德地图拷贝</string>
+    <string name="autonavi_coping">正在拷贝地图数据，请稍候…</string>
+
+</resources>

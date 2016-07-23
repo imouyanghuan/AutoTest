@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layout1"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+
+    <LinearLayout
+        android:id="@+id/btnLayout"
+        android:layout_width="fill_parent"
+        android:layout_height="80dp"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="10dip"
+        android:orientation="horizontal" >
+
+        <Spinner
+            android:id="@+id/GroupTestSpinner"
+            android:layout_width="0dip"
+            android:layout_height="80dp"
+            android:layout_weight="2"
+            android:visibility="gone" />
+
+        <Button
+            android:id="@+id/btn_testall"
+            android:layout_width="0dip"
+            android:layout_height="80dp"
+            android:layout_weight="1"
+            android:text="@string/testall"
+            android:textSize="18sp" />
+
+        <Button
+            android:id="@+id/btn_clear"
+            android:layout_width="0dip"
+            android:layout_height="80dp"
+            android:layout_weight="1"
+            android:text="@string/Clear"
+            android:textSize="22sp" />
+
+        <Button
+            android:id="@+id/btn_showFistTest"
+            android:layout_width="0dip"
+            android:layout_height="80dp"
+            android:layout_weight="1"
+            android:text="@string/showFistTest"
+            android:textSize="18sp" />
+
+        <Button
+            android:id="@+id/btn_cancel"
+            android:layout_width="0dip"
+            android:layout_height="80dp"
+            android:layout_weight="1"
+            android:text="@string/Cancel"
+            android:textSize="22sp" />
+
+        <Button
+            android:id="@+id/btn_uninstall"
+            android:layout_width="0dip"
+            android:layout_height="80dp"
+            android:layout_weight="1"
+            android:text="@string/Uninstall"
+            android:textSize="18sp"
+            android:visibility="gone" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_above="@id/btnLayout"
+        android:layout_alignParentTop="true" >
+
+        <com.DeviceTest.view.MyGridView
+            android:id="@+id/myGridView"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent" />
+    </LinearLayout>
+
+</RelativeLayout>

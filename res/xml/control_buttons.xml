@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="80dp"
+    android:layout_alignParentBottom="true"
+    android:layout_gravity="bottom"
+    android:orientation="horizontal"
+    android:background="#000000" >
+<Button
+        android:id="@+id/btn_return"
+        android:layout_width="0dip"
+        android:layout_height="80dp"
+        android:layout_weight="1.3"
+        android:textSize="22sp"
+        android:text="@string/btnreturnText" />
+    <Button
+        android:id="@+id/btn_Pass"
+        android:layout_width="0dip"
+        android:layout_height="80dp"
+        android:layout_weight="0.7"
+        android:textSize="22sp"
+        android:text="@string/btnPassText" />
+
+    <Button
+        android:id="@+id/btn_Fail"
+        android:layout_width="0dip"
+        android:layout_height="80dp"
+        android:layout_weight="0.7"
+        android:textSize="22sp"
+        android:text="@string/btnFailText" />
+
+    <Button
+        android:id="@+id/btn_Skip"
+        android:layout_width="0dip"
+        android:layout_height="80dp"
+        android:layout_weight="1.3"
+        android:textSize="22sp"
+        android:text="@string/btnSkipText" />
+
+</LinearLayout>

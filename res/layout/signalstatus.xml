@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layout1"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingBottom="60dip" >
+
+        <TextView
+            android:id="@+id/SimCardTestTitle"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center_horizontal"
+            android:paddingTop="20px"
+            android:text="@string/signal_status_test"
+            android:textSize="30sp"
+            android:visibility="visible" />
+
+        <TextView
+            android:id="@+id/sim_imei"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center_vertical"
+            android:gravity="center_horizontal"
+            android:paddingTop="5px"
+            android:text="@string/status_sim_imei"
+            android:textSize="22sp"
+            android:visibility="visible" />
+
+        <TextView
+            android:id="@+id/status_operator"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center_vertical"
+            android:gravity="center_horizontal"
+            android:text="@string/status_operator"
+            android:textSize="22sp"
+            android:visibility="visible" />
+
+        <TextView
+            android:id="@+id/status_signal_strength"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center_vertical"
+            android:gravity="center_horizontal"
+            android:paddingTop="10px"
+            android:text="@string/status_signal_strength"
+            android:textSize="22sp"
+            android:visibility="visible" />
+
+        <TextView
+            android:id="@+id/status_network_type"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center_vertical"
+            android:gravity="center_horizontal"
+            android:paddingTop="10px"
+            android:text="@string/status_network_type"
+            android:textSize="22sp"
+            android:visibility="visible" />
+
+        <TextView
+            android:id="@+id/status_service_state"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center_vertical"
+            android:gravity="center_horizontal"
+            android:paddingTop="10px"
+            android:text="@string/status_service_state"
+            android:textSize="22sp"
+            android:visibility="visible" />
+    </LinearLayout>
+
+    <include
+        android:id="@+id/signal_status_btn"
+        layout="@xml/control_buttons" />
+
+</RelativeLayout>

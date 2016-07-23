@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+
+    <RelativeLayout
+        android:id="@+id/test_touchcell"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:gravity="center" >
+
+        <com.DeviceTest.view.TouchView
+            android:id="@+id/touchview"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:text="@string/TouchtestTitle"
+            android:textColor="#000000"
+            android:textSize="30sp" />
+
+        <Button
+            android:id="@+id/enter_test_maxpoint"
+            android:layout_width="180dp"
+            android:layout_height="60dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="93dp"
+            android:text="@string/EnterTesMaxPoint"
+            android:textColor="@android:color/black"
+            android:textSize="24sp" />
+
+        <Button
+            android:id="@+id/reset"
+            android:layout_width="150dp"
+            android:layout_height="60dp"
+            android:layout_above="@+id/enter_test_maxpoint"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="26dp"
+            android:text="@string/Reset"
+            android:textColor="@android:color/black"
+            android:textSize="24sp" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/test_maxpoint"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:visibility="gone" >
+
+        <com.DeviceTest.view.PointerLocationView
+            android:id="@+id/pointerview"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent" />
+
+        <TextView
+            android:id="@+id/TouchtextTitle"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="@string/TouchtestTitle"
+            android:textSize="30sp"
+            android:layout_margin="20dp"
+            android:visibility="visible" />
+
+        <TextView
+            android:id="@+id/TouchInfoText"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/TouchtextTitle"
+            android:gravity="center_horizontal"
+            android:paddingTop="20px"
+            android:text="@string/TouchtestSubTitle"
+            android:textSize="22sp"
+            android:visibility="visible" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/TouchInfoText"
+            android:visibility="gone"
+            android:paddingBottom="20dip" >
+
+            <TextView
+                android:id="@+id/TouchtextMsg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="20px"
+                android:text="@string/TouchtestSubTitle"
+                android:visibility="visible" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/enter_test_touchcell"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="150dp"
+            android:layout_marginRight="30dp"
+            android:text="@string/EnterTesTouchcell" />
+    </RelativeLayout>
+
+    <include
+        android:id="@+id/btns"
+        layout="@xml/control_buttons" />
+
+</RelativeLayout>

@@ -1,0 +1,666 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.DeviceTest"
+    android:sharedUserId="android.uid.system"
+    android:versionCode="2"
+    android:versionName="2.0" >
+
+    <uses-sdk
+        android:minSdkVersion="9"
+        android:targetSdkVersion="11" />
+
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_CHECKIN_PROPERTIES" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.MODIFY_PHONE_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.WRITE_SECURE_SETTINGS" />
+    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" />
+    <uses-permission android:name="android.permission.ACCESS_MOCK_LOCATION" />
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="com.android.launcher.permission.READ_SETTINGS" />
+    <uses-permission android:name="android.permission.HARDWARE_TEST" />
+    <uses-permission android:name="android.permission.DEVICE_POWER" />
+    <uses-permission android:name="android.permission.FLASHLIGHT" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.BATTERY_STATS" />
+    <uses-permission android:name="android.permission.INJECT_EVENTS" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.WRITE_MEDIA_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNAL_SYSTEM_WINDOW" />
+    <uses-permission android:name="android.permission.DEVICE_POWER" />
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+
+    <application
+        android:name=".DeviceTestApplication"
+        android:icon="@drawable/devicetest_icon"
+        android:label="@string/app_name" >
+        <activity
+            android:name=".FirstRun"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="@string/app_name"
+            android:screenOrientation="unspecified" >
+
+            <!--
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.LAUNCHER" />
+               
+            </intent-filter>
+            -->
+        </activity>
+        <activity
+            android:name=".DeviceTest"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="unspecified" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.DEVICETEST" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".VersionTestActivity"
+            android:screenOrientation="unspecified" >
+            <intent-filter>
+                <action android:name="android.intent.action.VersionTestActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".StorageActivity"
+            android:screenOrientation="unspecified" >
+            <intent-filter>
+                <action android:name="android.intent.action.StorageActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".LcdTestActivity"
+            android:screenOrientation="unspecified" >
+            <intent-filter>
+                <action android:name="android.intent.action.LcdTestActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".TouchTestActivity"
+            android:screenOrientation="unspecified" >
+            <intent-filter>
+                <action
+                    android:name="android.intent.action.TouchTestActivity"
+                    android:screenOrientation="unspecified" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".CameraTestActivity"
+            android:screenOrientation="unspecified" >
+            <intent-filter>
+                <action
+                    android:name="android.intent.action.CameraTestActivity"
+                    android:screenOrientation="unspecified" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".VibrationTestActivity"
+            android:screenOrientation="unspecified" >
+            <intent-filter>
+                <action
+                    android:name="android.intent.action.VibrationTestActivity"
+                    android:screenOrientation="unspecified" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".SpeakerTestActivity"
+            android:screenOrientation="unspecified" >
+            <intent-filter>
+                <action
+                    android:name="android.intent.action.SpeakerTestActivity"
+                    android:screenOrientation="unspecified" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".GsensorTestActivity"
+            android:screenOrientation="unspecified" >
+            <intent-filter>
+                <action
+                    android:name="android.intent.action.GsensorTestActivity"
+                    android:screenOrientation="unspecified" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".MsensorTestActivity"
+            android:screenOrientation="unspecified" >
+            <intent-filter>
+                <action
+                    android:name="android.intent.action.MsensorTestActivity"
+                    android:screenOrientation="unspecified" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".GyroscopeTestActivity"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action
+                    android:name="android.intent.action.GyroscopeTestActivity"
+                    android:screenOrientation="portrait" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".LightsensorTestActivity"
+            android:screenOrientation="unspecified" >
+            <intent-filter>
+                <action
+                    android:name="android.intent.action.LightsensorTestActivity"
+                    android:screenOrientation="unspecified" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".GocBtTestActivity"
+            android:screenOrientation="unspecified" >
+            <intent-filter>
+                <action
+                    android:name="android.intent.action.GocBtTestActivity"
+                    android:screenOrientation="unspecified" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".EDogTestActivity"
+            android:screenOrientation="unspecified" >
+            <intent-filter>
+                <action
+                    android:name="android.intent.action.EDogTestActivity"
+                    android:screenOrientation="unspecified" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".RecordTestActivity"
+            android:screenOrientation="unspecified" >
+            <intent-filter>
+                <action
+                    android:name="android.intent.action.RecordTestActivity"
+                    android:screenOrientation="unspecified" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".BluetoothTestActivity"
+            android:screenOrientation="unspecified" >
+            <intent-filter>
+                <action
+                    android:name="android.intent.action.BluetoothTestActivity"
+                    android:screenOrientation="unspecified" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".WifiTestActivity"
+            android:screenOrientation="unspecified" >
+            <intent-filter>
+                <action
+                    android:name="android.intent.action.WifiTestActivity"
+                    android:screenOrientation="unspecified" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".HeadsetMicTestActivity"
+            android:screenOrientation="unspecified" >
+            <intent-filter>
+                <action
+                    android:name="android.intent.action.HeadsetMicTestActivity"
+                    android:screenOrientation="unspecified" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".PhoneMicTestActivity"
+            android:screenOrientation="unspecified" >
+            <intent-filter>
+                <action
+                    android:name="android.intent.action.PhoneMicTestActivity"
+                    android:screenOrientation="unspecified" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".GpsTestActivity"
+            android:screenOrientation="unspecified" >
+            <intent-filter>
+                <action
+                    android:name="android.intent.action.GpsTestActivity"
+                    android:screenOrientation="unspecified" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".GpsLocationTestActivity"
+            android:screenOrientation="unspecified" >
+            <intent-filter>
+                <action
+                    android:name="android.intent.action.GpsLocationTestActivity"
+                    android:screenOrientation="unspecified" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".SdCardTestActivity"
+            android:screenOrientation="unspecified" >
+            <intent-filter>
+                <action
+                    android:name="android.intent.action.SdCardTestActivity"
+                    android:screenOrientation="unspecified" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".FMTransmitTestActivity"
+            android:screenOrientation="unspecified" >
+            <intent-filter>
+                <action
+                    android:name="android.intent.action.FMTransmitTestActivity"
+                    android:screenOrientation="unspecified" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".DSACopyActivity"
+            android:screenOrientation="unspecified" >
+            <intent-filter>
+                <action
+                    android:name="android.intent.action.DSACopyActivity"
+                    android:screenOrientation="unspecified" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".AutonaviCopyActivity"
+            android:screenOrientation="unspecified" >
+            <intent-filter>
+                <action
+                    android:name="android.intent.action.AutonaviCopyActivity"
+                    android:screenOrientation="unspecified" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".PowerTestActivity"
+            android:screenOrientation="unspecified" >
+            <intent-filter>
+                <action
+                    android:name="android.intent.action.PowerTestActivity"
+                    android:screenOrientation="unspecified" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="BrightnessTestActivity"
+            android:screenOrientation="unspecified" >
+            <intent-filter>
+                <action
+                    android:name="android.intent.action.BrightnessTestActivity"
+                    android:screenOrientation="unspecified" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".KeyboardTestActivity"
+            android:screenOrientation="unspecified" >
+            <intent-filter>
+                <action
+                    android:name="android.intent.action.KeyboardTestActivity"
+                    android:screenOrientation="unspecified" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="MrioUSBTestActivity"
+            android:screenOrientation="unspecified" >
+            <intent-filter>
+                <action
+                    android:name="android.intent.action.MrioUSBTestActivity"
+                    android:screenOrientation="unspecified" />
+                <action android:name="android.hardware.Usb.ACTION_USB_STATE" />
+                <action android:name="android.hardware.Usb.ACTION_USB_CONNECTED" />
+                <action android:name="android.hardware.Usb.ACTION_USB_DISCONNECTED" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".SimCardTestActivity"
+            android:screenOrientation="unspecified" >
+            <intent-filter>
+                <action
+                    android:name="android.intent.action.SimCardTestActivity"
+                    android:screenOrientation="unspecified" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".FMRadioTestActivity"
+            android:screenOrientation="unspecified" >
+            <intent-filter>
+                <action
+                    android:name="android.intent.action.FMRadioTestActivity"
+                    android:screenOrientation="unspecified" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".DialSpeakerTestActivity"
+            android:screenOrientation="unspecified" >
+            <intent-filter>
+                <action
+                    android:name="android.intent.action.DialSpeakerTestActivity"
+                    android:screenOrientation="unspecified" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".CompassTestActivity"
+            android:screenOrientation="unspecified" >
+            <intent-filter>
+                <action
+                    android:name="android.intent.action.CompassTestActivity"
+                    android:screenOrientation="unspecified" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".HdmiTestActivity"
+            android:screenOrientation="unspecified" >
+            <intent-filter>
+                <action
+                    android:name="android.intent.action.HdmiTestActivity"
+                    android:screenOrientation="unspecified" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".HdmiTestMTKActivity"
+            android:screenOrientation="unspecified" >
+            <intent-filter>
+                <action
+                    android:name="android.intent.action.HdmiTestMTKActivity"
+                    android:screenOrientation="unspecified" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".LevelTestActivity"
+            android:screenOrientation="unspecified" >
+            <intent-filter>
+                <action
+                    android:name="android.intent.action.LevelTestActivity"
+                    android:screenOrientation="unspecified" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="StorageTestActivity"
+            android:screenOrientation="unspecified" >
+            <intent-filter>
+                <action
+                    android:name="android.intent.action.StorageTestActivity"
+                    android:screenOrientation="unspecified" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".UsbHostTestActivity"
+            android:screenOrientation="unspecified" >
+            <intent-filter>
+                <action
+                    android:name="android.intent.action.UsbHostTestActivity"
+                    android:screenOrientation="unspecified" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".HardwareInfoTestActivity"
+            android:screenOrientation="unspecified" >
+            <intent-filter>
+                <action
+                    android:name="android.intent.action.HardwareInfoTestActivity"
+                    android:screenOrientation="unspecified" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".CirTestActivity"
+            android:screenOrientation="unspecified" >
+            <intent-filter>
+                <action
+                    android:name="android.intent.action.CirTestActivity"
+                    android:screenOrientation="unspecified" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".LedTestActivity"
+            android:screenOrientation="unspecified" >
+            <intent-filter>
+                <action
+                    android:name="android.intent.action.LedTestActivity"
+                    android:screenOrientation="unspecified" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".IrdaTestActivity"
+            android:screenOrientation="unspecified" >
+            <intent-filter>
+                <action
+                    android:name="android.intent.action.IrdaTestActivity"
+                    android:screenOrientation="unspecified" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".RuninTestActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action
+                    android:name="android.intent.action.RuninTestActivity"
+                    android:screenOrientation="unspecified" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".RockVideoPlayer"
+            android:clearTaskOnLaunch="true"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="@string/app_name"
+            android:screenOrientation="unspecified" >
+            <intent-filter>
+                <action android:name="android.intent.action.RuninTestActivity" />
+                <action android:name="android.intent.action.RockVideoPlayer" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ClockTestActivity"
+            android:screenOrientation="unspecified" >
+            <intent-filter>
+                <action
+                    android:name="android.intent.action.ClockTestActivity"
+                    android:screenOrientation="unspecified" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <!-- HandsetTestActivity -->
+        <activity
+            android:name=".HandsetTestActivity"
+            android:screenOrientation="unspecified" >
+            <intent-filter>
+                <action
+                    android:name="android.intent.action.HandsetTestActivity"
+                    android:screenOrientation="unspecified" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".SignalStatusActivity"
+            android:screenOrientation="unspecified" >
+            <intent-filter>
+                <action
+                    android:name="android.intent.action.SignalStatusActivity"
+                    android:screenOrientation="unspecified" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".ProximitySensorTestActivity"
+            android:screenOrientation="unspecified" >
+            <intent-filter>
+                <action
+                    android:name="android.intent.action.ProximitySensorTestActivity"
+                    android:screenOrientation="unspecified" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <receiver android:name=".EnableAppReceiver" >
+            <intent-filter>
+                <action android:name="android.rockchip.devicetest.action.APP_STATE_CHANGE" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name=".SecretCodeReceiver" >
+
+            <!-- 开机启动 -->
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.provider.Telephony.SECRET_CODE" />
+
+                <data
+                    android:host="86"
+                    android:scheme="android_secret_code" /> <!-- *#*#86#*#* -->
+            </intent-filter>
+        </receiver>
+
+        <!-- YGPS -->
+        <activity
+            android:name=".YgpsActivity"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan" >
+            <intent-filter>
+                <category android:name="android.intent.category.ALTERNATIVE" />
+                <category android:name="android.intent.category.SELECTED_ALTERNATIVE" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.ygps" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".CopyrightInfo"
+            android:label="@string/ygps_copyright_infor" >
+        </activity>
+        <activity
+            android:name=".ViewFileActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustUnspecified|stateHidden" />
+        <activity
+            android:name=".ViewDetailActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustUnspecified|stateHidden" />
+
+        <service
+            android:name=".YgpsService"
+            android:exported="false" >
+        </service>
+    </application>
+
+    <uses-permission android:name="android.permission.VIBRATE" />
+
+    <supports-screens
+        android:anyDensity="true"
+        android:largeScreens="true" />
+
+</manifest>

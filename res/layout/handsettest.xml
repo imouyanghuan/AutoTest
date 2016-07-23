@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layout1"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingBottom="60dip" >
+
+        <TextView
+            android:id="@+id/SimCardTestTitle"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center_horizontal"
+            android:paddingTop="20px"
+            android:text="@string/handset"
+            android:textSize="40sp"
+            android:visibility="visible" />
+
+        <TextView
+            android:id="@+id/text"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center_vertical"
+            android:gravity="center_horizontal"
+            android:paddingTop="80px"
+            android:text="@string/handset_tip"
+            android:textSize="20sp"
+            android:visibility="visible" />
+        <Button
+            android:id="@+id/headset_start"
+            android:layout_width="200dp"
+            android:layout_height="80dp"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center"
+            android:layout_marginTop="50px"
+            android:text="@string/handset_start"
+            android:textSize="26sp"
+            android:visibility="visible" />
+        <!-- 
+        <Button
+            android:id="@+id/headset_stop"
+            android:layout_width="200dp"
+            android:layout_height="80dp"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center"
+            android:layout_marginTop="5px"
+            android:text="@string/handset_stop"
+            android:textSize="26sp"
+            android:visibility="visible" />
+         -->
+        
+    </LinearLayout>
+
+    <include
+        android:id="@+id/btns"
+        layout="@xml/control_buttons" />
+
+</RelativeLayout>
