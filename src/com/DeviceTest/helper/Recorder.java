@@ -74,14 +74,12 @@ public class Recorder implements MediaPlayer.OnCompletionListener,
 		signalStateChanged(i);
 	}
 
-
-	  public int getMaxAmplitude()
-	  {
-	 		if (this.mState == Recorder.RECORDING_STATE) {
-	 			return this.mRecorder.getMaxAmplitude();
-	 		}
-	 		return 0;
-	 	}
+	public int getMaxAmplitude() {
+		if (this.mState == Recorder.RECORDING_STATE) {
+			return this.mRecorder.getMaxAmplitude();
+		}
+		return 0;
+	}
 
 	public void onCompletion(MediaPlayer paramMediaPlayer) {
 		stop();
@@ -144,10 +142,10 @@ public class Recorder implements MediaPlayer.OnCompletionListener,
 
 		stop();
 		try {
-			Log.i("Jeffy","Create new file:" + TEST_FILE_PATH);
+			Log.i("Jeffy", "Create new file:" + TEST_FILE_PATH);
 			this.mSampleFile = new File(TEST_FILE_PATH);
 			this.mSampleFile.createNewFile();
-			Log.i("Jeffy","new file created,now create recorder");
+			Log.i("Jeffy", "new file created,now create recorder");
 			this.mRecorder = new MediaRecorder();
 			this.mRecorder.setAudioSource(MediaRecorder.AudioSource.MIC);
 			this.mRecorder.setOutputFormat(paramInt);
@@ -155,8 +153,8 @@ public class Recorder implements MediaPlayer.OnCompletionListener,
 
 			String str = this.mSampleFile.getAbsolutePath();
 			mRecorder.setOutputFile(str);
-			Log.i("Jeffy","start to record");
-			
+			Log.i("Jeffy", "start to record");
+
 			this.mRecorder.prepare();
 			this.mRecorder.start();
 
@@ -165,7 +163,7 @@ public class Recorder implements MediaPlayer.OnCompletionListener,
 		} catch (Exception e) {
 			e.printStackTrace();
 			setError(Recorder.IDLE_STATE);
-			if(mRecorder != null) {
+			if (mRecorder != null) {
 				this.mRecorder.reset();
 				this.mRecorder.release();
 				this.mRecorder = null;

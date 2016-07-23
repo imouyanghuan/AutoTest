@@ -10,27 +10,20 @@ import com.DeviceTest.helper.ControlButtonUtil;
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.AssetFileDescriptor;
-import android.media.AudioFormat;
 import android.media.AudioManager;
-import android.media.AudioRecord;
-import android.media.AudioTrack;
 import android.media.MediaPlayer;
-import android.media.MediaRecorder;
 import android.media.MediaPlayer.OnPreparedListener;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.KeyEvent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import android.widget.Toast;
 
 /**
  * 新 听筒测试
+ * 
  * @author zzp
- *
+ * 
  */
-public class HandsetTestActivity extends Activity{
+public class HandsetTestActivity extends Activity {
 
 	private Context mContext;
 	private boolean isStart = false;
@@ -40,41 +33,47 @@ public class HandsetTestActivity extends Activity{
 		super.onCreate(savedInstanceState);
 		DeviceTest.lockScreenOrientation(this);
 		setTitle(getTitle() + "----("
-				+ getIntent().getStringExtra(DeviceTest.EXTRA_TEST_PROGRESS) + ")");
-		//requestWindowFeature(Window.FEATURE_NO_TITLE);
+				+ getIntent().getStringExtra(DeviceTest.EXTRA_TEST_PROGRESS)
+				+ ")");
+		// requestWindowFeature(Window.FEATURE_NO_TITLE);
 		getWindow().addFlags(FLAG_FULLSCREEN | FLAG_KEEP_SCREEN_ON);
 
 		setContentView(R.layout.handsettest_new);
 
 		mediaPlayer = new MediaPlayer();
-		mAudioManager = (AudioManager) this.getSystemService(Context.AUDIO_SERVICE);
+		mAudioManager = (AudioManager) this
+				.getSystemService(Context.AUDIO_SERVICE);
 		ControlButtonUtil.initControlButtonView(this);
 	}
-
 
 	@Override
 	protected void onResume() {
 		super.onResume();
 
-		if(mAudioManager.isSpeakerphoneOn()) {
+		if (mAudioManager.isSpeakerphoneOn()) {
 			mAudioManager.setSpeakerphoneOn(false);
 		}
 
 		AssetFileDescriptor fd = null;
 		try {
 			fd = getAssets().openFd("Neptunium.ogg");
-			Log.v("ZZP",">>>>> fd: " + fd.getFileDescriptor());
+			Log.v("ZZP", ">>>>> fd: " + fd.getFileDescriptor());
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 
 		if (fd != null) {
-			mAudioManager = (AudioManager) this.getSystemService(Context.AUDIO_SERVICE);
+			mAudioManager = (AudioManager) this
+					.getSystemService(Context.AUDIO_SERVICE);
 			mAudioManager.setMode(AudioManager.MODE_IN_CALL);// 把模式调成听筒放音模式
 
 			mAudioManager.setStreamSolo(AudioManager.STREAM_VOICE_CALL, false);
-			mAudioManager.setStreamVolume(AudioManager.STREAM_VOICE_CALL,
-					mAudioManager.getStreamMaxVolume(AudioManager.STREAM_VOICE_CALL ) , AudioManager.FLAG_PLAY_SOUND);
+			mAudioManager
+					.setStreamVolume(
+							AudioManager.STREAM_VOICE_CALL,
+							mAudioManager
+									.getStreamMaxVolume(AudioManager.STREAM_VOICE_CALL),
+							AudioManager.FLAG_PLAY_SOUND);
 
 			playMusic(fd);
 
@@ -85,19 +84,18 @@ public class HandsetTestActivity extends Activity{
 	@Override
 	protected void onPause() {
 		super.onPause();
-		
-//		this.mAudioManager.setStreamSolo(AudioManager.STREAM_VOICE_CALL, false);
-//		this.mAudioManager.setStreamVolume(AudioManager.STREAM_VOICE_CALL,
-//				this.mOldVolume, AudioManager.STREAM_VOICE_CALL);
 
+		// this.mAudioManager.setStreamSolo(AudioManager.STREAM_VOICE_CALL,
+		// false);
+		// this.mAudioManager.setStreamVolume(AudioManager.STREAM_VOICE_CALL,
+		// this.mOldVolume, AudioManager.STREAM_VOICE_CALL);
 
 		if (mediaPlayer.isPlaying())
 			mediaPlayer.stop();
-		mAudioManager = (AudioManager) this.getSystemService(Context.AUDIO_SERVICE);
+		mAudioManager = (AudioManager) this
+				.getSystemService(Context.AUDIO_SERVICE);
 		mAudioManager.setMode(AudioManager.MODE_NORMAL);
 	}
-
-
 
 	@Override
 	protected void onDestroy() {
@@ -105,30 +103,29 @@ public class HandsetTestActivity extends Activity{
 		super.onDestroy();
 
 		mediaPlayer.stop();
-		if(mediaPlayer == null) return;
+		if (mediaPlayer == null)
+			return;
 		mediaPlayer.release();
 		mediaPlayer = null;
 
 	}
 
-
-
-	////////////////////////////////////////////
+	// //////////////////////////////////////////
 
 	private MediaPlayer mediaPlayer;
 	private AudioManager mAudioManager;
 	private int mOldVolume;
 
-	private void playMusic(AssetFileDescriptor fd){
-		Log.v("ZZP",">>>>> playMusic <<<<<<" );
+	private void playMusic(AssetFileDescriptor fd) {
+		Log.v("ZZP", ">>>>> playMusic <<<<<<");
 		try {
-			mediaPlayer.setDataSource(fd.getFileDescriptor(), fd.getStartOffset(),
-					fd.getDeclaredLength());
+			mediaPlayer.setDataSource(fd.getFileDescriptor(),
+					fd.getStartOffset(), fd.getDeclaredLength());
 			mediaPlayer.prepare();
 			// 设置音频循环播放
-			mediaPlayer.setLooping(true);	
+			mediaPlayer.setLooping(true);
 			mediaPlayer.setOnPreparedListener(new PrepareListener(0));
-			Log.e("ZZP",">>>>> playMusic <<<<<<" );
+			Log.e("ZZP", ">>>>> playMusic <<<<<<");
 		} catch (IllegalArgumentException e) {
 			e.printStackTrace();
 		} catch (IllegalStateException e) {
@@ -142,7 +139,6 @@ public class HandsetTestActivity extends Activity{
 	private final class PrepareListener implements OnPreparedListener {
 		private int position;
 
-
 		public PrepareListener(int position) {
 			this.position = position;
 		}
@@ -153,7 +149,8 @@ public class HandsetTestActivity extends Activity{
 				mediaPlayer.seekTo(position);
 		}
 	}
-	///////////////////////////////
+
+	// /////////////////////////////
 
 	// 取消返回按钮
 	public boolean dispatchKeyEvent(KeyEvent event) {
@@ -163,5 +160,3 @@ public class HandsetTestActivity extends Activity{
 		return super.dispatchKeyEvent(event);
 	}
 }
-
-

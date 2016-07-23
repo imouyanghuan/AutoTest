@@ -47,10 +47,8 @@ public class RecordTestActivity extends Activity {
 		getWindow().addFlags(FLAG_FULLSCREEN | FLAG_KEEP_SCREEN_ON);
 
 		setContentView(R.layout.recordtest);
-		
+
 		ControlButtonUtil.initControlButtonView(this);
-
-
 
 	}
 

@@ -37,7 +37,6 @@ public class LcdTestView extends View {
 		paneBorder = enable;
 	}
 
-	
 	public void onDraw(Canvas canvas) {
 		super.onDraw(canvas);
 		if (grayScale) {

@@ -60,9 +60,9 @@ public class IrdaTestActivity extends Activity implements OnClickListener {
 	boolean sirReceivePass = false;
 	boolean firSendPass = false;
 	boolean firReceivePass = false;
-	
+
 	private final static String TEST_IRDA_PATH = DeviceTest.DATA_PATH
-	+ "irda_test";
+			+ "irda_test";
 	File testIrdaFile = new File(TEST_IRDA_PATH);
 
 	protected void onCreate(Bundle savedInstanceState) {
@@ -70,7 +70,8 @@ public class IrdaTestActivity extends Activity implements OnClickListener {
 		super.onCreate(savedInstanceState);
 		DeviceTest.lockScreenOrientation(this);
 		setTitle(getTitle() + "----("
-				+ getIntent().getStringExtra(DeviceTest.EXTRA_TEST_PROGRESS) + ")");
+				+ getIntent().getStringExtra(DeviceTest.EXTRA_TEST_PROGRESS)
+				+ ")");
 		// requestWindowFeature(Window.FEATURE_NO_TITLE);
 		getWindow().addFlags(FLAG_FULLSCREEN | FLAG_KEEP_SCREEN_ON);
 
@@ -95,7 +96,6 @@ public class IrdaTestActivity extends Activity implements OnClickListener {
 
 		ControlButtonUtil.initControlButtonView(this);
 		findViewById(R.id.btn_Pass).setVisibility(View.INVISIBLE);
-
 
 		InputStream is = null;
 		OutputStream os = null;
@@ -127,8 +127,6 @@ public class IrdaTestActivity extends Activity implements OnClickListener {
 			}
 		}
 
-		
-		
 		myHandler = new Handler();
 
 		new Thread(new Runnable() {
@@ -152,28 +150,36 @@ public class IrdaTestActivity extends Activity implements OnClickListener {
 						final TextView resultView;
 						switch (msg.arg1) {
 						case TEST_SIR_SEND:
-							result = SystemUtil.execShellCmdForStatue(TEST_IRDA_PATH + " --sir-send") == 0;
+							result = SystemUtil
+									.execShellCmdForStatue(TEST_IRDA_PATH
+											+ " --sir-send") == 0;
 							resultView = sirSend;
 							if (result) {
 								sirSendPass = true;
 							}
 							break;
 						case TEST_SIR_RECEIVE:
-							result = SystemUtil.execShellCmdForStatue(TEST_IRDA_PATH + " --sir-receive") == 0;
+							result = SystemUtil
+									.execShellCmdForStatue(TEST_IRDA_PATH
+											+ " --sir-receive") == 0;
 							resultView = sirReceive;
 							if (result) {
 								sirReceivePass = true;
 							}
 							break;
 						case TEST_FIR_SEND:
-							result = SystemUtil.execShellCmdForStatue(TEST_IRDA_PATH + " --fir-send") == 0;
+							result = SystemUtil
+									.execShellCmdForStatue(TEST_IRDA_PATH
+											+ " --fir-send") == 0;
 							resultView = firSend;
 							if (result) {
 								firSendPass = true;
 							}
 							break;
 						case TEST_FIR_RECEIVE:
-							result = SystemUtil.execShellCmdForStatue(TEST_IRDA_PATH + " --fir-receive") == 0;
+							result = SystemUtil
+									.execShellCmdForStatue(TEST_IRDA_PATH
+											+ " --fir-receive") == 0;
 							resultView = firReceive;
 							if (result) {
 								firReceivePass = true;
@@ -213,20 +219,18 @@ public class IrdaTestActivity extends Activity implements OnClickListener {
 			}
 		}).start();
 
-		
-
 	}
 
 	protected void onStop() {
 		super.onStop();
 
 		SystemUtil.killProcessByPath(TEST_IRDA_PATH);
-		
+
 		if (testIrdaFile.exists()) {
 			testIrdaFile.delete();
 		}
 	}
-	
+
 	protected void onResume() {
 		super.onResume();
 	}

@@ -3,7 +3,6 @@ package com.DeviceTest;
 import static android.view.WindowManager.LayoutParams.FLAG_FULLSCREEN;
 import static android.view.WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON;
 
-import java.io.FileDescriptor;
 import java.io.IOException;
 
 import com.DeviceTest.helper.ControlButtonUtil;
@@ -14,10 +13,7 @@ import android.content.Intent;
 import android.content.res.AssetFileDescriptor;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
-import android.media.MediaRecorder;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Vibrator;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -42,24 +38,25 @@ public class SpeakerTestActivity extends Activity {
 	private boolean rightEnable = true;
 	private boolean SpeakerphoneOpen = true;
 	private Activity context;
-	
+
 	protected void onCreate(Bundle paramBundle) {
 		super.onCreate(paramBundle);
 		DeviceTest.lockScreenOrientation(this);
 
 		setTitle(getTitle() + "----("
-				+ getIntent().getStringExtra(DeviceTest.EXTRA_TEST_PROGRESS) + ")");
-		//requestWindowFeature(Window.FEATURE_NO_TITLE);
+				+ getIntent().getStringExtra(DeviceTest.EXTRA_TEST_PROGRESS)
+				+ ")");
+		// requestWindowFeature(Window.FEATURE_NO_TITLE);
 		getWindow().addFlags(FLAG_FULLSCREEN | FLAG_KEEP_SCREEN_ON);
-		
+
 		setContentView(R.layout.speakertest);
 		TextView txtTitle = (TextView) findViewById(R.id.txtTitle);
 		TextView txtContent = (TextView) findViewById(R.id.txtContent);
 		txtTitle.setText(R.string.SpeakerTitle);
 		txtContent.setText(getString(R.string.SpeakerTip));
-		
+
 		context = this;
-		
+
 		mAudioManager = (AudioManager) getSystemService("audio");
 		mPlayer = new MediaPlayer();
 		try {
@@ -83,7 +80,6 @@ public class SpeakerTestActivity extends Activity {
 		leftButton = (Button) findViewById(R.id.spk_btn_left);
 		leftButton.setOnClickListener(new OnClickListener() {
 
-			
 			public void onClick(View v) {
 				leftEnable = !leftEnable;
 				updateButtons();
@@ -93,7 +89,6 @@ public class SpeakerTestActivity extends Activity {
 		rightButton = (Button) findViewById(R.id.spk_btn_right);
 		rightButton.setOnClickListener(new OnClickListener() {
 
-			
 			public void onClick(View v) {
 				rightEnable = !rightEnable;
 				updateButtons();
@@ -103,18 +98,18 @@ public class SpeakerTestActivity extends Activity {
 		// add by zzp
 		setSpeakerphone = (Button) findViewById(R.id.set_speakerphone_btn);
 		setSpeakerphone.setOnClickListener(new OnClickListener() {
-			
+
 			public void onClick(View v) {
-				
+
 				SpeakerphoneOpen = !SpeakerphoneOpen;
 				updateSpeakerphoneButtons();
 			}
 		});
-		
+
 		updateButtons();
 
 		ControlButtonUtil.initControlButtonView(this);
-		
+
 	}
 
 	protected void updateButtons() {
@@ -123,17 +118,19 @@ public class SpeakerTestActivity extends Activity {
 
 		mPlayer.setVolume(leftEnable ? 1 : 0, rightEnable ? 1 : 0);
 	}
-	
-	protected void updateSpeakerphoneButtons(){
-		Log.v("",">>>>>>>>> SpeakerphoneOpen : " + SpeakerphoneOpen);
-		//mAudioManager.setSpeakerphoneOn(SpeakerphoneOpen);
-		if(SpeakerphoneOpen){
+
+	protected void updateSpeakerphoneButtons() {
+		Log.v("", ">>>>>>>>> SpeakerphoneOpen : " + SpeakerphoneOpen);
+		// mAudioManager.setSpeakerphoneOn(SpeakerphoneOpen);
+		if (SpeakerphoneOpen) {
 			OpenSpeaker();
 		} else {
 			CloseSpeaker();
 		}
-		
-		setSpeakerphone.setText(SpeakerphoneOpen? getString(R.string.SetSpeakerphoneOn) : getString(R.string.SetSpeakerphoneOff));
+
+		setSpeakerphone
+				.setText(SpeakerphoneOpen ? getString(R.string.SetSpeakerphoneOn)
+						: getString(R.string.SetSpeakerphoneOff));
 	}
 
 	protected void onDestroy() {
@@ -162,7 +159,7 @@ public class SpeakerTestActivity extends Activity {
 		this.mAudioManager.setStreamSolo(AudioManager.STREAM_MUSIC, true);
 		int i = this.mAudioManager.getStreamVolume(AudioManager.STREAM_MUSIC);
 		mOldVolume = i;
-		
+
 		int j = mAudioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC);
 		mAudioManager.setStreamVolume(AudioManager.STREAM_MUSIC, j, 0);
 		this.mSpeakerOn = this.mAudioManager.isSpeakerphoneOn();
@@ -186,44 +183,48 @@ public class SpeakerTestActivity extends Activity {
 		}
 		return super.dispatchKeyEvent(event);
 	}
-	
-	 int currVolume=11;
-  	 //打开扬声器
-     public void OpenSpeaker() {
 
-         try{
-         AudioManager audioManager = (AudioManager) context.getSystemService(Context.AUDIO_SERVICE);
-         audioManager.setMode(AudioManager.ROUTE_SPEAKER);
-         currVolume = audioManager.getStreamVolume(AudioManager.STREAM_VOICE_CALL);
+	int currVolume = 11;
 
-         if(!audioManager.isSpeakerphoneOn()) {
-           audioManager.setSpeakerphoneOn(true);
+	// 打开扬声器
+	public void OpenSpeaker() {
 
-           audioManager.setStreamVolume(AudioManager.STREAM_MUSIC,
-                  audioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC ),
-                  AudioManager.STREAM_MUSIC);
-         }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-     }
+		try {
+			AudioManager audioManager = (AudioManager) context
+					.getSystemService(Context.AUDIO_SERVICE);
+			audioManager.setMode(AudioManager.ROUTE_SPEAKER);
+			currVolume = audioManager
+					.getStreamVolume(AudioManager.STREAM_VOICE_CALL);
 
+			if (!audioManager.isSpeakerphoneOn()) {
+				audioManager.setSpeakerphoneOn(true);
 
-    //关闭扬声器
-    public void CloseSpeaker() {
-    
-        try {
-            AudioManager audioManager = (AudioManager) context.getSystemService(Context.AUDIO_SERVICE);
-            if(audioManager != null) {
-                if(audioManager.isSpeakerphoneOn()) {
-                  audioManager.setSpeakerphoneOn(false);
-                  audioManager.setStreamVolume(AudioManager.STREAM_VOICE_CALL,currVolume,
-                             AudioManager.STREAM_VOICE_CALL);
-                }
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
+				audioManager.setStreamVolume(AudioManager.STREAM_MUSIC,
+						audioManager
+								.getStreamMaxVolume(AudioManager.STREAM_MUSIC),
+						AudioManager.STREAM_MUSIC);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	// 关闭扬声器
+	public void CloseSpeaker() {
+
+		try {
+			AudioManager audioManager = (AudioManager) context
+					.getSystemService(Context.AUDIO_SERVICE);
+			if (audioManager != null) {
+				if (audioManager.isSpeakerphoneOn()) {
+					audioManager.setSpeakerphoneOn(false);
+					audioManager.setStreamVolume(
+							AudioManager.STREAM_VOICE_CALL, currVolume,
+							AudioManager.STREAM_VOICE_CALL);
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
 }
-

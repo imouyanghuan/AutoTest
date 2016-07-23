@@ -29,23 +29,22 @@ public class MsensorTestActivity extends Activity {
 	private SensorManager sensorManager;
 	private SensorEventListener lsn = null;
 
-	
 	protected void onCreate(Bundle paramBundle) {
 		super.onCreate(paramBundle);
-		
+
 		DeviceTest.lockScreenOrientation(this);
 		setTitle(getTitle() + "----("
-				+ getIntent().getStringExtra(DeviceTest.EXTRA_TEST_PROGRESS) + ")");
-		//requestWindowFeature(Window.FEATURE_NO_TITLE);
+				+ getIntent().getStringExtra(DeviceTest.EXTRA_TEST_PROGRESS)
+				+ ")");
+		// requestWindowFeature(Window.FEATURE_NO_TITLE);
 		getWindow().addFlags(FLAG_FULLSCREEN | FLAG_KEEP_SCREEN_ON);
-		
+
 		setContentView(R.layout.msensortest);
 		ControlButtonUtil.initControlButtonView(this);
 		sensorManager = (SensorManager) this.getSystemService(SENSOR_SERVICE);
 
 	}
 
-	
 	protected void onResume() {
 		super.onResume();
 
@@ -105,7 +104,7 @@ public class MsensorTestActivity extends Activity {
 	}
 
 	//
-	
+
 	protected void onStop() {
 		super.onStop();
 		sensorManager.unregisterListener(lsn);

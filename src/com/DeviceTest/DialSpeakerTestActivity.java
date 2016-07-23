@@ -3,27 +3,17 @@ package com.DeviceTest;
 import static android.view.WindowManager.LayoutParams.FLAG_FULLSCREEN;
 import static android.view.WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON;
 
-import java.io.FileDescriptor;
-import java.io.IOException;
-
 import com.DeviceTest.helper.ControlButtonUtil;
 
 import android.app.Activity;
-import android.content.Intent;
-import android.content.res.AssetFileDescriptor;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
-import android.media.MediaRecorder;
 import android.media.Ringtone;
 import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Handler;
 import android.os.Vibrator;
 import android.view.KeyEvent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
 import android.widget.TextView;
 
 import android.database.Cursor;
@@ -32,33 +22,33 @@ import java.util.List;
 import android.content.Context;
 
 public class DialSpeakerTestActivity extends Activity {
-	
+
 	private Context mContext = DialSpeakerTestActivity.this;
 	MediaPlayer mMediaPlayer;
-	Vibrator mVibrator ;
+	Vibrator mVibrator;
 	TextView txtContent;
+
 	protected void onCreate(Bundle paramBundle) {
 		super.onCreate(paramBundle);
 		DeviceTest.lockScreenOrientation(this);
 
 		setTitle(getTitle() + "----("
-				+ getIntent().getStringExtra(DeviceTest.EXTRA_TEST_PROGRESS) + ")");
-		//requestWindowFeature(Window.FEATURE_NO_TITLE);
+				+ getIntent().getStringExtra(DeviceTest.EXTRA_TEST_PROGRESS)
+				+ ")");
+		// requestWindowFeature(Window.FEATURE_NO_TITLE);
 		getWindow().addFlags(FLAG_FULLSCREEN | FLAG_KEEP_SCREEN_ON);
-		
+
 		setContentView(R.layout.spkrcv);
 		TextView txtTitle = (TextView) findViewById(R.id.txtTitle);
 		txtContent = (TextView) findViewById(R.id.txtContent);
-		//txtTitle.setText(R.string.SpeakerTitle);
-		//xtContent.setText(getString(R.string.SpeakerTip));
+		// txtTitle.setText(R.string.SpeakerTitle);
+		// xtContent.setText(getString(R.string.SpeakerTip));
 
 		init();
 
 		ControlButtonUtil.initControlButtonView(this);
-		
-	}
 
-	
+	}
 
 	protected void onDestroy() {
 		super.onDestroy();
@@ -74,153 +64,150 @@ public class DialSpeakerTestActivity extends Activity {
 	protected void onResume() {
 		super.onResume();
 		AudioManager mAudioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
-		boolean b = mAudioManager.shouldVibrate(0) ;
-		txtContent.setText(b?R.string.spkrcv_now_r_v:R.string.spkrcv_now_r_nv);
+		boolean b = mAudioManager.shouldVibrate(0);
+		txtContent.setText(b ? R.string.spkrcv_now_r_v
+				: R.string.spkrcv_now_r_nv);
 		startRing();
 		startVibrate();
 	}
 
-	
-	private void startVibrate()
-	{
+	private void startVibrate() {
 		AudioManager mAudioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
-		boolean b = mAudioManager.shouldVibrate(0) ;
-		if(b)
-		{
-			long[] pat = new long[]{1000,1500};
-        	mVibrator.vibrate(pat, 0);
+		boolean b = mAudioManager.shouldVibrate(0);
+		if (b) {
+			long[] pat = new long[] { 1000, 1500 };
+			mVibrator.vibrate(pat, 0);
 		}
 	}
-	private void stopVibrate()
-	{
+
+	private void stopVibrate() {
 		mVibrator.cancel();
 	}
+
 	public boolean dispatchKeyEvent(KeyEvent event) {
 		if (event.getKeyCode() == KeyEvent.KEYCODE_BACK) {
 			return false;
 		}
 		return super.dispatchKeyEvent(event);
 	}
-	
-	public void startRing()
-    {
-    	 
-    	AudioManager audioManager =  (AudioManager) mContext.getSystemService(Context.AUDIO_SERVICE);
-    	int mode = AudioManager.MODE_IN_CALL;
-    	if(audioManager.getMode() != mode ) 
-    	{
-    		audioManager.setMode(mode);
-    	}
-    	audioManager.setSpeakerphoneOn(false);
-    }
-    
-    public void stopRing()
-    {
-    	AudioManager audioManager =  (AudioManager) mContext.getSystemService(Context.AUDIO_SERVICE);
-    	audioManager.setSpeakerphoneOn(true);
-    }
-    private void init()
-    {
-    	mMediaPlayer = MediaPlayer.create(mContext, getDefaultRingtoneUri(RingtoneManager.TYPE_RINGTONE));
-         
-        mMediaPlayer.setLooping(true); 
-        mMediaPlayer.start();
-        
-        mVibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-    }
 
-    
-    
-    public Ringtone getDefaultRingtone(int type) {
+	public void startRing() {
 
-    	return RingtoneManager.getRingtone(mContext,
-    	RingtoneManager.getActualDefaultRingtoneUri(mContext, type));
+		AudioManager audioManager = (AudioManager) mContext
+				.getSystemService(Context.AUDIO_SERVICE);
+		int mode = AudioManager.MODE_IN_CALL;
+		if (audioManager.getMode() != mode) {
+			audioManager.setMode(mode);
+		}
+		audioManager.setSpeakerphoneOn(false);
+	}
 
-    }
+	public void stopRing() {
+		AudioManager audioManager = (AudioManager) mContext
+				.getSystemService(Context.AUDIO_SERVICE);
+		audioManager.setSpeakerphoneOn(true);
+	}
 
-    public Uri getDefaultRingtoneUri(int type) {
+	private void init() {
+		mMediaPlayer = MediaPlayer.create(mContext,
+				getDefaultRingtoneUri(RingtoneManager.TYPE_RINGTONE));
 
-    	return RingtoneManager.getActualDefaultRingtoneUri(mContext, type);
+		mMediaPlayer.setLooping(true);
+		mMediaPlayer.start();
 
-    }
+		mVibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+	}
 
-    public List<Ringtone> getRingtoneList(int type) {
+	public Ringtone getDefaultRingtone(int type) {
 
-    	List<Ringtone> resArr = new ArrayList<Ringtone>();
+		return RingtoneManager.getRingtone(mContext,
+				RingtoneManager.getActualDefaultRingtoneUri(mContext, type));
 
-    	RingtoneManager manager = new RingtoneManager(mContext);
+	}
 
-    	manager.setType(type);
+	public Uri getDefaultRingtoneUri(int type) {
 
-    	Cursor cursor = manager.getCursor();
+		return RingtoneManager.getActualDefaultRingtoneUri(mContext, type);
 
-    	int count = cursor.getCount();
+	}
 
-    	for (int i = 0; i < count; i++) {
+	public List<Ringtone> getRingtoneList(int type) {
 
-    	resArr.add(manager.getRingtone(i));
+		List<Ringtone> resArr = new ArrayList<Ringtone>();
 
-    	}
+		RingtoneManager manager = new RingtoneManager(mContext);
 
-    	return resArr;
+		manager.setType(type);
 
-    }
+		Cursor cursor = manager.getCursor();
 
-    public Ringtone getRingtone(int type, int pos) {
+		int count = cursor.getCount();
 
-    	RingtoneManager manager = new RingtoneManager(mContext);
+		for (int i = 0; i < count; i++) {
 
-    	manager.setType(type);
+			resArr.add(manager.getRingtone(i));
 
-    	return manager.getRingtone(pos);
+		}
 
-    }
+		return resArr;
 
-    public List<String> getRingtoneTitleList(int type) {
+	}
 
-    	List<String> resArr = new ArrayList<String>();
+	public Ringtone getRingtone(int type, int pos) {
 
-    	RingtoneManager manager = new RingtoneManager(mContext);
+		RingtoneManager manager = new RingtoneManager(mContext);
 
-    	manager.setType(type);
+		manager.setType(type);
 
-    	Cursor cursor = manager.getCursor();
+		return manager.getRingtone(pos);
 
-    	if (cursor.moveToFirst()) {
+	}
 
-    	do {
+	public List<String> getRingtoneTitleList(int type) {
 
-    	resArr.add(cursor.getString(RingtoneManager.TITLE_COLUMN_INDEX));
+		List<String> resArr = new ArrayList<String>();
 
-    	} while (cursor.moveToNext());
+		RingtoneManager manager = new RingtoneManager(mContext);
 
-    	}
+		manager.setType(type);
 
-    	return resArr;
+		Cursor cursor = manager.getCursor();
 
-    }
+		if (cursor.moveToFirst()) {
 
-    public String getRingtoneUriPath(int type, int pos, String def) {
+			do {
 
-    	RingtoneManager manager = new RingtoneManager(mContext);
+				resArr.add(cursor.getString(RingtoneManager.TITLE_COLUMN_INDEX));
 
-    	manager.setType(type);
+			} while (cursor.moveToNext());
 
-    	Uri uri = manager.getRingtoneUri(pos);
+		}
 
-    	return uri == null ? def : uri.toString();
+		return resArr;
 
-    }
+	}
 
-    public Ringtone getRingtoneByUriPath(int type, String uriPath) {
+	public String getRingtoneUriPath(int type, int pos, String def) {
 
-    	RingtoneManager manager = new RingtoneManager(mContext);
+		RingtoneManager manager = new RingtoneManager(mContext);
 
-    	manager.setType(type);
+		manager.setType(type);
 
-    	Uri uri = Uri.parse(uriPath);
+		Uri uri = manager.getRingtoneUri(pos);
 
-    	return manager.getRingtone(mContext, uri);
+		return uri == null ? def : uri.toString();
 
-    }
+	}
+
+	public Ringtone getRingtoneByUriPath(int type, String uriPath) {
+
+		RingtoneManager manager = new RingtoneManager(mContext);
+
+		manager.setType(type);
+
+		Uri uri = Uri.parse(uriPath);
+
+		return manager.getRingtone(mContext, uri);
+
+	}
 }

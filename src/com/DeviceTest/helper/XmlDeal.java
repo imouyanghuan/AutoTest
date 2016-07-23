@@ -1,31 +1,22 @@
 package com.DeviceTest.helper;
 
-import java.io.FileWriter;
-import java.io.IOException;
 import java.io.InputStream;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import android.content.res.XmlResourceParser;
-import android.os.SystemClock;
 import android.util.Log;
-import android.util.Xml;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
-import org.xml.sax.SAXException;
-import org.xmlpull.v1.XmlSerializer;
 
-import com.DeviceTest.DeviceTest;
 import android.content.res.Resources;
+
 public class XmlDeal {
 
 	private static final String TAG = "XmlDeal";
@@ -89,114 +80,85 @@ public class XmlDeal {
 									caseGroup = new ArrayList<TestCase>();
 									mCaseGroups.put(attrValue, caseGroup);
 								}
-							}else if(attrName.equals(TEST_FIRST)){
+							} else if (attrName.equals(TEST_FIRST)) {
 								isfirsttest = true;
 							}
 						}
 						testName = node.getFirstChild().getNodeValue();
-						Log.i(TAG, "-----getTestItemName:" + testName + "    isfirsttest = " + isfirsttest);
-						
-						if(Resources.getSystem().getConfiguration().locale.getCountry().equals("CN"))
-						{
-							if(testName.equals("Version"))
-							{
+						Log.i(TAG, "-----getTestItemName:" + testName
+								+ "    isfirsttest = " + isfirsttest);
+
+						if (Resources.getSystem().getConfiguration().locale
+								.getCountry().equals("CN")) {
+							if (testName.equals("Version")) {
 								testName = "版本";
-							}
-							else if(testName.equals("LCD"))
-							{
-								testName ="屏幕" ;
-							}
-							else if(testName.equals("Touch"))
-							{
+							} else if (testName.equals("LCD")) {
+								testName = "屏幕";
+							} else if (testName.equals("Touch")) {
 								testName = "触屏";
-							}
-							else if(testName.equals("Camera"))
-							{
+							} else if (testName.equals("Camera")) {
 								testName = "摄像头";
-							}
-							else if(testName.equals("Speaker"))
-							{
+							} else if (testName.equals("Speaker")) {
 								testName = "喇叭";
-							}
-							else if(testName.equals("Gsensor"))
-							{
+							} else if (testName.equals("Gsensor")) {
 								testName = "重力感应";
 							}
-							
-							else if(testName.equals("Bluetooth"))
-							{
+
+							else if (testName.equals("Bluetooth")) {
 								testName = "蓝牙";
-							}
-							else if(testName.equals("Wifi"))
-							{
+							} else if (testName.equals("Wifi")) {
 								testName = "无线";
-							}
-							else if(testName.equals("MIC"))
-							{
+							} else if (testName.equals("MIC")) {
 								testName = "录音";
-							}else if(testName.equals("Battery"))
-							{
+							} else if (testName.equals("Battery")) {
 								testName = "电池";
-							}
-							else if(testName.equals("FMTransmit"))
-							{
+							} else if (testName.equals("FMTransmit")) {
 								testName = "FM发射";
-							}
-							else if(testName.equals("SD Card"))
-							{
+							} else if (testName.equals("SD Card")) {
 								testName = "SD 卡";
-							}
-							else if(testName.equals("Keyboard"))
-							{
+							} else if (testName.equals("Keyboard")) {
 								testName = "键盘";
-							}
-							else if(testName.equals("Brightness"))
-							{
+							} else if (testName.equals("Brightness")) {
 								testName = "亮度";
-							}else if(testName.equals("UsbHost"))
-							{
-								testName ="USB 主机";
-							}
-							else if(testName.equals("HDMI"))
-							{
-								//testName = "°æ±¾"
-							}
-							else if(testName.equals("Storage"))
-							{
+							} else if (testName.equals("UsbHost")) {
+								testName = "USB 主机";
+							} else if (testName.equals("HDMI")) {
+								// testName = "°æ±¾"
+							} else if (testName.equals("Storage")) {
 								testName = "存储";
-							}else if(testName.equals("Msensor")){
-							    testName = "磁场感应";
-							}else if(testName.equals("Lightsensor")){
-							    testName ="光感";
-							}else if(testName.equals("Gyroscope")){
-							    testName ="陀螺仪";
-							}else if(testName.equals("VideoPlayer")){
-                                testName ="视频播放";
-                            }
+							} else if (testName.equals("Msensor")) {
+								testName = "磁场感应";
+							} else if (testName.equals("Lightsensor")) {
+								testName = "光感";
+							} else if (testName.equals("Gyroscope")) {
+								testName = "陀螺仪";
+							} else if (testName.equals("VideoPlayer")) {
+								testName = "视频播放";
+							}
 							// add by zzp
-							else if(testName.equals("Vibration")){
-								testName ="震动";
-							}else if(testName.equals("GPS Location")){
+							else if (testName.equals("Vibration")) {
+								testName = "震动";
+							} else if (testName.equals("GPS Location")) {
 								testName = "GPS 定位";
-							}else if(testName.equals("Headset MIC")){
+							} else if (testName.equals("Headset MIC")) {
 								testName = "耳机录音";
-							}else if(testName.equals("Sim Card")){
+							} else if (testName.equals("Sim Card")) {
 								testName = "SIM 卡";
-							}else if(testName.equals("FM Radio")){
+							} else if (testName.equals("FM Radio")) {
 								testName = "收音机";
-							}else if(testName.equals("Signal Status")){
+							} else if (testName.equals("Signal Status")) {
 								testName = "信号状态";
-							}else if(testName.equals("Proximity Sensor")){
+							} else if (testName.equals("Proximity Sensor")) {
 								testName = "距离传感器";
 							}
-				
+
 						}
 
 						TestCase testCase = new TestCase(testNo, testName,
 								className);
-						//testCase.setneedtest(isfirsttes);
+						// testCase.setneedtest(isfirsttes);
 						mTestCases.add(testCase);
-						if(caseGroup != null) {
+						if (caseGroup != null) {
 							caseGroup.add(testCase);
 						}
 						testNo++;

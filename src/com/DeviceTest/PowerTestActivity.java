@@ -58,13 +58,13 @@ public class PowerTestActivity extends Activity {
 
 	}
 
-	
 	protected void onCreate(Bundle savedInstanceState) {
 
 		super.onCreate(savedInstanceState);
 		DeviceTest.lockScreenOrientation(this);
 		setTitle(getTitle() + "----("
-				+ getIntent().getStringExtra(DeviceTest.EXTRA_TEST_PROGRESS) + ")");
+				+ getIntent().getStringExtra(DeviceTest.EXTRA_TEST_PROGRESS)
+				+ ")");
 		// requestWindowFeature(Window.FEATURE_NO_TITLE);
 		getWindow().addFlags(FLAG_FULLSCREEN | FLAG_KEEP_SCREEN_ON);
 
@@ -77,12 +77,11 @@ public class PowerTestActivity extends Activity {
 		this.mCapacity = (TextView) findViewById(R.id.capacityText);
 		this.mPlug = (TextView) findViewById(R.id.plugText);
 
-//		findViewById(R.id.btn_Pass).setVisibility(View.INVISIBLE);
+		// findViewById(R.id.btn_Pass).setVisibility(View.INVISIBLE);
 		pluginView = (TextView) findViewById(R.id.pluginTest);
 		unplugView = (TextView) findViewById(R.id.unplugTest);
 	}
 
-	
 	protected void onResume() {
 		super.onResume();
 		stop = false;
@@ -91,7 +90,6 @@ public class PowerTestActivity extends Activity {
 		registerReceiver(this.mBatteryInfoReceiver, localIntentFilter);
 	}
 
-	
 	public void onPause() {
 		super.onPause();
 		stop = true;
@@ -162,7 +160,8 @@ public class PowerTestActivity extends Activity {
 				statusString = "Full";
 				break;
 			}
-			mChargeStatus.setText(getString(R.string.ChargeState) + statusString);
+			mChargeStatus.setText(getString(R.string.ChargeState)
+					+ statusString);
 
 			mVoltage.setText(getString(R.string.Voltage) + voltage + "mV");
 
@@ -172,7 +171,8 @@ public class PowerTestActivity extends Activity {
 				mCurrent.setVisibility(View.GONE);
 			}
 
-			mCapacity.setText(getString(R.string.Capacity) + (level * 100 / scale) + "%");
+			mCapacity.setText(getString(R.string.Capacity)
+					+ (level * 100 / scale) + "%");
 
 			boolean acPlugin = false;
 			String pluggedStr = "";
@@ -191,29 +191,29 @@ public class PowerTestActivity extends Activity {
 			}
 			mPlug.setText(getString(R.string.Plug) + pluggedStr);
 
-//			if (mLastVoltage > 0) {
-//				if (acPlugin) {
-//					if (voltage > mLastVoltage) {
-//						if (!pluginPass) {
-//							pluginPass = true;
-//							pluginView.setText(pluginView.getText() + "Pass");
-//						}
-//					}
-//				} else {
-//					if (voltage < mLastVoltage) {
-//						if (!unplugPass) {
-//							unplugPass = true;
-//							unplugView.setText(unplugView.getText() + "Pass");
-//						}
-//					}
-//				}
-//			}
-//
-//			if (pluginPass && unplugPass) {
-//				findViewById(R.id.btn_Pass).performClick();
-//			}
+			// if (mLastVoltage > 0) {
+			// if (acPlugin) {
+			// if (voltage > mLastVoltage) {
+			// if (!pluginPass) {
+			// pluginPass = true;
+			// pluginView.setText(pluginView.getText() + "Pass");
+			// }
+			// }
+			// } else {
+			// if (voltage < mLastVoltage) {
+			// if (!unplugPass) {
+			// unplugPass = true;
+			// unplugView.setText(unplugView.getText() + "Pass");
+			// }
+			// }
+			// }
+			// }
+			//
+			// if (pluginPass && unplugPass) {
+			// findViewById(R.id.btn_Pass).performClick();
+			// }
 
-//			mLastVoltage = voltage;
+			// mLastVoltage = voltage;
 		}
 	}
 

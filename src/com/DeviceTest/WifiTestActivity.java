@@ -85,7 +85,8 @@ public class WifiTestActivity extends Activity {
 
 	private final static String ERRMSG = "Wifi test failed!";
 
-	NetworkInfo mNetworkInfo = new NetworkInfo(ConnectivityManager.TYPE_WIFI, 0, "WIFI", "");
+	NetworkInfo mNetworkInfo = new NetworkInfo(ConnectivityManager.TYPE_WIFI,
+			0, "WIFI", "");
 
 	public WifiTestActivity() {
 
@@ -102,7 +103,8 @@ public class WifiTestActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		DeviceTest.lockScreenOrientation(this);
 		setTitle(getTitle() + "----("
-				+ getIntent().getStringExtra(DeviceTest.EXTRA_TEST_PROGRESS) + ")");
+				+ getIntent().getStringExtra(DeviceTest.EXTRA_TEST_PROGRESS)
+				+ ")");
 		// requestWindowFeature(Window.FEATURE_NO_TITLE);
 		getWindow().addFlags(FLAG_FULLSCREEN | FLAG_KEEP_SCREEN_ON);
 		setContentView(R.layout.wifitest);
@@ -119,7 +121,7 @@ public class WifiTestActivity extends Activity {
 		ControlButtonUtil.initControlButtonView(this);
 
 		this.mWifiManager = (WifiManager) getSystemService("wifi");
-		//		findViewById(R.id.btn_Pass).setVisibility(View.INVISIBLE);
+		// findViewById(R.id.btn_Pass).setVisibility(View.INVISIBLE);
 	}
 
 	protected void onResume() {
@@ -128,7 +130,7 @@ public class WifiTestActivity extends Activity {
 		localIntentFilter.addAction(WifiManager.WIFI_STATE_CHANGED_ACTION);
 		localIntentFilter.addAction(WifiManager.SCAN_RESULTS_AVAILABLE_ACTION);
 		localIntentFilter
-		.addAction(WifiManager.SUPPLICANT_CONNECTION_CHANGE_ACTION);
+				.addAction(WifiManager.SUPPLICANT_CONNECTION_CHANGE_ACTION);
 		localIntentFilter.addAction(WifiManager.NETWORK_STATE_CHANGED_ACTION);
 		registerReceiver(mReceiver, localIntentFilter);
 		this.mWifiList.clear();
@@ -137,8 +139,9 @@ public class WifiTestActivity extends Activity {
 		Log.i("Jeffy", "try to enable wifi");
 		mWifiManager.setWifiEnabled(true);
 		mInfoText.setText(getString(R.string.WifiIsOpen));
-		mInfoText.append("\n"+getString(R.string.Wifi_test_environment_tips));
-		mInfoText.append("\n"+getString(R.string.WifiMAC)+ mWifiManager.getConnectionInfo().getMacAddress()+"\n");
+		mInfoText.append("\n" + getString(R.string.Wifi_test_environment_tips));
+		mInfoText.append("\n" + getString(R.string.WifiMAC)
+				+ mWifiManager.getConnectionInfo().getMacAddress() + "\n");
 		mHandler.sendEmptyMessage(MSG_SCAN);
 
 		Log.i("Jeffy", "start test");
@@ -178,7 +181,7 @@ public class WifiTestActivity extends Activity {
 				removeMessages(MSG_HTTP_TEST);
 				if (mReadyToTest) {
 					Log.i("Jeffy", "do http test:" + HTTP_TEST_URL);
-					mInfoText.append("\n"+mInfoText.getText() + "\ntesting "
+					mInfoText.append("\n" + mInfoText.getText() + "\ntesting "
 							+ HTTP_TEST_URL);
 					new Thread(new Runnable() {
 
@@ -195,7 +198,7 @@ public class WifiTestActivity extends Activity {
 				removeMessages(MSG_PING_TEST);
 				if (mReadyToTest) {
 					Log.i("Jeffy", "do ping test:" + PING_TEST_ADDR);
-					mInfoText.append("\n"+mInfoText.getText() + "\ntesting "
+					mInfoText.append("\n" + mInfoText.getText() + "\ntesting "
 							+ PING_TEST_ADDR);
 					new Thread(new Runnable() {
 
@@ -208,31 +211,36 @@ public class WifiTestActivity extends Activity {
 				}
 				break;
 			case MSG_PING_TEST_PASS: {
-				mInfoText.append("\n"+mInfoText.getText() + "\n" + getString(R.string.WifiPing)+getString(R.string.btnPassText));
+				mInfoText.append("\n" + mInfoText.getText() + "\n"
+						+ getString(R.string.WifiPing)
+						+ getString(R.string.btnPassText));
 				wifiProgressBar.setVisibility(View.GONE);
 				mHandler.sendEmptyMessageDelayed(MSG_FINISH_TEST, 2000);
-				//findViewById(R.id.btn_Pass).performClick();
+				// findViewById(R.id.btn_Pass).performClick();
 				break;
 			}
 			case MSG_PING_TEST_FAILED: {
-				mInfoText.append("\n"+mInfoText.getText() + "\n" + getString(R.string.WifiPing)+getString(R.string.btnFailText));
+				mInfoText.append("\n" + mInfoText.getText() + "\n"
+						+ getString(R.string.WifiPing)
+						+ getString(R.string.btnFailText));
 				wifiProgressBar.setVisibility(View.GONE);
-				mHandler.sendEmptyMessageDelayed(MSG_FAIL,
-						TEST_FAILED_DELAY);
+				mHandler.sendEmptyMessageDelayed(MSG_FAIL, TEST_FAILED_DELAY);
 				break;
 			}
 			case MSG_HTTP_TEST_PASS: {
-				mInfoText.append("\n"+mInfoText.getText() + "\n" + getString(R.string.WifiHttp)+getString(R.string.btnPassText));
+				mInfoText.append("\n" + mInfoText.getText() + "\n"
+						+ getString(R.string.WifiHttp)
+						+ getString(R.string.btnPassText));
 				wifiProgressBar.setVisibility(View.GONE);
-				//findViewById(R.id.btn_Pass).performClick();
+				// findViewById(R.id.btn_Pass).performClick();
 				break;
 			}
 
 			case MSG_HTTP_TEST_FAILED: {
-				mInfoText.append("\n"+getString(R.string.WifiHttp)+getString(R.string.btnFailText));
+				mInfoText.append("\n" + getString(R.string.WifiHttp)
+						+ getString(R.string.btnFailText));
 				wifiProgressBar.setVisibility(View.GONE);
-				mHandler.sendEmptyMessageDelayed(MSG_FAIL,
-						TEST_FAILED_DELAY);
+				mHandler.sendEmptyMessageDelayed(MSG_FAIL, TEST_FAILED_DELAY);
 				break;
 			}
 
@@ -242,19 +250,18 @@ public class WifiTestActivity extends Activity {
 				wifiProgressBar.setVisibility(View.GONE);
 				mResult.setText(getString(R.string.WifiError));
 				mWifiTestResult.setText(getString(R.string.test_failed));
-				mHandler.sendEmptyMessageDelayed(MSG_FAIL,
-						TEST_FAILED_DELAY);
+				mHandler.sendEmptyMessageDelayed(MSG_FAIL, TEST_FAILED_DELAY);
 				break;
 			case MSG_FAIL:
 				removeMessages(MSG_FAIL);
 				mWifiTestResult.setText(getString(R.string.test_failed));
 
 				wifiProgressBar.setVisibility(View.GONE);
-				//	findViewById(R.id.btn_Fail).performClick();
+				// findViewById(R.id.btn_Fail).performClick();
 				break;
 			case MSG_FINISH_TEST:
 				wifiProgressBar.setVisibility(View.GONE);
-				//findViewById(R.id.btn_Pass).performClick();
+				// findViewById(R.id.btn_Pass).performClick();
 				break;
 			}
 		}
@@ -284,22 +291,23 @@ public class WifiTestActivity extends Activity {
 				if (connected && mReadyToTest) {
 					Log.i("Jeffy", "already connect to:"
 							+ mWifiManager.getConnectionInfo().getSSID());
-					mInfoText.append("\n"+"connect to "
+					mInfoText.append("\n" + "connect to "
 							+ mWifiManager.getConnectionInfo().getSSID());
-					//					mHandler.sendEmptyMessage(MSG_PING_TEST);	//change no pingtest
+					// mHandler.sendEmptyMessage(MSG_PING_TEST); //change no
+					// pingtest
 					mHandler.sendEmptyMessageDelayed(MSG_FINISH_TEST, 3000);
 				}
 			}
 
 			if (WifiManager.NETWORK_STATE_CHANGED_ACTION.equals(action)) {
-				mNetworkInfo = (NetworkInfo) intent.getParcelableExtra(
-						WifiManager.EXTRA_NETWORK_INFO);
+				mNetworkInfo = (NetworkInfo) intent
+						.getParcelableExtra(WifiManager.EXTRA_NETWORK_INFO);
 				// reset & clear notification on a network connect & disconnect
-				switch(mNetworkInfo.getDetailedState()) {
+				switch (mNetworkInfo.getDetailedState()) {
 				case CONNECTED:
 					Log.i("Jeffy", "connect to:"
 							+ mWifiManager.getConnectionInfo().getSSID());
-					mInfoText.append("\n"+"Connected to "
+					mInfoText.append("\n" + "Connected to "
 							+ mWifiManager.getConnectionInfo().getSSID());
 					mHandler.sendEmptyMessageDelayed(MSG_FINISH_TEST, 3000);
 					break;
@@ -307,11 +315,13 @@ public class WifiTestActivity extends Activity {
 			}
 
 			if (WifiManager.SCAN_RESULTS_AVAILABLE_ACTION.equals(action)) {
-				if(mWifiTestResult.getText().toString().contentEquals(getString(R.string.test_passed))){
-					Log.v("",">>>>>>>>>>>>>>>>>>>>>>>>>>>> passed contentEquals");
-					 return;	
+				if (mWifiTestResult.getText().toString()
+						.contentEquals(getString(R.string.test_passed))) {
+					Log.v("",
+							">>>>>>>>>>>>>>>>>>>>>>>>>>>> passed contentEquals");
+					return;
 				}
-				
+
 				List<ScanResult> resultList = mWifiManager.getScanResults();
 				Collections.sort(resultList, new Comparator<ScanResult>() {
 
@@ -328,15 +338,14 @@ public class WifiTestActivity extends Activity {
 					ScanResult selectAp = null;
 					int maxLevel = 0;
 					for (ScanResult scanResult : resultList) {
-						int level = WifiManager.calculateSignalLevel(scanResult.level, 4);
-						if(level > maxLevel) maxLevel = level;
+						int level = WifiManager.calculateSignalLevel(
+								scanResult.level, 4);
+						if (level > maxLevel)
+							maxLevel = level;
 						sb.append(
-								scanResult.SSID
-								+ "\t- "
-								+ scanResult.capabilities
-								+ "\t- level:"
-								+ level).append(
-										"\n");
+								scanResult.SSID + "\t- "
+										+ scanResult.capabilities
+										+ "\t- level:" + level).append("\n");
 						if (scanResult.capabilities.length() < 6) {
 							if (null == selectAp
 									|| selectAp.level < scanResult.level) {
@@ -353,26 +362,44 @@ public class WifiTestActivity extends Activity {
 								+ mWifiManager.getConnectionInfo().getSSID());
 						mInfoText.append("\n" + getString(R.string.WifiConnect)
 								+ mWifiManager.getConnectionInfo().getSSID());
-						mWifiTestResult.setText(getString(R.string.test_passed));
+						mWifiTestResult
+								.setText(getString(R.string.test_passed));
 
-						if(maxLevel>2) 			mWifiTestResult.append("\n"+getString(R.string.WifiSignal3));
-						else if(maxLevel > 1)   mWifiTestResult.append("\n"+getString(R.string.WifiSignal2));
-						else if (maxLevel > 0)  mWifiTestResult.append("\n"+getString(R.string.WifiSignal1));
-						else 					mWifiTestResult.append("\n"+getString(R.string.WifiSignal0));
+						if (maxLevel > 2)
+							mWifiTestResult.append("\n"
+									+ getString(R.string.WifiSignal3));
+						else if (maxLevel > 1)
+							mWifiTestResult.append("\n"
+									+ getString(R.string.WifiSignal2));
+						else if (maxLevel > 0)
+							mWifiTestResult.append("\n"
+									+ getString(R.string.WifiSignal1));
+						else
+							mWifiTestResult.append("\n"
+									+ getString(R.string.WifiSignal0));
 
-
-						//						mHandler.sendEmptyMessage(MSG_PING_TEST);	//change no pingtest
+						// mHandler.sendEmptyMessage(MSG_PING_TEST); //change no
+						// pingtest
 						mHandler.sendEmptyMessageDelayed(MSG_FINISH_TEST, 3000);
 						return;
 					}
-					if(maxLevel>2) 			mWifiTestResult.append("\n"+getString(R.string.WifiSignal3));
-					else if(maxLevel > 1)   mWifiTestResult.append("\n"+getString(R.string.WifiSignal2));
-					else if (maxLevel > 0)  mWifiTestResult.append("\n"+getString(R.string.WifiSignal1));
-					else 					mWifiTestResult.append("\n"+getString(R.string.WifiSignal0));
-					
+					if (maxLevel > 2)
+						mWifiTestResult.append("\n"
+								+ getString(R.string.WifiSignal3));
+					else if (maxLevel > 1)
+						mWifiTestResult.append("\n"
+								+ getString(R.string.WifiSignal2));
+					else if (maxLevel > 0)
+						mWifiTestResult.append("\n"
+								+ getString(R.string.WifiSignal1));
+					else
+						mWifiTestResult.append("\n"
+								+ getString(R.string.WifiSignal0));
+
 					Log.i("Jeffy", "--selected ap:" + selectAp);
 					if (null == selectAp) {
-						mWifiConn.append("\n"+getString(R.string.WifiConnectErr));
+						mWifiConn.append("\n"
+								+ getString(R.string.WifiConnectErr));
 						wifiProgressBar.setVisibility(View.GONE);
 						mHandler.sendEmptyMessageDelayed(MSG_FAIL,
 								TEST_FAILED_DELAY);
@@ -380,15 +407,16 @@ public class WifiTestActivity extends Activity {
 					}
 
 					int networkId = getNetworkId(selectAp.BSSID, selectAp.SSID);
-					mWifiConn.append("\n"+getString(R.string.WifiTry) + " " + selectAp.SSID);
+					mWifiConn.append("\n" + getString(R.string.WifiTry) + " "
+							+ selectAp.SSID);
 					Log.i("Jeffy", "--try connect to ap:" + selectAp.SSID);
 					mWifiManager.enableNetwork(networkId, true);
 
-					
-					 wifiProgressBar.setVisibility(View.GONE);
-					 // isTestFinish = true;
-					 mResult.setText("Find wifi network...\n Pass!");
-					 mWifiTestResult.append("\n"+getString(R.string.test_passed));
+					wifiProgressBar.setVisibility(View.GONE);
+					// isTestFinish = true;
+					mResult.setText("Find wifi network...\n Pass!");
+					mWifiTestResult.append("\n"
+							+ getString(R.string.test_passed));
 				}
 			}
 
@@ -439,35 +467,42 @@ public class WifiTestActivity extends Activity {
 	}
 
 	private boolean pingTest() {
-		//		int status = SystemUtil.execShellCmdForStatue("ping -c 1 -w 5 "
-		//				+ PING_TEST_ADDR);
-		//		return (status == 0);
+		// int status = SystemUtil.execShellCmdForStatue("ping -c 1 -w 5 "
+		// + PING_TEST_ADDR);
+		// return (status == 0);
 		boolean ret = false;
 		URL serverURL;
 		try {
 			serverURL = new URL("http://www.baidu.com");
-			Log.d(TAG, " __________________-------- serverURL = " + serverURL.toString());
+			Log.d(TAG,
+					" __________________-------- serverURL = "
+							+ serverURL.toString());
 			// connect to server
 			URLConnection uc2 = serverURL.openConnection();
 			HttpURLConnection conn = (HttpURLConnection) uc2;
-			Log.d(TAG, " __________________--------00 serverURL = " + serverURL.toString());
+			Log.d(TAG,
+					" __________________--------00 serverURL = "
+							+ serverURL.toString());
 			uc2.setAllowUserInteraction(true);
 			uc2.setConnectTimeout(55000);
 			uc2.setDoInput(true);
 			uc2.setDoOutput(true);
-			//	        conn.setConnectTimeout(1000);
+			// conn.setConnectTimeout(1000);
 			conn.setReadTimeout(1000);
 			int numBytesRead = 0;
 			int allBytesRead = 0;
-			Log.d(TAG, " __________________--------11 conn.getContentLength() = " + conn.getContentLength());
+			Log.d(TAG,
+					" __________________--------11 conn.getContentLength() = "
+							+ conn.getContentLength());
 			InputStream in = conn.getInputStream();
 			byte[] buffer = new byte[4096];
 			do {
 				numBytesRead = in.read(buffer);
 				allBytesRead = allBytesRead + numBytesRead;
 			} while (numBytesRead > 0);
-			Log.d(TAG, " __________________-------- allBytesRead = " + allBytesRead + "   " + conn.getContentLength());
-			if(allBytesRead > 10)
+			Log.d(TAG, " __________________-------- allBytesRead = "
+					+ allBytesRead + "   " + conn.getContentLength());
+			if (allBytesRead > 10)
 				ret = true;
 		} catch (MalformedURLException e) {
 			// TODO Auto-generated catch block

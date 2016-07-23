@@ -11,28 +11,24 @@ import android.os.Bundle;
 
 import android.view.KeyEvent;
 import android.view.MotionEvent;
-import android.view.View;
-import android.view.Window;
-import android.widget.TextView;
-import android.util.Log;
 
 public class CameraTestActivity extends Activity {
 	private static final int mRequestCode = 1000;
-	
+
 	public void onCreate(Bundle paramBundle) {
 		super.onCreate(paramBundle);
 		DeviceTest.lockScreenOrientation(this);
 		setTitle(getTitle() + "----("
-				+ getIntent().getStringExtra(DeviceTest.EXTRA_TEST_PROGRESS) + ")");
-		//requestWindowFeature(Window.FEATURE_NO_TITLE);
+				+ getIntent().getStringExtra(DeviceTest.EXTRA_TEST_PROGRESS)
+				+ ")");
+		// requestWindowFeature(Window.FEATURE_NO_TITLE);
 		getWindow().addFlags(FLAG_FULLSCREEN | FLAG_KEEP_SCREEN_ON);
-		
+
 		setContentView(R.layout.cameratest);
 
 		ControlButtonUtil.initControlButtonView(this);
 	}
 
-	
 	public boolean onTouchEvent(MotionEvent paramMotionEvent) {
 		if (paramMotionEvent.getAction() == MotionEvent.ACTION_DOWN) {
 			Intent localIntent = new Intent(

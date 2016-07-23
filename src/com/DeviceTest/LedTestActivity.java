@@ -54,26 +54,28 @@ import android.widget.TextView;
 public class LedTestActivity extends Activity implements OnClickListener {
 	NotificationManager notificationManager;
 	private static final int NOTIFY_ID = 1000;
-//
-//	private static final String POWER_LED_PATH = "/sys/class/leds/power_led/";
-//	private static final String POWER_LED_BRIGHT = POWER_LED_PATH
-//			+ "brightness";
-//	// private static final String POWER_LED_FREQ = POWER_LED_PATH + "freq";
-//	private static final String POWER_LED_PERIOD = POWER_LED_PATH + "period";
 
+	//
+	// private static final String POWER_LED_PATH =
+	// "/sys/class/leds/power_led/";
+	// private static final String POWER_LED_BRIGHT = POWER_LED_PATH
+	// + "brightness";
+	// // private static final String POWER_LED_FREQ = POWER_LED_PATH + "freq";
+	// private static final String POWER_LED_PERIOD = POWER_LED_PATH + "period";
 
-	
 	protected void onCreate(Bundle savedInstanceState) {
 
 		super.onCreate(savedInstanceState);
 		DeviceTest.lockScreenOrientation(this);
 		setTitle(getTitle() + "----("
-				+ getIntent().getStringExtra(DeviceTest.EXTRA_TEST_PROGRESS) + ")");
+				+ getIntent().getStringExtra(DeviceTest.EXTRA_TEST_PROGRESS)
+				+ ")");
 		// requestWindowFeature(Window.FEATURE_NO_TITLE);
 		getWindow().addFlags(FLAG_FULLSCREEN | FLAG_KEEP_SCREEN_ON);
-		//getWindow().getDecorView().setSystemUiVisibility(
-        //        View.SYSTEM_UI_FLAG_SHOW_FULLSCREEN);
-		getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_FULLSCREEN);
+		// getWindow().getDecorView().setSystemUiVisibility(
+		// View.SYSTEM_UI_FLAG_SHOW_FULLSCREEN);
+		getWindow().getDecorView().setSystemUiVisibility(
+				View.SYSTEM_UI_FLAG_FULLSCREEN);
 		setContentView(R.layout.ledtest);
 
 		notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
@@ -81,20 +83,20 @@ public class LedTestActivity extends Activity implements OnClickListener {
 		Button redButton = (Button) findViewById(R.id.red_btn);
 		Button yellowButton = (Button) findViewById(R.id.green_btn);
 		Button blueButton = (Button) findViewById(R.id.blue_btn);
-//		final Button powerButton = (Button) findViewById(R.id.power_btn);
-//
-//		powerButton.setText("PowerLed");
-//		powerButton.setOnClickListener(new OnClickListener() {
-//
-//			
-//			public void onClick(View v) {
-//				String cmd = "echo 255 > " + POWER_LED_BRIGHT + "\necho 255 > "
-//						+ POWER_LED_PERIOD;
-//				SystemUtil.execScriptCmd(cmd,
-//						DeviceTest.TEMP_FILE_PATH, true);
-//				powerButton.setEnabled(false);
-//			}
-//		});
+		// final Button powerButton = (Button) findViewById(R.id.power_btn);
+		//
+		// powerButton.setText("PowerLed");
+		// powerButton.setOnClickListener(new OnClickListener() {
+		//
+		//
+		// public void onClick(View v) {
+		// String cmd = "echo 255 > " + POWER_LED_BRIGHT + "\necho 255 > "
+		// + POWER_LED_PERIOD;
+		// SystemUtil.execScriptCmd(cmd,
+		// DeviceTest.TEMP_FILE_PATH, true);
+		// powerButton.setEnabled(false);
+		// }
+		// });
 
 		redButton.setOnClickListener(this);
 		yellowButton.setOnClickListener(this);
@@ -127,25 +129,21 @@ public class LedTestActivity extends Activity implements OnClickListener {
 
 	}
 
-	
 	protected void onStop() {
 		super.onStop();
 		notificationManager.cancel(NOTIFY_ID);
-//		SystemUtil.execScriptCmd("echo 0 > " + POWER_LED_PERIOD,
-//				DeviceTest.TEMP_FILE_PATH, true);
+		// SystemUtil.execScriptCmd("echo 0 > " + POWER_LED_PERIOD,
+		// DeviceTest.TEMP_FILE_PATH, true);
 	}
 
-	
 	protected void onResume() {
 		super.onResume();
 	}
 
-	
 	public void onPause() {
 		super.onPause();
 	}
 
-	
 	public void onClick(View v) {
 		notificationManager.notify(NOTIFY_ID, (Notification) v.getTag());
 	}

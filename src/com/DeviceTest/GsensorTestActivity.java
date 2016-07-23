@@ -3,8 +3,6 @@ package com.DeviceTest;
 import static android.view.WindowManager.LayoutParams.FLAG_FULLSCREEN;
 import static android.view.WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON;
 
-import java.util.List;
-
 import com.DeviceTest.helper.ControlButtonUtil;
 import com.DeviceTest.view.GsensorBall;
 
@@ -15,16 +13,9 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.TextView;
-
-/**
- * @author LanBinYuan
- * @date 2011-06-11
- * 
- */
 
 public class GsensorTestActivity extends Activity {
 	/** Called when the activity is first created. */
@@ -33,33 +24,34 @@ public class GsensorTestActivity extends Activity {
 	private SensorEventListener lsn = null;
 	boolean stop = false;
 	private int mHardwareRotation;
+
 	private static enum TEST_AXIS {
 		X, Y, Z, D
 	};
 
 	private TEST_AXIS testAxis;
 	private GsensorBall mGsensorBall;
-	
+
 	protected void onCreate(Bundle paramBundle) {
 		super.onCreate(paramBundle);
 		mHardwareRotation = DeviceTest.lockScreenOrientation(this);
 		setContentView(R.layout.gsensortest);
 		stop = false;
 		setTitle(getTitle() + "----("
-				+ getIntent().getStringExtra(DeviceTest.EXTRA_TEST_PROGRESS) + ")");
+				+ getIntent().getStringExtra(DeviceTest.EXTRA_TEST_PROGRESS)
+				+ ")");
 		// requestWindowFeature(Window.FEATURE_NO_TITLE);
 		getWindow().addFlags(FLAG_FULLSCREEN | FLAG_KEEP_SCREEN_ON);
 
 		ControlButtonUtil.initControlButtonView(this);
 		sensorManager = (SensorManager) this.getSystemService(SENSOR_SERVICE);
-		mGsensorBall = (GsensorBall)findViewById(R.id.gsensorball);
+		mGsensorBall = (GsensorBall) findViewById(R.id.gsensorball);
 		setTestAxis(TEST_AXIS.X);
-//		findViewById(R.id.btn_Pass).setVisibility(View.INVISIBLE);
+		// findViewById(R.id.btn_Pass).setVisibility(View.INVISIBLE);
 	}
 
 	TextView X_textView, Y_textView, Z_textView;
 
-	
 	protected void onResume() {
 		super.onResume();
 
@@ -77,14 +69,13 @@ public class GsensorTestActivity extends Activity {
 		Z_textView.setTextColor(android.graphics.Color.GREEN);
 
 		lsn = new SensorEventListener() {
-			
 
 			public void onAccuracyChanged(Sensor sensor, int accuracy) {
 
 			}
 
 			public void onSensorChanged(SensorEvent e) {
-				if(stop) {
+				if (stop) {
 					return;
 				}
 				subTitle.setText("x:" + (int) e.values[0] + ", y:"
@@ -93,15 +84,15 @@ public class GsensorTestActivity extends Activity {
 				float x = e.values[0];
 				float y = e.values[1];
 				float z = e.values[2];
-				if(mHardwareRotation == 0){
+				if (mHardwareRotation == 0) {
 					mGsensorBall.setXYZ(-1 * x, y, z);
-				}else if(mHardwareRotation == 90){
+				} else if (mHardwareRotation == 90) {
 					mGsensorBall.setXYZ(y, x, z);
-				}else if(mHardwareRotation == 180){
+				} else if (mHardwareRotation == 180) {
 					mGsensorBall.setXYZ(-1 * x, -1 * y, z);
-				}else if(mHardwareRotation == 270){
+				} else if (mHardwareRotation == 270) {
 					mGsensorBall.setXYZ(y, -1 * x, z);
-				}else{
+				} else {
 					mGsensorBall.setXYZ(-1 * x, y, z);
 				}
 			}
@@ -136,7 +127,7 @@ public class GsensorTestActivity extends Activity {
 					&& (int) e.values[2] >= MAX_NUM) {
 				setTestAxis(TEST_AXIS.D);
 				Z_textView.setText(Z_textView.getText() + ":Pass");
-//				findViewById(R.id.btn_Pass).performClick();
+				// findViewById(R.id.btn_Pass).performClick();
 			}
 			break;
 		default:
@@ -162,7 +153,7 @@ public class GsensorTestActivity extends Activity {
 	}
 
 	//
-	
+
 	protected void onPause() {
 		super.onPause();
 		sensorManager.unregisterListener(lsn);

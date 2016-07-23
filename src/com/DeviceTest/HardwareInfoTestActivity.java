@@ -48,13 +48,13 @@ public class HardwareInfoTestActivity extends Activity implements
 	private TextView dmiInfoTextView = null;
 	boolean stop = false;
 
-	
 	protected void onCreate(Bundle savedInstanceState) {
 
 		super.onCreate(savedInstanceState);
 		DeviceTest.lockScreenOrientation(this);
 		setTitle(getTitle() + "----("
-				+ getIntent().getStringExtra(DeviceTest.EXTRA_TEST_PROGRESS) + ")");
+				+ getIntent().getStringExtra(DeviceTest.EXTRA_TEST_PROGRESS)
+				+ ")");
 		// requestWindowFeature(Window.FEATURE_NO_TITLE);
 		getWindow().addFlags(FLAG_FULLSCREEN | FLAG_KEEP_SCREEN_ON);
 
@@ -129,9 +129,8 @@ public class HardwareInfoTestActivity extends Activity implements
 	Handler mHandler = new Handler();
 	Runnable mFailedRunnable = new Runnable() {
 
-		
 		public void run() {
-			if(stop) {
+			if (stop) {
 				return;
 			}
 			mHandler.removeCallbacks(mFailedRunnable);
@@ -139,7 +138,6 @@ public class HardwareInfoTestActivity extends Activity implements
 		}
 	};
 
-	
 	public void onStop() {
 		super.onStop();
 		stop = true;
@@ -150,7 +148,6 @@ public class HardwareInfoTestActivity extends Activity implements
 	// progressBar.setVisibility(View.GONE);
 	// mResult.setText("Find equipment....\n Pass!");
 
-	
 	public void onClick(View v) {
 		TextView infoView = (TextView) v.getTag();
 		if (currentView != null && currentView != infoView) {

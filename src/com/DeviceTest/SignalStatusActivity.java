@@ -42,10 +42,10 @@ import android.telephony.ServiceState;
 /**
  * SIM卡状态
  */
-public class SignalStatusActivity extends Activity{
+public class SignalStatusActivity extends Activity {
 
 	private String TAG = "SignalStatusActivity";
-	/* 我们可以用它们onResume和onPause方法停止listene*/
+	/* 我们可以用它们onResume和onPause方法停止listene */
 
 	TelephonyManager mTelephonyManager;
 
@@ -55,11 +55,10 @@ public class SignalStatusActivity extends Activity{
 	private String sUnknown;
 	private int mServiceState;
 	private String imsi;
-	
+
 	private static final int EVENT_SIGNAL_STRENGTH_CHANGED = 200;
 	private static final int EVENT_SERVICE_STATE_CHANGED = 300;
 	private static final int EVENT_UPDATE_STATS = 500;
-
 
 	private TextView networkTV = null;
 	private TextView signalStrengthTV = null;
@@ -71,13 +70,13 @@ public class SignalStatusActivity extends Activity{
 	/** Called when the activity is first created. */
 
 	@Override
-	public void onCreate(Bundle savedInstanceState)
-	{
+	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		DeviceTest.lockScreenOrientation(this);
 		setTitle(getTitle() + "----("
-				+ getIntent().getStringExtra(DeviceTest.EXTRA_TEST_PROGRESS) + ")");
-		
+				+ getIntent().getStringExtra(DeviceTest.EXTRA_TEST_PROGRESS)
+				+ ")");
+
 		setContentView(R.layout.signalstatus);
 		ControlButtonUtil.initControlButtonView(this);
 		networkTV = (TextView) findViewById(R.id.status_operator);
@@ -87,50 +86,54 @@ public class SignalStatusActivity extends Activity{
 		simImei = (TextView) findViewById(R.id.sim_imei);
 		mPassBtn = (Button) findViewById(R.id.btn_Pass);
 
-		mTelephonyManager = (TelephonyManager)getSystemService(TELEPHONY_SERVICE);
+		mTelephonyManager = (TelephonyManager) getSystemService(TELEPHONY_SERVICE);
 		/* Update the listener, and start it */
-
 
 		mRes = getResources();
 		sUnknown = mRes.getString(R.string.device_info_default);
 
-		//if (UserHandle.myUserId() == UserHandle.USER_OWNER) {
-			//mPhone = PhoneFactory.getDefaultPhone();
-		//}
+		// if (UserHandle.myUserId() == UserHandle.USER_OWNER) {
+		// mPhone = PhoneFactory.getDefaultPhone();
+		// }
 
 		mPhoneStateReceiver = new PhoneStateIntentReceiver(this, mHandler);
 		mPhoneStateReceiver.notifySignalStrength(EVENT_SIGNAL_STRENGTH_CHANGED);
 		mPhoneStateReceiver.notifyServiceState(EVENT_SERVICE_STATE_CHANGED);
 
-		Log.v(TAG,">>>>>>>>> PhoneFactory.getDefaultPhone() : " + PhoneFactory.getDefaultPhone());
-		//Log.v(TAG,">>>>>>>>> UserHandle.myUserId() : " + UserHandle.myUserId());
-		Log.v(TAG,">>>>>>>>> UserHandle.USER_OWNER : " + UserHandle.USER_OWNER);
-		Log.v(TAG,">>>>>>>>> PhoneFactory.getDefaultPhone() : " + PhoneFactory.getDefaultPhone());
+		Log.v(TAG,
+				">>>>>>>>> PhoneFactory.getDefaultPhone() : "
+						+ PhoneFactory.getDefaultPhone());
+		// Log.v(TAG,">>>>>>>>> UserHandle.myUserId() : " +
+		// UserHandle.myUserId());
+		Log.v(TAG, ">>>>>>>>> UserHandle.USER_OWNER : " + UserHandle.USER_OWNER);
+		Log.v(TAG,
+				">>>>>>>>> PhoneFactory.getDefaultPhone() : "
+						+ PhoneFactory.getDefaultPhone());
 
 	}
 
 	/* Called when the application is minimized */
 
 	@Override
-	protected void onPause()
-	{
+	protected void onPause() {
 		super.onPause();
-		if(imsi == null) return;
-		//if (mPhone != null) {
+		if (imsi == null)
+			return;
+		// if (mPhone != null) {
 		mPhoneStateReceiver.unregisterIntent();
-		mTelephonyManager.listen(mPhoneStateListener, PhoneStateListener.LISTEN_NONE);
-		//}
+		mTelephonyManager.listen(mPhoneStateListener,
+				PhoneStateListener.LISTEN_NONE);
+		// }
 		unregisterReceiver(mBatteryInfoReceiver);
 	}
 
 	/* Called when the application resumes */
 
 	@Override
-	protected void onResume()
-	{
+	protected void onResume() {
 		super.onResume();
 		imsi = mTelephonyManager.getSubscriberId();
-		if(imsi == null) {
+		if (imsi == null) {
 			simImei.setText("");
 			networkTV.setText("");
 			signalStrengthTV.setText("");
@@ -140,15 +143,15 @@ public class SignalStatusActivity extends Activity{
 			mPassBtn.setVisibility(View.INVISIBLE);
 			return;
 		}
-		simImei.append(": "+imsi);
-		
+		simImei.append(": " + imsi);
+
 		mPassBtn.setVisibility(View.VISIBLE);
-		
-		//if (mPhone != null ) {
+
+		// if (mPhone != null ) {
 		mPhoneStateReceiver.registerIntent();
 
 		updateSignalStrength();
-		//updateServiceState(mPhone.getServiceState());
+		// updateServiceState(mPhone.getServiceState());
 
 		mTelephonyManager.listen(mPhoneStateListener,
 				PhoneStateListener.LISTEN_DATA_CONNECTION_STATE);
@@ -156,15 +159,17 @@ public class SignalStatusActivity extends Activity{
 				PhoneStateListener.LISTEN_SIGNAL_STRENGTHS);
 		mTelephonyManager.listen(mPhoneServiceListener,
 				PhoneStateListener.LISTEN_SERVICE_STATE);
-		//			if (mShowLatestAreaInfo) {
-		//				registerReceiver(mAreaInfoReceiver, new IntentFilter(CB_AREA_INFO_RECEIVED_ACTION),
-		//						CB_AREA_INFO_SENDER_PERMISSION, null);
-		//				// Ask CellBroadcastReceiver to broadcast the latest area info received
-		//				Intent getLatestIntent = new Intent(GET_LATEST_CB_AREA_INFO_ACTION);
-		//				sendBroadcastAsUser(getLatestIntent, UserHandle.ALL,
-		//						CB_AREA_INFO_SENDER_PERMISSION);
-		//			}
-		//}
+		// if (mShowLatestAreaInfo) {
+		// registerReceiver(mAreaInfoReceiver, new
+		// IntentFilter(CB_AREA_INFO_RECEIVED_ACTION),
+		// CB_AREA_INFO_SENDER_PERMISSION, null);
+		// // Ask CellBroadcastReceiver to broadcast the latest area info
+		// received
+		// Intent getLatestIntent = new Intent(GET_LATEST_CB_AREA_INFO_ACTION);
+		// sendBroadcastAsUser(getLatestIntent, UserHandle.ALL,
+		// CB_AREA_INFO_SENDER_PERMISSION);
+		// }
+		// }
 
 		IntentFilter filter = new IntentFilter();
 		filter.addAction(Intent.ACTION_BATTERY_CHANGED);
@@ -176,7 +181,7 @@ public class SignalStatusActivity extends Activity{
 	/**
 	 * 信号监听
 	 */
-	private PhoneStateListener mSignalStrengthListener = new PhoneStateListener(){
+	private PhoneStateListener mSignalStrengthListener = new PhoneStateListener() {
 
 		@Override
 		public void onServiceStateChanged(ServiceState serviceState) {
@@ -192,40 +197,43 @@ public class SignalStatusActivity extends Activity{
 
 		// not loaded in some versions of the code (e.g., zaku)
 
-		int state =
-				mPhoneStateReceiver.getServiceState().getState();
+		int state = mPhoneStateReceiver.getServiceState().getState();
 		Resources r = getResources();
 
-		if ((ServiceState.STATE_OUT_OF_SERVICE == state) ||
-				(ServiceState.STATE_POWER_OFF == state)) {
-			//mSignalStrength.setSummary("0");
+		if ((ServiceState.STATE_OUT_OF_SERVICE == state)
+				|| (ServiceState.STATE_POWER_OFF == state)) {
+			// mSignalStrength.setSummary("0");
 		}
 
 		int signalDbm = mPhoneStateReceiver.getSignalStrengthDbm();
-		Log.d(TAG , "updateSignalStrength() signalDbm : " + signalDbm);
-		if (-1 == signalDbm) signalDbm = 0;
+		Log.d(TAG, "updateSignalStrength() signalDbm : " + signalDbm);
+		if (-1 == signalDbm)
+			signalDbm = 0;
 
 		int signalAsu = mPhoneStateReceiver.getSignalStrengthLevelAsu();
-		Log.d(TAG , "updateSignalStrength() signalAsu : " + signalAsu);
-		if (-1 == signalAsu) signalAsu = 0;
+		Log.d(TAG, "updateSignalStrength() signalAsu : " + signalAsu);
+		if (-1 == signalAsu)
+			signalAsu = 0;
 
-		//				mSignalStrength.setSummary(String.valueOf(signalDbm) + " "
-		//						+ r.getString(R.string.radioInfo_display_dbm) + "   "
-		//						+ String.valueOf(signalAsu) + " "
-		//						+ r.getString(R.string.radioInfo_display_asu));
+		// mSignalStrength.setSummary(String.valueOf(signalDbm) + " "
+		// + r.getString(R.string.radioInfo_display_dbm) + "   "
+		// + String.valueOf(signalAsu) + " "
+		// + r.getString(R.string.radioInfo_display_asu));
 
-		Log.v(TAG,">>>>>>>>>updateSignalStrength  display : " + String.valueOf(signalDbm) + " "
-				+ r.getString(R.string.radioInfo_display_dbm) + "   "
-				+ String.valueOf(signalAsu) + " "
-				+ r.getString(R.string.radioInfo_display_asu));
+		Log.v(TAG,
+				">>>>>>>>>updateSignalStrength  display : "
+						+ String.valueOf(signalDbm) + " "
+						+ r.getString(R.string.radioInfo_display_dbm) + "   "
+						+ String.valueOf(signalAsu) + " "
+						+ r.getString(R.string.radioInfo_display_asu));
 
-		signalStrengthTV.setText(getString(R.string.status_signal_strength) + " : " + String.valueOf(signalDbm) + " "
+		signalStrengthTV.setText(getString(R.string.status_signal_strength)
+				+ " : " + String.valueOf(signalDbm) + " "
 				+ r.getString(R.string.radioInfo_display_dbm) + "   "
 				+ String.valueOf(signalAsu) + " "
 				+ r.getString(R.string.radioInfo_display_asu));
 
 	}
-
 
 	private PhoneStateListener mPhoneStateListener = new PhoneStateListener() {
 		@Override
@@ -254,23 +262,26 @@ public class SignalStatusActivity extends Activity{
 			break;
 		}
 
-		//setSummaryText(KEY_DATA_STATE, display);
-		Log.v(TAG,">>>>>>>>>updateDataState KEY_DATA_STATE, display : " + display);
+		// setSummaryText(KEY_DATA_STATE, display);
+		Log.v(TAG, ">>>>>>>>>updateDataState KEY_DATA_STATE, display : "
+				+ display);
 
 	}
 
 	private void updateNetworkType() {
 		// Whether EDGE, UMTS, etc...
-		//setSummaryText(KEY_NETWORK_TYPE, mTelephonyManager.getNetworkTypeName() +
-		//        ":" + mTelephonyManager.getNetworkType());
+		// setSummaryText(KEY_NETWORK_TYPE,
+		// mTelephonyManager.getNetworkTypeName() +
+		// ":" + mTelephonyManager.getNetworkType());
 
-		Log.v(TAG,">>>>>>>>>updateNetworkType KEY_NETWORK_TYPE : " + mTelephonyManager.getNetworkTypeName() +
-				":" + mTelephonyManager.getNetworkType());
+		Log.v(TAG, ">>>>>>>>>updateNetworkType KEY_NETWORK_TYPE : "
+				+ mTelephonyManager.getNetworkTypeName() + ":"
+				+ mTelephonyManager.getNetworkType());
 
-		mobileNetworkTypeTV.setText(getString(R.string.status_network_type) + " : " + mTelephonyManager.getNetworkTypeName() +
-				":" + mTelephonyManager.getNetworkType());
+		mobileNetworkTypeTV.setText(getString(R.string.status_network_type)
+				+ " : " + mTelephonyManager.getNetworkTypeName() + ":"
+				+ mTelephonyManager.getNetworkType());
 	}
-
 
 	private PhoneStateListener mPhoneServiceListener = new PhoneStateListener() {
 		@Override
@@ -296,15 +307,18 @@ public class SignalStatusActivity extends Activity{
 			display = mRes.getString(R.string.radioInfo_service_off);
 			break;
 		}
-		Log.v(TAG,">>>>>>>>>updateServiceState KEY_SERVICE_STATE :  " + display);
+		Log.v(TAG, ">>>>>>>>>updateServiceState KEY_SERVICE_STATE :  "
+				+ display);
 
-		serviceStateTV.setText(getString(R.string.status_service_state) + " : " + display);
+		serviceStateTV.setText(getString(R.string.status_service_state) + " : "
+				+ display);
 
 		// setSummaryText(KEY_SERVICE_STATE, display);
 	}
-	/////////////////////////////////////////////////////
 
-	private Handler mHandler  = new Handler(){
+	// ///////////////////////////////////////////////////
+
+	private Handler mHandler = new Handler() {
 
 		@Override
 		public void handleMessage(Message msg) {
@@ -314,20 +328,21 @@ public class SignalStatusActivity extends Activity{
 				break;
 
 			case EVENT_SERVICE_STATE_CHANGED:
-				ServiceState serviceState = mPhoneStateReceiver.getServiceState();
+				ServiceState serviceState = mPhoneStateReceiver
+						.getServiceState();
 				updateServiceState(serviceState);
 				break;
 
 			case EVENT_UPDATE_STATS:
-				//updateTimes();
-				//sendEmptyMessageDelayed(EVENT_UPDATE_STATS, 1000);
+				// updateTimes();
+				// sendEmptyMessageDelayed(EVENT_UPDATE_STATS, 1000);
 				break;
 			}
 		}
 
 	};
 
-	////////////////////////////////
+	// //////////////////////////////
 	private BroadcastReceiver mBatteryInfoReceiver = new BroadcastReceiver() {
 
 		@Override
@@ -335,8 +350,9 @@ public class SignalStatusActivity extends Activity{
 			String action = intent.getAction();
 			if (Intent.ACTION_BATTERY_CHANGED.equals(action)) {
 
-				//mBatteryLevel.setSummary(Utils.getBatteryPercentage(intent));
-				//mBatteryStatus.setSummary(Utils.getBatteryStatus(getResources(), intent));
+				// mBatteryLevel.setSummary(Utils.getBatteryPercentage(intent));
+				// mBatteryStatus.setSummary(Utils.getBatteryStatus(getResources(),
+				// intent));
 			} else if (SPN_STRINGS_UPDATED_ACTION.equals(action)) {
 
 				String operatorName = null;
@@ -348,31 +364,32 @@ public class SignalStatusActivity extends Activity{
 					if (plmn != null) {
 						operatorName = plmn;
 					}
-					Log.v(TAG, ">>>>>>>>>>> EXTRA_SHOW_PLMN plmn != null: " + (plmn != null));
+					Log.v(TAG, ">>>>>>>>>>> EXTRA_SHOW_PLMN plmn != null: "
+							+ (plmn != null));
 				}
 				if (intent.getBooleanExtra(EXTRA_SHOW_SPN, false)) {
 					spn = intent.getStringExtra(EXTRA_SPN);
 					if (spn != null) {
 						operatorName = spn;
 					}
-					Log.v(TAG, ">>>>>>>>>>> EXTRA_SHOW_PLMN spn != null: " + (spn != null));
+					Log.v(TAG, ">>>>>>>>>>> EXTRA_SHOW_PLMN spn != null: "
+							+ (spn != null));
 				}
 				Log.v(TAG, ">>>>>>>>>>> operatorName : " + operatorName);
-				if(operatorName != null)
-				{
+				if (operatorName != null) {
 					networkTV.setVisibility(View.VISIBLE);
-					networkTV.setText(getString(R.string.status_operator) + " : " + operatorName);
-				}
-				else
+					networkTV.setText(getString(R.string.status_operator)
+							+ " : " + operatorName);
+				} else
 					networkTV.setVisibility(View.GONE);
-				//                Preference p = findPreference(KEY_OPERATOR_NAME);
-				//                if (p != null) {
-				//                    mExt.updateOpNameFromRec(p,operatorName);
-				//                }  
+				// Preference p = findPreference(KEY_OPERATOR_NAME);
+				// if (p != null) {
+				// mExt.updateOpNameFromRec(p,operatorName);
+				// }
 			}
 		}
 	};
-	
+
 	// 取消返回按钮
 	public boolean dispatchKeyEvent(KeyEvent event) {
 		if (event.getKeyCode() == KeyEvent.KEYCODE_BACK) {

@@ -38,6 +38,7 @@ public class MyItemView extends TextView {
 	private final static int PADDINGLEN = 5;
 	private boolean ischeck = true;
 	private float scale;
+
 	public MyItemView(Context context) {
 		this(context, null, 0);
 	}
@@ -48,37 +49,43 @@ public class MyItemView extends TextView {
 
 	public MyItemView(Context context, AttributeSet attrs, int defStyle) {
 		super(context, attrs, defStyle);
-		WindowManager windowManager = (WindowManager)context.getSystemService(Context.WINDOW_SERVICE);
-		 
-        Display display = windowManager.getDefaultDisplay();
-        int densityDpi = getResources().getDisplayMetrics().densityDpi;
-        scale = densityDpi/160;
-		if(scale <= 0) scale = 1;
-	
+		WindowManager windowManager = (WindowManager) context
+				.getSystemService(Context.WINDOW_SERVICE);
+
+		Display display = windowManager.getDefaultDisplay();
+		int densityDpi = getResources().getDisplayMetrics().densityDpi;
+		scale = densityDpi / 160;
+		if (scale <= 0)
+			scale = 1;
+
 		mPaint.setColor(Color.WHITE);
 		mPaint.setStrokeWidth(2);
 		mPaint.setStyle(Style.STROKE);
-//		Drawable tmp = context.getResources().getDrawable(R.drawable.devicetest_icon);
-		checkedbitmap = BitmapFactory.decodeResource(context.getResources(), R.drawable.btn_check_on);
-		uncheckedbitmap = BitmapFactory.decodeResource(context.getResources(), R.drawable.btn_check_on_disable);
+		// Drawable tmp =
+		// context.getResources().getDrawable(R.drawable.devicetest_icon);
+		checkedbitmap = BitmapFactory.decodeResource(context.getResources(),
+				R.drawable.btn_check_on);
+		uncheckedbitmap = BitmapFactory.decodeResource(context.getResources(),
+				R.drawable.btn_check_on_disable);
 		setTextColor(Color.WHITE);
 		setResult(RESULT.UNDEF);
 		setBackgroundResource(R.drawable.itemclickbk);
 	}
 
-	
 	protected void onLayout(boolean changed, int left, int top, int right,
 			int bottom) {
 		super.onLayout(changed, left, top, right, bottom);
-		//setTextSize((bottom - top) * 1.5f / 4/scale);
-		setTextSize(getResources().getDimension(R.dimen.item_text_size)); //by zxx
+		// setTextSize((bottom - top) * 1.5f / 4/scale);
+		setTextSize(getResources().getDimension(R.dimen.item_text_size)); // by
+																			// zxx
 
-		Log.v("ZZP",">>>>>  textSize scale : " + scale);
-		Log.v("ZZP",">>>>>  textSize bottom : " + bottom);
-		Log.v("ZZP",">>>>>  textSize top : " + top);
-		Log.v("ZZP",">>>>>  textSize : " + (bottom - top) * 1.5f / 4/scale);
+		Log.v("ZZP", ">>>>>  textSize scale : " + scale);
+		Log.v("ZZP", ">>>>>  textSize bottom : " + bottom);
+		Log.v("ZZP", ">>>>>  textSize top : " + top);
+		Log.v("ZZP", ">>>>>  textSize : " + (bottom - top) * 1.5f / 4 / scale);
 
-		checkicon_left = this.getWidth() - checkedbitmap.getWidth() - PADDINGLEN * 2;
+		checkicon_left = this.getWidth() - checkedbitmap.getWidth()
+				- PADDINGLEN * 2;
 		checkicon_top = (this.getHeight() - checkedbitmap.getHeight()) / 2;
 	}
 
@@ -100,7 +107,7 @@ public class MyItemView extends TextView {
 		default:
 			return;
 		}
-		
+
 		mResult = result;
 		current_color = color;
 		this.setBackgroundColor(color);
@@ -109,13 +116,15 @@ public class MyItemView extends TextView {
 	public RESULT getResult() {
 		return mResult;
 	}
-	public void setCheck(boolean check){
+
+	public void setCheck(boolean check) {
 		this.ischeck = check;
 		this.invalidate();
 	}
-	public boolean setCheckClick(){
-		if(tmpcheckclick){
-			if(ischeck)
+
+	public boolean setCheckClick() {
+		if (tmpcheckclick) {
+			if (ischeck)
 				ischeck = false;
 			else
 				ischeck = true;
@@ -123,42 +132,50 @@ public class MyItemView extends TextView {
 		this.invalidate();
 		return tmpcheckclick;
 	}
-	public boolean getischeck(){
+
+	public boolean getischeck() {
 		return ischeck;
 	}
+
 	protected void onDraw(Canvas canvas) {
 		super.onDraw(canvas);
 		getDrawingRect(mRect);
 		canvas.drawRect(mRect, mPaint);
-		if(ischeck)
-			canvas.drawBitmap(checkedbitmap, checkicon_left, checkicon_top, null);
+		if (ischeck)
+			canvas.drawBitmap(checkedbitmap, checkicon_left, checkicon_top,
+					null);
 		else
-			canvas.drawBitmap(uncheckedbitmap, checkicon_left, checkicon_top, null);
+			canvas.drawBitmap(uncheckedbitmap, checkicon_left, checkicon_top,
+					null);
 	}
-	
+
 	private boolean tmpcheckclick = false;
 	private boolean istouch = false;
+
 	@Override
 	public boolean onTouchEvent(MotionEvent event) {
-//		Log.d(TAG, " ________ action = " + event.getAction() + "   " + event.getX() + ", " + event.getY() + "   w = " + this.getWidth());
-//		Log.d(TAG, "_____________________ onTouchEvent(),  " + event.getPointerCount());
+		// Log.d(TAG, " ________ action = " + event.getAction() + "   " +
+		// event.getX() + ", " + event.getY() + "   w = " + this.getWidth());
+		// Log.d(TAG, "_____________________ onTouchEvent(),  " +
+		// event.getPointerCount());
 		boolean ret = false;
-		switch(event.getAction()){
+		switch (event.getAction()) {
 		case MotionEvent.ACTION_DOWN:
 			tmpcheckclick = false;
 			this.setBackgroundColor(CLICK_COLOR);
-			if(event.getX() > checkicon_left){
+			if (event.getX() > checkicon_left) {
 				tmpcheckclick = true;
 			}
 			istouch = true;
 			break;
 		case MotionEvent.ACTION_MOVE:
-			if(event.getX()>0 && event.getX() < this.getWidth() && event.getY() > 0 && event.getY() < this.getHeight()){
+			if (event.getX() > 0 && event.getX() < this.getWidth()
+					&& event.getY() > 0 && event.getY() < this.getHeight()) {
 				this.setBackgroundColor(CLICK_COLOR);
-				if(tmpcheckclick && event.getX() < checkicon_left){
+				if (tmpcheckclick && event.getX() < checkicon_left) {
 					tmpcheckclick = false;
 				}
-			}else{
+			} else {
 				tmpcheckclick = false;
 				this.setBackgroundColor(current_color);
 			}
@@ -170,7 +187,8 @@ public class MyItemView extends TextView {
 		}
 		return super.onTouchEvent(event);
 	}
-	public boolean getIsTouch(){
+
+	public boolean getIsTouch() {
 		return istouch;
 	}
 }

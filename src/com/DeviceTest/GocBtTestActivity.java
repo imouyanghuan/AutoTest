@@ -3,27 +3,17 @@ package com.DeviceTest;
 import static android.view.WindowManager.LayoutParams.FLAG_FULLSCREEN;
 import static android.view.WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON;
 
-import java.util.ArrayList;
-
 import com.DeviceTest.helper.ControlButtonUtil;
-import com.DeviceTest.helper.TestCase.RESULT;
 
 import android.app.Activity;
 import android.bluetooth.BluetoothAdapter;
-import android.bluetooth.BluetoothDevice;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.net.wifi.WifiManager;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
-import android.view.Window;
-import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 

@@ -3,24 +3,17 @@ package com.DeviceTest;
 import static android.view.WindowManager.LayoutParams.FLAG_FULLSCREEN;
 import static android.view.WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON;
 
-import java.io.File;
-import java.math.BigInteger;
-
 import com.DeviceTest.helper.ControlButtonUtil;
 
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
-import android.os.Environment;
-import android.os.StatFs;
 import android.view.KeyEvent;
 import android.view.View;
-import android.view.Window;
 import android.widget.Button;
 import android.widget.TextView;
 
 import android.telephony.TelephonyManager;
-import android.util.Log;
 
 public class SimCardTestActivity extends Activity {
 	private static final String TAG = "SdCardTestActivity";
@@ -29,17 +22,17 @@ public class SimCardTestActivity extends Activity {
 
 	private Button mPassBtn;
 
-	
 	protected void onCreate(Bundle savedInstanceState) {
 
 		super.onCreate(savedInstanceState);
 
 		DeviceTest.lockScreenOrientation(this);
 		setTitle(getTitle() + "----("
-				+ getIntent().getStringExtra(DeviceTest.EXTRA_TEST_PROGRESS) + ")");
-		//requestWindowFeature(Window.FEATURE_NO_TITLE);
+				+ getIntent().getStringExtra(DeviceTest.EXTRA_TEST_PROGRESS)
+				+ ")");
+		// requestWindowFeature(Window.FEATURE_NO_TITLE);
 		getWindow().addFlags(FLAG_FULLSCREEN | FLAG_KEEP_SCREEN_ON);
-		
+
 		setContentView(R.layout.simcardtest);
 
 		this.mResult = (TextView) findViewById(R.id.text);
@@ -51,7 +44,6 @@ public class SimCardTestActivity extends Activity {
 
 	}
 
-	
 	protected void onResume() {
 		super.onResume();
 		TelephonyManager mTelephonyMgr = (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);

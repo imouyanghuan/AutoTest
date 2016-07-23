@@ -28,14 +28,14 @@ public class MrioUSBTestActivity extends Activity {
 	boolean pluginPass = false;
 	boolean unplugPass = false;
 	boolean stop = false;
-	
-	
+
 	protected void onCreate(Bundle savedInstanceState) {
 		Log.d(TAG, "=========onCreate============");
 		super.onCreate(savedInstanceState);
 		DeviceTest.lockScreenOrientation(this);
 		setTitle(getTitle() + "----("
-				+ getIntent().getStringExtra(DeviceTest.EXTRA_TEST_PROGRESS) + ")");
+				+ getIntent().getStringExtra(DeviceTest.EXTRA_TEST_PROGRESS)
+				+ ")");
 		// requestWindowFeature(Window.FEATURE_NO_TITLE);
 		getWindow().addFlags(FLAG_FULLSCREEN | FLAG_KEEP_SCREEN_ON);
 
@@ -50,7 +50,6 @@ public class MrioUSBTestActivity extends Activity {
 		findViewById(R.id.btn_Pass).setVisibility(View.INVISIBLE);
 	}
 
-	
 	protected void onResume() {
 		super.onResume();
 		stop = false;
@@ -60,7 +59,6 @@ public class MrioUSBTestActivity extends Activity {
 		registerReceiver(mUsbStateReceiver, intentFilter);
 	}
 
-	
 	public void onPause() {
 		super.onPause();
 		stop = true;
@@ -68,19 +66,19 @@ public class MrioUSBTestActivity extends Activity {
 	}
 
 	class UsbConnectedBroadcastReceiver extends BroadcastReceiver {
-		
+
 		public void onReceive(Context context, Intent intent) {
-			if(stop) {
+			if (stop) {
 				return;
 			}
 			if (intent.getAction().equals(Intent.ACTION_UMS_CONNECTED)) {
-				if(!pluginPass) {
+				if (!pluginPass) {
 					pluginPass = true;
 					mUsbPluginText.setText(mUsbPluginText.getText() + "Pass");
 				}
 			} else if (intent.getAction()
 					.equals(Intent.ACTION_UMS_DISCONNECTED)) {
-				if(!unplugPass) {
+				if (!unplugPass) {
 					unplugPass = true;
 					mUsbUnplugText.setText(mUsbUnplugText.getText() + "Pass");
 				}

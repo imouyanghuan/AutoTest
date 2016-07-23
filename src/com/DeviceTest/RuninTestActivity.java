@@ -117,13 +117,13 @@ public class RuninTestActivity extends Activity {
 	AlarmManager alarmManager;
 	PendingIntent pendingIntent;
 	BroadcastReceiver receiver;
-	
+
 	public RuninTestActivity() {
 		mTestResult = new RESULT[] { RESULT.UNDEF, RESULT.UNDEF, RESULT.UNDEF,
-				RESULT.UNDEF, }; 
+				RESULT.UNDEF, };
 		mTextViews = new TextView[mTestResult.length];
 	}
- 
+
 	protected void onCreate(Bundle paramBundle) {
 		super.onCreate(paramBundle);
 		DeviceTest.lockScreenOrientation(this);
@@ -222,7 +222,7 @@ public class RuninTestActivity extends Activity {
 				memSizeSpinner.setEnabled(false);
 			}
 		});
-		
+
 		stopVideo.setOnClickListener(new View.OnClickListener() {
 
 			public void onClick(View v) {
@@ -457,7 +457,7 @@ public class RuninTestActivity extends Activity {
 	}
 
 	private void doMemTest() {
-		if (! new File(DeviceTest.MEMTESTER_PATH).exists()) {
+		if (!new File(DeviceTest.MEMTESTER_PATH).exists()) {
 			mHandler.sendEmptyMessage(MSG_TEST_FAILED);
 			return;
 		}
@@ -486,8 +486,8 @@ public class RuninTestActivity extends Activity {
 					return;
 				}
 				try {
-					result = SystemUtil.execRootCmd(DeviceTest.MEMTESTER_PATH + " "
-							+ memSize + "M 1");
+					result = SystemUtil.execRootCmd(DeviceTest.MEMTESTER_PATH
+							+ " " + memSize + "M 1");
 					mHandler.post(new Runnable() {
 
 						public void run() {
@@ -570,7 +570,7 @@ public class RuninTestActivity extends Activity {
 	}
 
 	public String getResult() {
-		
+
 		String result = DeviceTest.RESULT_INFO_HEAD_JUST_INFO;
 		result += DeviceTest.formatResult("SleepWakeTest", mTestResult[0],
 				DeviceTest.RESULT_INFO_HEAD + sleepWakeCount) + "\n";
@@ -581,10 +581,10 @@ public class RuninTestActivity extends Activity {
 				+ "\n";
 		result += DeviceTest.formatResult("BatteryTemp", mTestResult[3],
 				DeviceTest.RESULT_INFO_HEAD + batteryTemp + "C") + "\n";
-		
+
 		return result;
 	}
-	
+
 	private void saveResult() {
 		ControlButtonUtil.setResult(getResult());
 	}

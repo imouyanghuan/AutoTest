@@ -4,7 +4,6 @@ import static android.view.WindowManager.LayoutParams.FLAG_FULLSCREEN;
 import static android.view.WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON;
 
 import com.DeviceTest.helper.ControlButtonUtil;
-import com.DeviceTest.helper.SystemUtil;
 import com.DeviceTest.view.CompassView;
 
 import android.app.Activity;
@@ -176,8 +175,8 @@ public class CompassTestActivity extends Activity {
 			}
 		}, SensorManager.SENSOR_ORIENTATION);
 		ControlButtonUtil.initControlButtonView(this);
-	//	findViewById(R.id.btn_Fail).setVisibility(View.INVISIBLE);
-	//	findViewById(R.id.btn_Pass).setVisibility(View.INVISIBLE);
+		// findViewById(R.id.btn_Fail).setVisibility(View.INVISIBLE);
+		// findViewById(R.id.btn_Pass).setVisibility(View.INVISIBLE);
 	}
 
 	protected void onStop() {

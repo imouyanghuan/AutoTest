@@ -39,12 +39,15 @@ public class TestCase implements Serializable {
 		this.needtest = true;
 		showResult = true;
 	}
-	public boolean getneedtest(){
+
+	public boolean getneedtest() {
 		return this.needtest;
 	}
-	public void setneedtest(boolean tmp){
+
+	public void setneedtest(boolean tmp) {
 		this.needtest = tmp;
 	}
+
 	public String getClassName() {
 		return className;
 	}

@@ -26,17 +26,17 @@ public class LevelTestActivity extends Activity {
 
 	private LevelView levelView;
 
-	
 	public void onCreate(Bundle paramBundle) {
 		super.onCreate(paramBundle);
 
 		DeviceTest.lockScreenOrientation(this);
 
 		setTitle(getTitle() + "----("
-				+ getIntent().getStringExtra(DeviceTest.EXTRA_TEST_PROGRESS) + ")");
-		//requestWindowFeature(Window.FEATURE_NO_TITLE);
+				+ getIntent().getStringExtra(DeviceTest.EXTRA_TEST_PROGRESS)
+				+ ")");
+		// requestWindowFeature(Window.FEATURE_NO_TITLE);
 		getWindow().addFlags(FLAG_FULLSCREEN | FLAG_KEEP_SCREEN_ON);
-		
+
 		setContentView(R.layout.leveltest);
 		levelView = (LevelView) findViewById(R.id.leveltestview);
 
@@ -44,24 +44,20 @@ public class LevelTestActivity extends Activity {
 
 		sensorManager.registerListener(new SensorListener() {
 
-			
 			public void onSensorChanged(int sensor, float[] values) {
 				levelView.update(values[0], values[1]);
 			}
 
-			
 			public void onAccuracyChanged(int sensor, int accuracy) {
 			}
 		}, SensorManager.SENSOR_ACCELEROMETER);
 		ControlButtonUtil.initControlButtonView(this);
 	}
 
-	
 	protected void onPause() {
 		super.onPause();
 	}
 
-	
 	protected void onResume() {
 		super.onResume();
 	}

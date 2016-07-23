@@ -7,13 +7,10 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import com.DeviceTest.GpsTestActivity.MystatusListener;
 import com.DeviceTest.helper.ControlButtonUtil;
 import com.DeviceTest.helper.SystemUtil;
 
 import android.app.Activity;
-import android.app.PendingIntent;
-import android.app.PendingIntent.CanceledException;
 import android.bluetooth.BluetoothAdapter;
 import android.content.ComponentName;
 import android.content.Context;
@@ -24,12 +21,10 @@ import android.location.GpsStatus;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
-import android.net.Uri;
 import android.net.wifi.WifiManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.os.SystemClock;
 import android.provider.Settings;
 import android.text.format.Time;
 import android.util.Log;
@@ -37,9 +32,6 @@ import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.Window;
-import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -54,7 +46,8 @@ public class GpsLocationTestActivity extends Activity {
 	LocationListener mLocationListener = new LocationListener() {
 		public void onLocationChanged(Location location) {
 			updateToNewLocation(location);
-			Toast.makeText(mContext, ">>>>>> mLocationListener", Toast.LENGTH_LONG).show();
+			Toast.makeText(mContext, ">>>>>> mLocationListener",
+					Toast.LENGTH_LONG).show();
 		}
 
 		public void onProviderDisabled(String provider) {
@@ -70,7 +63,7 @@ public class GpsLocationTestActivity extends Activity {
 	TextView mText;
 	TextView mTitle;
 
-	private GpsStatus.Listener statusListener = new MystatusListener(){
+	private GpsStatus.Listener statusListener = new MystatusListener() {
 		public void onGpsStatusChanged(int event) { // GPS状态变化时的回调，如卫星数
 			GpsStatus status = mLocatManager.getGpsStatus(null); // 取当前状态
 			updateGpsStatus(event, status);
@@ -155,7 +148,7 @@ public class GpsLocationTestActivity extends Activity {
 		ControlButtonUtil.initControlButtonView(this);
 		this.mResult.setText(R.string.GpsWaitforLocationData);
 
-		//findViewById(R.id.btn_Pass).setVisibility(View.INVISIBLE);
+		// findViewById(R.id.btn_Pass).setVisibility(View.INVISIBLE);
 
 		this.mLocatManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 
@@ -169,25 +162,25 @@ public class GpsLocationTestActivity extends Activity {
 
 		WifiManager wifiManager = (WifiManager) getSystemService(WIFI_SERVICE);
 		wifiManager.setWifiEnabled(false);
-		if(BluetoothAdapter.getDefaultAdapter() != null){
+		if (BluetoothAdapter.getDefaultAdapter() != null) {
 			BluetoothAdapter.getDefaultAdapter().disable();
 		}
 
-		/*Settings.Secure.setLocationProviderEnabled(getContentResolver(),
-				LocationManager.GPS_PROVIDER, true);*/
-
+		/*
+		 * Settings.Secure.setLocationProviderEnabled(getContentResolver(),
+		 * LocationManager.GPS_PROVIDER, true);
+		 */
 
 	}
-
 
 	@Override
 	protected void onResume() {
 		super.onResume();
 		if (!mLocatManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
 			this.mResult.setText(R.string.GpsOff);
-			//mHandler.postDelayed(mSkipRunnable, 5000);
-			//return;
-		}else{
+			// mHandler.postDelayed(mSkipRunnable, 5000);
+			// return;
+		} else {
 
 			TextView nmeaView = (TextView) findViewById(R.id.nmealocationresultText);
 			nmeaView.setText(R.string.GpsWaitforNMEAInformation);
@@ -212,19 +205,20 @@ public class GpsLocationTestActivity extends Activity {
 		getLocation();
 	}
 
-
 	public boolean onTouchEvent(MotionEvent paramMotionEvent) {
 		if (paramMotionEvent.getAction() == MotionEvent.ACTION_DOWN) {
 			if (!mLocatManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
 				Intent intent = new Intent();
-				intent .setAction("android.settings.LOCATION_SOURCE_SETTINGS");   
-				intent.setComponent(new ComponentName("com.android.settings", "com.android.settings.Settings$LocationSettingsActivity"));
+				intent.setAction("android.settings.LOCATION_SOURCE_SETTINGS");
+				intent.setComponent(new ComponentName("com.android.settings",
+						"com.android.settings.Settings$LocationSettingsActivity"));
 				intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 				startActivity(intent);
 			}
 		}
 		return super.onTouchEvent(paramMotionEvent);
 	}
+
 	protected void onStop() {
 		super.onStop();
 		this.mLocatManager.removeGpsStatusListener(this.statusListener);
@@ -253,12 +247,11 @@ public class GpsLocationTestActivity extends Activity {
 		}
 	};
 
-
 	class MystatusListener implements GpsStatus.Listener {
 
 		public void onGpsStatusChanged(int event) {
 			gpsStatus = mLocatManager.getGpsStatus(null);
-			if(stop) {
+			if (stop) {
 				return;
 			}
 			switch (event) {
@@ -266,13 +259,12 @@ public class GpsLocationTestActivity extends Activity {
 
 				Log.e("Jeffy",
 						"GPS_EVENT_FIRST_FIX:" + gpsStatus.getTimeToFirstFix());
-				String ttff = ((int) (gpsStatus.getTimeToFirstFix() / 100)) / 10.0 + "s";
-				mResult.setText("TTFF: "
-						+ ttff);
-				ControlButtonUtil.setResult(DeviceTest.RESULT_INFO_HEAD
-						+ ttff);
+				String ttff = ((int) (gpsStatus.getTimeToFirstFix() / 100))
+						/ 10.0 + "s";
+				mResult.setText("TTFF: " + ttff);
+				ControlButtonUtil.setResult(DeviceTest.RESULT_INFO_HEAD + ttff);
 				mHandler.removeMessages(MSG_RUN);
-				if(gpsStatus.getTimeToFirstFix() > 90 * 1000 ) {
+				if (gpsStatus.getTimeToFirstFix() > 90 * 1000) {
 					mHandler.postDelayed(mFailedRunnable, 2 * 1000);
 				} else {
 					mHandler.postDelayed(mPassRunnable, 2 * 1000);
@@ -287,30 +279,25 @@ public class GpsLocationTestActivity extends Activity {
 
 	}
 
-
-	//////////////////////////////////////////////////////////////////////////
+	// ////////////////////////////////////////////////////////////////////////
 	private void openGPSSettings() {
 		LocationManager alm = (LocationManager) this
 				.getSystemService(Context.LOCATION_SERVICE);
-		if (alm
-				.isProviderEnabled(android.location.LocationManager.GPS_PROVIDER)) {
-			Toast.makeText(this, "GPS模块正常", Toast.LENGTH_SHORT)
-			.show();
+		if (alm.isProviderEnabled(android.location.LocationManager.GPS_PROVIDER)) {
+			Toast.makeText(this, "GPS模块正常", Toast.LENGTH_SHORT).show();
 			return;
 		}
 
 		Toast.makeText(this, "请开启GPS！", Toast.LENGTH_SHORT).show();
 		Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
-		startActivityForResult(intent,0); //此为设置完成后返回到获取界面
+		startActivityForResult(intent, 0); // 此为设置完成后返回到获取界面
 	}
 
-	private void getLocation()
-	{
+	private void getLocation() {
 		// 获取位置管理服务
 		LocationManager locationManager;
 		String serviceName = Context.LOCATION_SERVICE;
 		locationManager = (LocationManager) this.getSystemService(serviceName);
-		
 
 		String provider = locationManager.getBestProvider(getCriteria(), true); // 获取GPS信息
 
@@ -335,47 +322,46 @@ public class GpsLocationTestActivity extends Activity {
 		int second = t.second;
 
 		TextView tv1;
-		tv1 = (TextView) this.findViewById(R.id.longitudeLatitudeLocationresultText);
+		tv1 = (TextView) this
+				.findViewById(R.id.longitudeLatitudeLocationresultText);
 		if (location != null) {
 			double latitude = location.getLatitude();
-			double longitude= location.getLongitude();
+			double longitude = location.getLongitude();
 			double altitude = location.getAltitude(); // 海拔
 
 			tv1.setText("搜索卫星个数：" + numSatelliteList.size());
-			tv1.append("\n维度：" +  latitude+ "\n经度" + longitude);
+			tv1.append("\n维度：" + latitude + "\n经度" + longitude);
 			tv1.append("\n海拔：" + altitude);
-			tv1.append("\n时间：" + year + "年" + month + "月" + date + "日" + hour + ":" + minute + ":" + second);
+			tv1.append("\n时间：" + year + "年" + month + "月" + date + "日" + hour
+					+ ":" + minute + ":" + second);
 		} else {
 			tv1.setText("无法获取地理信息");
 		}
 
 	}
-	
+
 	/**
-     * 返回查询条件
-     * @return
-     */
-    private Criteria getCriteria(){
-        Criteria criteria=new Criteria();
-        //设置定位精确度 Criteria.ACCURACY_COARSE比较粗略，Criteria.ACCURACY_FINE则比较精细 
-        criteria.setAccuracy(Criteria.ACCURACY_FINE);
-        //*/ // ???
-        criteria.setAltitudeRequired(false);
-        criteria.setBearingRequired(false);
-        criteria.setCostAllowed(true);
-        /*/
-        //设置是否要求速度
-        criteria.setSpeedRequired(true);
-        // 设置是否允许运营商收费  
-        criteria.setCostAllowed(false);
-        //设置是否需要方位信息
-        criteria.setBearingRequired(true);
-        //设置是否需要海拔信息
-        criteria.setAltitudeRequired(true);
-        //*/
-        // 设置对电源的需求  
-        criteria.setPowerRequirement(Criteria.POWER_LOW);
-        return criteria;
-    }
+	 * 返回查询条件
+	 * 
+	 * @return
+	 */
+	private Criteria getCriteria() {
+		Criteria criteria = new Criteria();
+		// 设置定位精确度 Criteria.ACCURACY_COARSE比较粗略，Criteria.ACCURACY_FINE则比较精细
+		criteria.setAccuracy(Criteria.ACCURACY_FINE);
+		// */ // ???
+		criteria.setAltitudeRequired(false);
+		criteria.setBearingRequired(false);
+		criteria.setCostAllowed(true);
+		/*
+		 * / //设置是否要求速度 criteria.setSpeedRequired(true); // 设置是否允许运营商收费
+		 * criteria.setCostAllowed(false); //设置是否需要方位信息
+		 * criteria.setBearingRequired(true); //设置是否需要海拔信息
+		 * criteria.setAltitudeRequired(true); //
+		 */
+		// 设置对电源的需求
+		criteria.setPowerRequirement(Criteria.POWER_LOW);
+		return criteria;
+	}
 
 }

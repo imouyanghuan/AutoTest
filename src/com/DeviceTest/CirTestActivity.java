@@ -3,12 +3,8 @@ package com.DeviceTest;
 import static android.view.WindowManager.LayoutParams.FLAG_FULLSCREEN;
 import static android.view.WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON;
 
-import java.io.IOException;
-
 import com.DeviceTest.helper.ControlButtonUtil;
 
-import jp.co.ntt.east.hardware.IrRemoteController;
-import jp.co.ntt.east.hardware.IrRemoteController.Data;
 import jp.co.toshiba.newtion.cir.RemoteControl;
 
 import android.app.Activity;
@@ -35,9 +31,10 @@ public class CirTestActivity extends Activity implements OnClickListener {
 		super.onCreate(savedInstanceState);
 		DeviceTest.lockScreenOrientation(this);
 		setContentView(R.layout.cirtest);
-		
+
 		setTitle(getTitle() + "----("
-				+ getIntent().getStringExtra(DeviceTest.EXTRA_TEST_PROGRESS) + ")");
+				+ getIntent().getStringExtra(DeviceTest.EXTRA_TEST_PROGRESS)
+				+ ")");
 		// requestWindowFeature(Window.FEATURE_NO_TITLE);
 		getWindow().addFlags(FLAG_FULLSCREEN | FLAG_KEEP_SCREEN_ON);
 

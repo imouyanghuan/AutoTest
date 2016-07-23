@@ -15,16 +15,16 @@ public class VibrationTestActivity extends Activity {
 
 	private Vibrator mVibrator;
 
-	
 	protected void onCreate(Bundle paramBundle) {
 		super.onCreate(paramBundle);
 		DeviceTest.lockScreenOrientation(this);
 
 		setTitle(getTitle() + "----("
-				+ getIntent().getStringExtra(DeviceTest.EXTRA_TEST_PROGRESS) + ")");
-		//requestWindowFeature(Window.FEATURE_NO_TITLE);
+				+ getIntent().getStringExtra(DeviceTest.EXTRA_TEST_PROGRESS)
+				+ ")");
+		// requestWindowFeature(Window.FEATURE_NO_TITLE);
 		getWindow().addFlags(FLAG_FULLSCREEN | FLAG_KEEP_SCREEN_ON);
-		
+
 		setContentView(R.layout.vibrationtest);
 
 		TextView txtTitle = (TextView) findViewById(R.id.txtTitle);

@@ -20,13 +20,15 @@ import android.widget.Button;
 
 /**
  * 听筒测试
+ * 
  * @author zzp
- *
+ * 
  */
-public class HandsetTestActivity_bak extends Activity implements OnClickListener{
+public class HandsetTestActivity_bak extends Activity implements
+		OnClickListener {
 
 	private Button handsetStart;
-	//private Button handsetStop;
+	// private Button handsetStop;
 
 	private Context mContext;
 	private RecordThread rec;
@@ -37,69 +39,73 @@ public class HandsetTestActivity_bak extends Activity implements OnClickListener
 		super.onCreate(savedInstanceState);
 		DeviceTest.lockScreenOrientation(this);
 		setTitle(getTitle() + "----("
-				+ getIntent().getStringExtra(DeviceTest.EXTRA_TEST_PROGRESS) + ")");
-		//requestWindowFeature(Window.FEATURE_NO_TITLE);
+				+ getIntent().getStringExtra(DeviceTest.EXTRA_TEST_PROGRESS)
+				+ ")");
+		// requestWindowFeature(Window.FEATURE_NO_TITLE);
 		getWindow().addFlags(FLAG_FULLSCREEN | FLAG_KEEP_SCREEN_ON);
 
 		setContentView(R.layout.handsettest);
 
 		handsetStart = (Button) findViewById(R.id.headset_start);
-		//handsetStop = (Button) findViewById(R.id.headset_stop);
+		// handsetStop = (Button) findViewById(R.id.headset_stop);
 
 		handsetStart.setOnClickListener(this);
-		//handsetStop.setOnClickListener(this);
-		
+		// handsetStop.setOnClickListener(this);
+
 		ControlButtonUtil.initControlButtonView(this);
 		rec = new RecordThread();
 	}
 
 	public void onClick(View v) {
-		if(v == handsetStart){
-			if(isStart){
+		if (v == handsetStart) {
+			if (isStart) {
 				isStart = false;
 				rec.stopThread();
 				handsetStart.setText(getString(R.string.handset_start));
-			}else{
+			} else {
 				isStart = true;
 				rec = new RecordThread();
 				rec.start();
 				handsetStart.setText(getString(R.string.handset_stop));
 			}
-		} 
+		}
 
 	}
-	
-	
+
 	@Override
 	protected void onPause() {
 		super.onPause();
-		if(isStart)
+		if (isStart)
 			rec.stopThread();
 	}
 
-		//打开扬声器
-		public void OpenSpeaker() {
+	// 打开扬声器
+	public void OpenSpeaker() {
 
-			try{
-				AudioManager audioManager = (AudioManager) mContext.getSystemService(Context.AUDIO_SERVICE);
-				audioManager.setMode(AudioManager.ROUTE_SPEAKER);
-				// currVolume = audioManager.getStreamVolume(AudioManager.STREAM_VOICE_CALL);
+		try {
+			AudioManager audioManager = (AudioManager) mContext
+					.getSystemService(Context.AUDIO_SERVICE);
+			audioManager.setMode(AudioManager.ROUTE_SPEAKER);
+			// currVolume =
+			// audioManager.getStreamVolume(AudioManager.STREAM_VOICE_CALL);
 
-				if(!audioManager.isSpeakerphoneOn()) {
-					audioManager.setSpeakerphoneOn(true);
+			if (!audioManager.isSpeakerphoneOn()) {
+				audioManager.setSpeakerphoneOn(true);
 
-					audioManager.setStreamVolume(AudioManager.STREAM_VOICE_CALL,
-							audioManager.getStreamMaxVolume(AudioManager.STREAM_VOICE_CALL ),
-							AudioManager.STREAM_VOICE_CALL);
-				}
-			} catch (Exception e) {
-				e.printStackTrace();
+				audioManager
+						.setStreamVolume(
+								AudioManager.STREAM_VOICE_CALL,
+								audioManager
+										.getStreamMaxVolume(AudioManager.STREAM_VOICE_CALL),
+								AudioManager.STREAM_VOICE_CALL);
 			}
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
+	}
 }
 
-
-class RecordThread extends Thread{
+class RecordThread extends Thread {
 	static final int frequency = 44100;
 	// static final int frequency = 11025;
 	static final int channelConfiguration = AudioFormat.CHANNEL_IN_STEREO;
@@ -122,26 +128,27 @@ class RecordThread extends Thread{
 				channelConfiguration, audioEncoding, recBufSize);
 
 		audioTrack = new AudioTrack(AudioManager.STREAM_VOICE_CALL, frequency,
-				channelConfiguration, audioEncoding, plyBufSize, AudioTrack.MODE_STREAM);
+				channelConfiguration, audioEncoding, plyBufSize,
+				AudioTrack.MODE_STREAM);
 
 		byte[] recBuf = new byte[recBufSize];
 		audioRecord.startRecording();
 		audioTrack.play();
-		Log.v("",">>>>>>>>>>>>>>>. start <<<<<<<<<<<<<<<<");
-		while(isStart){
+		Log.v("", ">>>>>>>>>>>>>>>. start <<<<<<<<<<<<<<<<");
+		while (isStart) {
 			int readLen = audioRecord.read(recBuf, 0, recBufSize);
 			audioTrack.write(recBuf, 0, readLen);
 		}
-		Log.v("",">>>>>>>>>>>>>>>. end <<<<<<<<<<<<<<<<");
+		Log.v("", ">>>>>>>>>>>>>>>. end <<<<<<<<<<<<<<<<");
 	}
 
-	public void stopThread(){
-		try{
+	public void stopThread() {
+		try {
 			audioRecord.stop();
 			audioTrack.stop();
 			isStart = false;
-			Log.v("",">>>>>>>>>>>>>>> stopThread <<<<<<<<<<<<<<<<");
-		}catch(Exception e){
+			Log.v("", ">>>>>>>>>>>>>>> stopThread <<<<<<<<<<<<<<<<");
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 

@@ -20,7 +20,6 @@ import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.Window;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -29,8 +28,9 @@ import com.DeviceTest.helper.Recorder;
 
 /**
  * 耳机录音测试
+ * 
  * @author zzp
- *
+ * 
  */
 public class HeadsetMicTestActivity extends Activity {
 
@@ -65,14 +65,14 @@ public class HeadsetMicTestActivity extends Activity {
 		this.mHandler = new MyHandler();
 	}
 
-
 	protected void onCreate(Bundle savedInstanceState) {
 
 		super.onCreate(savedInstanceState);
 		DeviceTest.lockScreenOrientation(this);
 		setTitle(getTitle() + "----("
-				+ getIntent().getStringExtra(DeviceTest.EXTRA_TEST_PROGRESS) + ")");
-		//requestWindowFeature(Window.FEATURE_NO_TITLE);
+				+ getIntent().getStringExtra(DeviceTest.EXTRA_TEST_PROGRESS)
+				+ ")");
+		// requestWindowFeature(Window.FEATURE_NO_TITLE);
 		getWindow().addFlags(FLAG_FULLSCREEN | FLAG_KEEP_SCREEN_ON);
 
 		setContentView(R.layout.headsetmictest);
@@ -91,7 +91,6 @@ public class HeadsetMicTestActivity extends Activity {
 		rerecording.setOnClickListener(mOnClickListener);
 		rerecording.setEnabled(false);
 	}
-
 
 	protected void onResume() {
 
@@ -130,7 +129,7 @@ public class HeadsetMicTestActivity extends Activity {
 			this.mResult.setText(R.string.HeadsetInsertEarphone);
 			mPassBtn.setVisibility(View.INVISIBLE);
 			return;
-		}else{
+		} else {
 			mPassBtn.setVisibility(View.VISIBLE);
 		}
 
@@ -139,7 +138,6 @@ public class HeadsetMicTestActivity extends Activity {
 
 	}
 
-
 	protected void onPause() {
 		super.onPause();
 
@@ -147,8 +145,7 @@ public class HeadsetMicTestActivity extends Activity {
 			return;
 		}
 
-		if (this.isSDcardTestOk)
-		{
+		if (this.isSDcardTestOk) {
 
 			switch (this.mRecorder.state()) {
 
@@ -175,13 +172,12 @@ public class HeadsetMicTestActivity extends Activity {
 		File pathFile = android.os.Environment.getExternalStorageDirectory();
 
 		StatFs statfs;
-		try{
+		try {
 			statfs = new StatFs(pathFile.getPath());
-		}catch(Exception e){
+		} catch (Exception e) {
 			e.printStackTrace();
 			return false;
 		}
-
 
 		if (statfs.getAvailableBlocks() > 1) {
 
@@ -203,7 +199,6 @@ public class HeadsetMicTestActivity extends Activity {
 		MyHandler() {
 
 		}
-
 
 		public void handleMessage(Message msg) {
 
@@ -246,12 +241,12 @@ public class HeadsetMicTestActivity extends Activity {
 						mRecorder.startPlayback();
 					} else {
 						mResult.setText(ERRMSG);
-						
+
 					}
 					mPassBtn.setVisibility(View.VISIBLE);
 					rerecording.setEnabled(true);
 				}
-				
+
 				break;
 			}
 
@@ -272,9 +267,9 @@ public class HeadsetMicTestActivity extends Activity {
 					mHandler.removeMessages(MSG_TEST_MIC_START);
 					mHandler.removeMessages(MSG_TEST_MIC_ING);
 					mHandler.removeMessages(MSG_TEST_MIC_OVER);
-					
+
 					// mHandler.sendEmptyMessage(MSG_TEST_MIC_OVER);
- 					rerecording.setEnabled(false);
+					rerecording.setEnabled(false);
 					mPassBtn.setVisibility(View.INVISIBLE);
 					return;
 				}
@@ -289,11 +284,11 @@ public class HeadsetMicTestActivity extends Activity {
 
 		}
 	}
-	
+
 	private OnClickListener mOnClickListener = new OnClickListener() {
-		
+
 		public void onClick(View v) {
-			if(!isTestStart){
+			if (!isTestStart) {
 				isTestStart = true;
 				mHandler.sendEmptyMessage(MSG_TEST_MIC_START);
 			}

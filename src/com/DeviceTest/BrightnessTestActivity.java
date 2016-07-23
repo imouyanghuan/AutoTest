@@ -21,7 +21,6 @@ import android.view.WindowManager;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.os.IPowerManager;
-import android.os.PowerManager;
 import android.os.ServiceManager;
 import android.content.Context;
 
@@ -31,7 +30,7 @@ public class BrightnessTestActivity extends Activity {
 	static final int MAXIMUM_BRIGHTNESS = 255;
 	static final int MINIMUM_BRIGHTNESS = 2;
 	static final int MSG_TEST_BRIGHTNESS = 0;
-	 private int mCurBrightness = -1;
+	private int mCurBrightness = -1;
 	static final int ONE_STAGE = 2;
 	MyHandler mHandler;
 	TextView mText;
@@ -40,8 +39,8 @@ public class BrightnessTestActivity extends Activity {
 	int mBrightness = 30;
 	boolean increase = true;
 	private static final int SEEK_BAR_RANGE = 10000;
-	 private static final int MAXIMUM_BACKLIGHT = android.os.PowerManager.BRIGHTNESS_ON;
-	 private int mScreenBrightnessDim = 20;
+	private static final int MAXIMUM_BACKLIGHT = android.os.PowerManager.BRIGHTNESS_ON;
+	private int mScreenBrightnessDim = 20;
 	private Context mContext;
 
 	public BrightnessTestActivity() {
@@ -66,7 +65,7 @@ public class BrightnessTestActivity extends Activity {
 		progressBar = (ProgressBar) findViewById(R.id.brightnessBar);
 		progressBar.setClickable(false);
 		progressBar.setMax(MAXIMUM_BACKLIGHT);
-		//mSeekBar.setMax(SEEK_BAR_RANGE);
+		// mSeekBar.setMax(SEEK_BAR_RANGE);
 		progressText = (TextView) findViewById(R.id.progressText);
 		ControlButtonUtil.initControlButtonView(this);
 	}
@@ -81,22 +80,28 @@ public class BrightnessTestActivity extends Activity {
 		Log.d(TAG, " _____________________- onPause()");
 		this.mHandler.removeMessages(MSG_TEST_BRIGHTNESS);
 	}
+
 	@Override
 	protected void onDestroy() {
 		Log.d(TAG, " _____________________- onDestroy()");
 		super.onDestroy();
 	}
+
 	private void setBrightness(int paramInt) {
 		WindowManager.LayoutParams lp = getWindow().getAttributes();
-		
-		/*float brightness = 0;
-		
-		int range = (MAXIMUM_BACKLIGHT - mScreenBrightnessDim);
-        brightness = (paramInt*range)/SEEK_BAR_RANGE + mScreenBrightnessDim;
-        mCurBrightness =(int) brightness;*/
+
+		/*
+		 * float brightness = 0;
+		 * 
+		 * int range = (MAXIMUM_BACKLIGHT - mScreenBrightnessDim); brightness =
+		 * (paramInt*range)/SEEK_BAR_RANGE + mScreenBrightnessDim;
+		 * mCurBrightness =(int) brightness;
+		 */
 		float brightness = (float) paramInt / MAXIMUM_BRIGHTNESS;
-		lp.screenBrightness = (float) paramInt / MAXIMUM_BRIGHTNESS;;
-		System.out.println(mBrightness+"-------------------------------------------"+brightness);
+		lp.screenBrightness = (float) paramInt / MAXIMUM_BRIGHTNESS;
+		;
+		System.out.println(mBrightness
+				+ "-------------------------------------------" + brightness);
 		getWindow().setAttributes(lp);
 	}
 
@@ -124,26 +129,29 @@ public class BrightnessTestActivity extends Activity {
 						delay = 500;
 					}
 				}
-                try {
-                    //IPowerManager power = IPowerManager.Stub.asInterface(
-                    //        ServiceManager.getService("power"));
-					PowerManager power = (PowerManager) mContext.getSystemService(Context.POWER_SERVICE);
-                    if (power != null) {
-                        power.setBacklightBrightness(mBrightness);
-                    }
-                } catch (Exception doe) {
+				try {
+					// IPowerManager power = IPowerManager.Stub.asInterface(
+					// ServiceManager.getService("power"));
+					PowerManager power = (PowerManager) mContext
+							.getSystemService(Context.POWER_SERVICE);
+					if (power != null) {
+						power.setBacklightBrightness(mBrightness);
+					}
+				} catch (Exception doe) {
 				}
-				float brightness = mBrightness*100;
-				
-		         brightness = (brightness - mScreenBrightnessDim)
-		                / (MAXIMUM_BACKLIGHT - mScreenBrightnessDim);
-		     
-		         brightness =(int)(brightness*SEEK_BAR_RANGE);
-		         System.out.println("------------SEEK_BAR_RANGE-------------------"+mBrightness);
+				float brightness = mBrightness * 100;
+
+				brightness = (brightness - mScreenBrightnessDim)
+						/ (MAXIMUM_BACKLIGHT - mScreenBrightnessDim);
+
+				brightness = (int) (brightness * SEEK_BAR_RANGE);
+				System.out
+						.println("------------SEEK_BAR_RANGE-------------------"
+								+ mBrightness);
 				progressBar.setProgress(mBrightness);
 				progressText.setText(mBrightness + "/255");
-				//setBrightness(mBrightness);
-				
+				// setBrightness(mBrightness);
+
 				sendEmptyMessageDelayed(MSG_TEST_BRIGHTNESS, delay);
 
 			}

@@ -24,56 +24,56 @@ package com.DeviceTest;
  * @version 1.0
  */
 public interface SatelliteDataProvider {
-    // !!== Enlarge maxSatellites from 15 to 24 for AGPS usage ==
-    // !!== Enlarge maxSatellites from 24 to max for multi-GNSS ==
-    int MAX_SATELLITES_NUMBER = 256;
-    int SATELLITES_MASK_SIZE = 8;
-    int SATELLITES_MASK_BIT_WIDTH = 32;
+	// !!== Enlarge maxSatellites from 15 to 24 for AGPS usage ==
+	// !!== Enlarge maxSatellites from 24 to max for multi-GNSS ==
+	int MAX_SATELLITES_NUMBER = 256;
+	int SATELLITES_MASK_SIZE = 8;
+	int SATELLITES_MASK_BIT_WIDTH = 32;
 
-    /**
-     * Set satellite status data
-     * 
-     * @param svCount
-     *            Current satellites count
-     * @param prns
-     *            All of the satellites' PRN
-     * @param snrs
-     *            All of the satellites' SNR
-     * @param elevations
-     *            All of the satellites' elevation
-     * @param azimuths
-     *            All of the satellites' azimuth
-     * @param ephemerisMask
-     *            Ephemeris mask
-     * @param almanacMask
-     *            Almanac mask
-     * @param usedInFixMask
-     *            Used in fix
-     */
-    void setSatelliteStatus(int svCount, int[] prns, float[] snrs,
-            float[] elevations, float[] azimuths, int ephemerisMask,
-            int almanacMask, int[] usedInFixMask);
+	/**
+	 * Set satellite status data
+	 * 
+	 * @param svCount
+	 *            Current satellites count
+	 * @param prns
+	 *            All of the satellites' PRN
+	 * @param snrs
+	 *            All of the satellites' SNR
+	 * @param elevations
+	 *            All of the satellites' elevation
+	 * @param azimuths
+	 *            All of the satellites' azimuth
+	 * @param ephemerisMask
+	 *            Ephemeris mask
+	 * @param almanacMask
+	 *            Almanac mask
+	 * @param usedInFixMask
+	 *            Used in fix
+	 */
+	void setSatelliteStatus(int svCount, int[] prns, float[] snrs,
+			float[] elevations, float[] azimuths, int ephemerisMask,
+			int almanacMask, int[] usedInFixMask);
 
-    /**
-     * Get satellite status data
-     * 
-     * @param prns
-     *            All of the satellites' PRN
-     * @param snrs
-     *            All of the satellites' SNR
-     * @param elevations
-     *            All of the satellites' elevation
-     * @param azimuths
-     *            All of the satellites' azimuth
-     * @param ephemerisMask
-     *            Ephemeris mask
-     * @param almanacMask
-     *            Almanac mask
-     * @param usedInFixMask
-     *            Used in fix
-     * @return Satellites count
-     */
-    int getSatelliteStatus(int[] prns, float[] snrs, float[] elevations,
-            float[] azimuths, int ephemerisMask, int almanacMask,
-            int[] usedInFixMask);
+	/**
+	 * Get satellite status data
+	 * 
+	 * @param prns
+	 *            All of the satellites' PRN
+	 * @param snrs
+	 *            All of the satellites' SNR
+	 * @param elevations
+	 *            All of the satellites' elevation
+	 * @param azimuths
+	 *            All of the satellites' azimuth
+	 * @param ephemerisMask
+	 *            Ephemeris mask
+	 * @param almanacMask
+	 *            Almanac mask
+	 * @param usedInFixMask
+	 *            Used in fix
+	 * @return Satellites count
+	 */
+	int getSatelliteStatus(int[] prns, float[] snrs, float[] elevations,
+			float[] azimuths, int ephemerisMask, int almanacMask,
+			int[] usedInFixMask);
 };

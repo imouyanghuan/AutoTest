@@ -3,46 +3,30 @@ package com.DeviceTest;
 import static android.view.WindowManager.LayoutParams.FLAG_FULLSCREEN;
 import static android.view.WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 
 import com.DeviceTest.helper.ControlButtonUtil;
 import com.DeviceTest.helper.SystemUtil;
 import com.DeviceTest.helper.TestCase;
-import com.DeviceTest.helper.TestCase.RESULT;
 
 import android.app.Activity;
-import android.app.PendingIntent;
-import android.app.PendingIntent.CanceledException;
 import android.bluetooth.BluetoothAdapter;
 import android.content.Context;
-import android.content.Intent;
 import android.location.Criteria;
 import android.location.GpsSatellite;
 import android.location.GpsStatus;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
-import android.net.Uri;
 import android.net.wifi.WifiManager;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.Message;
-import android.os.SystemClock;
 import android.provider.Settings;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.Window;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.AdapterView.OnItemSelectedListener;
 
 public class GpsTestActivity extends Activity {
 	private static final String TAG = GpsTestActivity.class.getSimpleName();
@@ -125,21 +109,21 @@ public class GpsTestActivity extends Activity {
 			// TODO: handle exception
 		}
 		Criteria criteria = new Criteria();
-        criteria.setAccuracy(Criteria.ACCURACY_FINE); // 高精度
-        criteria.setAltitudeRequired(false);
-        criteria.setBearingRequired(false);
-        criteria.setCostAllowed(true);
-        criteria.setPowerRequirement(Criteria.POWER_LOW); // 低功耗
+		criteria.setAccuracy(Criteria.ACCURACY_FINE); // 高精度
+		criteria.setAltitudeRequired(false);
+		criteria.setBearingRequired(false);
+		criteria.setCostAllowed(true);
+		criteria.setPowerRequirement(Criteria.POWER_LOW); // 低功耗
 
-        String provider = mLocatManager.getBestProvider(criteria, true); // 获取GPS信息
-        Location location = mLocatManager.getLastKnownLocation(provider); // 通过GPS获取位置
-        updateToNewLocation(location);
-        // 设置监听器，自动更新的最小时间为间隔N秒(1秒为1*1000，这样写主要为了方便)或最小位移变化超过N米
-        mLocatManager.requestLocationUpdates(provider, 100 * 1000, 500,
-                locationListener);    
+		String provider = mLocatManager.getBestProvider(criteria, true); // 获取GPS信息
+		Location location = mLocatManager.getLastKnownLocation(provider); // 通过GPS获取位置
+		updateToNewLocation(location);
+		// 设置监听器，自动更新的最小时间为间隔N秒(1秒为1*1000，这样写主要为了方便)或最小位移变化超过N米
+		mLocatManager.requestLocationUpdates(provider, 100 * 1000, 500,
+				locationListener);
 		mLocatManager.addGpsStatusListener(this.statusListener);
-		//mLocatManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,
-		//		1000, 0, locationListener);
+		// mLocatManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,
+		// 1000, 0, locationListener);
 
 		ttffView = (TextView) findViewById(R.id.gpsTTFF);
 		cnView = (TextView) findViewById(R.id.gpsCN);
@@ -175,19 +159,21 @@ public class GpsTestActivity extends Activity {
 		}, 2000);
 
 	}
-private void updateToNewLocation(Location location) {
 
-    //TextView tv1;
-   // tv1 = (TextView) this.findViewById(R.id.tv1);
-    if (location != null) {
-        double  latitude = location.getLatitude();
-        double longitude= location.getLongitude();
-        Log.e("----------","维度：" +  latitude+ "\n经度" + longitude);
-    } else {
-        Log.e("----------","无法获取地理信息");
-    }
+	private void updateToNewLocation(Location location) {
 
-}
+		// TextView tv1;
+		// tv1 = (TextView) this.findViewById(R.id.tv1);
+		if (location != null) {
+			double latitude = location.getLatitude();
+			double longitude = location.getLongitude();
+			Log.e("----------", "维度：" + latitude + "\n经度" + longitude);
+		} else {
+			Log.e("----------", "无法获取地理信息");
+		}
+
+	}
+
 	LocationListener locationListener = new LocationListener() {
 
 		public void onStatusChanged(String provider, int status, Bundle extras) {

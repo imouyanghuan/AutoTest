@@ -34,7 +34,6 @@ public class MyGridView extends FrameLayout implements View.OnClickListener {
 		this.mColumn = column;
 	}
 
-	
 	protected void onLayout(boolean changed, int left, int top, int right,
 			int bottom) {
 		final int childCount = getChildCount();
@@ -66,7 +65,7 @@ public class MyGridView extends FrameLayout implements View.OnClickListener {
 	public void setOnItemClickListener(OnItemClickListener onItemClickListener) {
 		this.onItemClickListener = onItemClickListener;
 	}
-	
+
 	public void addView(View child, int index, ViewGroup.LayoutParams params) {
 		super.addView(child, index, params);
 		child.setOnClickListener(this);
@@ -76,7 +75,6 @@ public class MyGridView extends FrameLayout implements View.OnClickListener {
 		void onItemClick(ViewParent parent, View view, int position);
 	}
 
-	
 	public void onClick(View v) {
 		if (null == onItemClickListener) {
 			return;
@@ -89,12 +87,13 @@ public class MyGridView extends FrameLayout implements View.OnClickListener {
 				Log.d(TAG, "__________-----------onClick(),      i = " + i);
 				touchid = i;
 			}
-			if(((MyItemView)getChildAt(i)).getIsTouch()){
-				istouchchildcount ++;
+			if (((MyItemView) getChildAt(i)).getIsTouch()) {
+				istouchchildcount++;
 			}
 		}
-		Log.d(TAG, "__________-----------onClick(),  touchid = " + touchid + "     istouchchildcount = " + istouchchildcount);
-		if(touchid >= 0 && istouchchildcount == 0)
+		Log.d(TAG, "__________-----------onClick(),  touchid = " + touchid
+				+ "     istouchchildcount = " + istouchchildcount);
+		if (touchid >= 0 && istouchchildcount == 0)
 			onItemClickListener.onItemClick(this, v, touchid);
 	}
 }

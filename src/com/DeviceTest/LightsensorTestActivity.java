@@ -31,15 +31,16 @@ public class LightsensorTestActivity extends Activity {
 	private SensorEventListener lsn = null;
 	private Button mPassBtn;
 	boolean isSensorChanged = false;
-	
+
 	protected void onCreate(Bundle paramBundle) {
 		super.onCreate(paramBundle);
 		DeviceTest.lockScreenOrientation(this);
 		setTitle(getTitle() + "----("
-				+ getIntent().getStringExtra(DeviceTest.EXTRA_TEST_PROGRESS) + ")");
-		//requestWindowFeature(Window.FEATURE_NO_TITLE);
+				+ getIntent().getStringExtra(DeviceTest.EXTRA_TEST_PROGRESS)
+				+ ")");
+		// requestWindowFeature(Window.FEATURE_NO_TITLE);
 		getWindow().addFlags(FLAG_FULLSCREEN | FLAG_KEEP_SCREEN_ON);
-		
+
 		setContentView(R.layout.lightsensortest);
 		ControlButtonUtil.initControlButtonView(this);
 		mPassBtn = (Button) findViewById(R.id.btn_Pass);
@@ -47,26 +48,24 @@ public class LightsensorTestActivity extends Activity {
 		mPassBtn.setVisibility(View.INVISIBLE);
 	}
 
-	
 	protected void onResume() {
 		super.onResume();
 
 		lsn = new SensorEventListener() {
 			public void onAccuracyChanged(Sensor sensor, int accuracy) {
 				// TODO Auto-generated method stub
-				
+
 			}
 
 			public void onSensorChanged(SensorEvent e) {
-				if(isSensorChanged)
+				if (isSensorChanged)
 					mPassBtn.setVisibility(View.VISIBLE);
-				
-				
+
 				switch (e.sensor.getType()) {
 				// Type Light
 				case Sensor.TYPE_LIGHT: {
 					isSensorChanged = true;
-					
+
 					TextView subTitle = (TextView) findViewById(R.id.Light);
 					subTitle.setTextColor(android.graphics.Color.RED);
 
@@ -115,7 +114,7 @@ public class LightsensorTestActivity extends Activity {
 	}
 
 	//
-	
+
 	protected void onStop() {
 		super.onStop();
 		sensorManager.unregisterListener(lsn);

@@ -14,7 +14,6 @@ import android.os.StatFs;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
-import android.view.Window;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
@@ -25,13 +24,14 @@ import com.DeviceTest.helper.VUMeter;
 
 /**
  * 录音测试
+ * 
  * @author zzp
- *
+ * 
  */
-public class PhoneMicTestActivity extends Activity implements OnClickListener{
+public class PhoneMicTestActivity extends Activity implements OnClickListener {
 	private static final String TAG = PhoneMicTestActivity.class
 			.getSimpleName();
-	
+
 	private final static String ERRMSG = "Record error";
 	private final static int RECORD_TIME = 2;
 	private static final int MSG_TEST_MIC_ING = 8738;
@@ -61,8 +61,9 @@ public class PhoneMicTestActivity extends Activity implements OnClickListener{
 		DeviceTest.lockScreenOrientation(this);
 		// requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setTitle(getTitle() + "----("
-				+ getIntent().getStringExtra(DeviceTest.EXTRA_TEST_PROGRESS) + ")");
-		
+				+ getIntent().getStringExtra(DeviceTest.EXTRA_TEST_PROGRESS)
+				+ ")");
+
 		getWindow().addFlags(1152);
 		setContentView(R.layout.phonemictest);
 
@@ -71,12 +72,12 @@ public class PhoneMicTestActivity extends Activity implements OnClickListener{
 		this.mResult.setVisibility(View.VISIBLE);
 		this.mResult.setGravity(17);
 		ControlButtonUtil.initControlButtonView(this);
-		mBtnRetest = (Button)findViewById(R.id.btn_retest);
+		mBtnRetest = (Button) findViewById(R.id.btn_retest);
 		mBtnRetest.setOnClickListener(this);
 		mBtnRetest.setEnabled(false);
 		this.mRecorder = new Recorder();
 		this.mAudioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
-	    mVUMeter.setRecorder(mRecorder);
+		mVUMeter.setRecorder(mRecorder);
 	}
 
 	@Override
@@ -137,9 +138,8 @@ public class PhoneMicTestActivity extends Activity implements OnClickListener{
 				break;
 			}
 
-			
-		    mAudioManager.setStreamVolume(3, mOldVolume, 0);
-		      
+			mAudioManager.setStreamVolume(3, mOldVolume, 0);
+
 			if (mSpeakerOn) {
 				mAudioManager.setSpeakerphoneOn(false);
 
@@ -157,13 +157,12 @@ public class PhoneMicTestActivity extends Activity implements OnClickListener{
 	public boolean isSDcardHasSpace() {
 		File pathFile = android.os.Environment.getExternalStorageDirectory();
 		StatFs statfs;
-		try{
+		try {
 			statfs = new StatFs(pathFile.getPath());
-		}catch(Exception e){
+		} catch (Exception e) {
 			e.printStackTrace();
 			return false;
 		}
-		
 
 		if (statfs.getAvailableBlocks() > 1) {
 
@@ -182,7 +181,6 @@ public class PhoneMicTestActivity extends Activity implements OnClickListener{
 		@Override
 		public void handleMessage(Message msg) {
 
-			
 			switch (msg.what) {
 			default:
 			case MSG_TEST_MIC_START:
@@ -190,17 +188,15 @@ public class PhoneMicTestActivity extends Activity implements OnClickListener{
 				removeMessages(MSG_TEST_MIC_START);
 				mTimes = RECORD_TIME;
 
-				mResult.setText("  "+mTimes+" ");
+				mResult.setText("  " + mTimes + " ");
 				mRecorder.startRecording(3, ".amr");
 				sendEmptyMessageDelayed(MSG_TEST_MIC_ING, 1000L);
 				break;
 			case MSG_TEST_MIC_ING:
 
-				
-
 				if (mTimes > 0) {
 
-					mResult.setText("  "+mTimes+" ");
+					mResult.setText("  " + mTimes + " ");
 					mTimes--;
 					Log.i(TAG, "mTimes=" + mTimes);
 					sendEmptyMessageDelayed(MSG_TEST_MIC_ING, 1000L);
@@ -223,29 +219,29 @@ public class PhoneMicTestActivity extends Activity implements OnClickListener{
 				mBtnRetest.setEnabled(true);
 				break;
 			}
-			
+
 			mVUMeter.invalidate();
 		}
 
 	}
 
-    public void onClick(View v) {
-        switch (this.mRecorder.state()) {
+	public void onClick(View v) {
+		switch (this.mRecorder.state()) {
 
-            case Recorder.IDLE_STATE:
-                this.mRecorder.delete();
-                break;
-            case Recorder.PLAYING_STATE:
-                this.mRecorder.stop();
-                this.mRecorder.delete();
-                break;
-        }
-        mRecorder.stopPlayback();
-        mBtnRetest.setEnabled(false);
-        this.mHandler.sendEmptyMessage(MSG_TEST_MIC_START);
-        
-    }
-    
+		case Recorder.IDLE_STATE:
+			this.mRecorder.delete();
+			break;
+		case Recorder.PLAYING_STATE:
+			this.mRecorder.stop();
+			this.mRecorder.delete();
+			break;
+		}
+		mRecorder.stopPlayback();
+		mBtnRetest.setEnabled(false);
+		this.mHandler.sendEmptyMessage(MSG_TEST_MIC_START);
+
+	}
+
 	// 取消返回按钮
 	public boolean dispatchKeyEvent(KeyEvent event) {
 		if (event.getKeyCode() == KeyEvent.KEYCODE_BACK) {

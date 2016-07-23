@@ -5,15 +5,14 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 
-
-public class Prefs { //本地存储
-
+public class Prefs { // 本地存储
 
 	private SharedPreferences sharedPrefs = null;
-	final String PREFS_NAME="my_test";
+	final String PREFS_NAME = "my_test";
 
 	public Prefs(Context context) {
-		sharedPrefs = context.getSharedPreferences(PREFS_NAME, Activity.MODE_WORLD_WRITEABLE);  
+		sharedPrefs = context.getSharedPreferences(PREFS_NAME,
+				Activity.MODE_WORLD_WRITEABLE);
 
 	}
 
@@ -39,5 +38,4 @@ public class Prefs { //本地存储
 		e.commit();
 	}
 
-	
 }

@@ -3,7 +3,7 @@ package com.DeviceTest;
 import java.text.SimpleDateFormat;
 
 /**
- * @author benjaminwan 串口数据
+ * 串口数据
  */
 public class ComBean {
 	public byte[] bRec = null;

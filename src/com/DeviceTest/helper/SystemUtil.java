@@ -19,17 +19,20 @@ import android.util.Log;
 
 public class SystemUtil {
 	private static final String TAG = "SystemUtil";
+
 	public static int execShellCmdForStatue(String command) {
 		int status = -1;
 		try {
 			Process p = Runtime.getRuntime().exec(command);
-			BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(p.getInputStream()));
+			BufferedReader bufferedReader = new BufferedReader(
+					new InputStreamReader(p.getInputStream()));
 			String s = "";
-			while((s = bufferedReader.readLine()) != null){
+			while ((s = bufferedReader.readLine()) != null) {
 				Log.d(TAG, " >>>> " + s);
 			}
 			status = p.waitFor();
-			Log.d(TAG, " ________________----------- command: " + command + "    status = " + status);
+			Log.d(TAG, " ________________----------- command: " + command
+					+ "    status = " + status);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

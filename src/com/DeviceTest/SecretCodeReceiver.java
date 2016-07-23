@@ -1,6 +1,5 @@
 package com.DeviceTest;
 
-
 import android.content.BroadcastReceiver;
 import android.content.ComponentName;
 import android.content.ContentResolver;
@@ -22,19 +21,18 @@ public class SecretCodeReceiver extends BroadcastReceiver {
 	public void onReceive(Context context, Intent intent) {
 		mContext = context;
 		mContentResolver = context.getContentResolver();
-		//mLockPatternUtils = new LockPatternUtils(mContext);
+		// mLockPatternUtils = new LockPatternUtils(mContext);
 		String action = intent.getAction();
 
 		Log.e("", "SecretCodeReceiver ---------------> action : " + action);
-		if (intent.getAction().equals(SECRET_CODE_ACTION)) {  
+		if (intent.getAction().equals(SECRET_CODE_ACTION)) {
 
-			Intent i = new Intent(Intent.ACTION_MAIN);  
-			i.setClass(context, DeviceTest.class);  
+			Intent i = new Intent(Intent.ACTION_MAIN);
+			i.setClass(context, DeviceTest.class);
 			i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-			context.startActivity(i);  
+			context.startActivity(i);
 
 		}
 	}
-
 
 }

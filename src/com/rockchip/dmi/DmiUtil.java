@@ -14,12 +14,12 @@ public class DmiUtil {
 
 	public static DmiInfo getDmiInfo(Context context, boolean regain) {
 		DmiInfo dmiInfo = null;
-		
+
 		// use the cached infos.
 		if (!regain) {
 			dmiInfo = DmiInfo.getInstance();
 		}
-		
+
 		// try to get infos.
 		if (null == dmiInfo) {
 			// enable wifi to get the mac addr.
@@ -29,10 +29,10 @@ public class DmiUtil {
 			if (!wifiEnabled) {
 				wifiManager.setWifiEnabled(true);
 			}
-			
+
 			SystemClock.sleep(500);
 			dmiInfo = DmiInfo.getInstance(getdmi());
-			
+
 			if (!wifiEnabled) {
 				wifiManager.setWifiEnabled(false);
 			}

@@ -3,8 +3,6 @@ package com.DeviceTest;
 import static android.view.WindowManager.LayoutParams.FLAG_FULLSCREEN;
 import static android.view.WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON;
 
-import java.util.List;
-
 import com.DeviceTest.helper.ControlButtonUtil;
 
 import android.app.Activity;
@@ -17,17 +15,9 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.KeyEvent;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.DeviceTest.view.*;
-/**
- * @author LanBinYuan
- * @date 2011-06-11
- * 
- */
 
 public class GyroscopeTestActivity extends Activity {
 	/** Called when the activity is first created. */
@@ -35,51 +25,52 @@ public class GyroscopeTestActivity extends Activity {
 	private SensorEventListener lsn = null;
 	private TouchSurfaceView mGLSurfaceView;
 	private float x;
-	  private float y;
-	  private float z = 0.0F;
-	  int i = 0;
+	private float y;
+	private float z = 0.0F;
+	int i = 0;
+
 	protected void onCreate(Bundle paramBundle) {
 		super.onCreate(paramBundle);
 		DeviceTest.lockScreenOrientation(this);
 
 		setTitle(getTitle() + "----("
-				+ getIntent().getStringExtra(DeviceTest.EXTRA_TEST_PROGRESS) + ")");
-		//requestWindowFeature(Window.FEATURE_NO_TITLE);
+				+ getIntent().getStringExtra(DeviceTest.EXTRA_TEST_PROGRESS)
+				+ ")");
+		// requestWindowFeature(Window.FEATURE_NO_TITLE);
 		getWindow().addFlags(FLAG_FULLSCREEN | FLAG_KEEP_SCREEN_ON);
-		
+
 		setContentView(R.layout.gyroscopetest);
 		ControlButtonUtil.initControlButtonView(this);
 		sensorManager = (SensorManager) this.getSystemService(SENSOR_SERVICE);
 		this.mGLSurfaceView = new TouchSurfaceView(this);
-		//setContentView(this.mGLSurfaceView);
-	    
-	   // AdView localAdView = new AdView(this);
-	    //localAdView.setVerticalGravity(80);
-	   // localRelativeLayout.addView(localAdView, localLayoutParams);
-//	    addContentView(localRelativeLayout, new WindowManager.LayoutParams(-1, -2));
-	    RelativeLayout layout2 = (RelativeLayout)findViewById(R.id.relativeLayout2);
-	    RelativeLayout.LayoutParams params2 = new RelativeLayout.LayoutParams(
-                RelativeLayout.LayoutParams.WRAP_CONTENT,
-                RelativeLayout.LayoutParams.WRAP_CONTENT);
-	    params2.addRule(RelativeLayout.CENTER_HORIZONTAL);
-	    layout2.setGravity(Gravity.BOTTOM);
-	    layout2.addView(mGLSurfaceView, params2);
-	   // LayoutInflater.from(this).inflate(R.xml.control_buttons, get);
-	    this.mGLSurfaceView.requestFocus();
-	    this.mGLSurfaceView.setFocusableInTouchMode(true);
+		// setContentView(this.mGLSurfaceView);
+
+		// AdView localAdView = new AdView(this);
+		// localAdView.setVerticalGravity(80);
+		// localRelativeLayout.addView(localAdView, localLayoutParams);
+		// addContentView(localRelativeLayout, new
+		// WindowManager.LayoutParams(-1, -2));
+		RelativeLayout layout2 = (RelativeLayout) findViewById(R.id.relativeLayout2);
+		RelativeLayout.LayoutParams params2 = new RelativeLayout.LayoutParams(
+				RelativeLayout.LayoutParams.WRAP_CONTENT,
+				RelativeLayout.LayoutParams.WRAP_CONTENT);
+		params2.addRule(RelativeLayout.CENTER_HORIZONTAL);
+		layout2.setGravity(Gravity.BOTTOM);
+		layout2.addView(mGLSurfaceView, params2);
+		// LayoutInflater.from(this).inflate(R.xml.control_buttons, get);
+		this.mGLSurfaceView.requestFocus();
+		this.mGLSurfaceView.setFocusableInTouchMode(true);
 	}
-	
 
-    @Override
-    protected void onPause() {
-        // Ideally a game should implement onResume() and onPause()
-        // to take appropriate action when the activity looses focus
-        super.onPause();
-        mGLSurfaceView.onPause();
-        this.sensorManager.unregisterListener(lsn);
-    }
+	@Override
+	protected void onPause() {
+		// Ideally a game should implement onResume() and onPause()
+		// to take appropriate action when the activity looses focus
+		super.onPause();
+		mGLSurfaceView.onPause();
+		this.sensorManager.unregisterListener(lsn);
+	}
 
-	
 	protected void onResume() {
 		super.onResume();
 
@@ -126,23 +117,22 @@ public class GyroscopeTestActivity extends Activity {
 				text3.setText(" 	z:"
 						+ String.valueOf(e.values[SensorManager.DATA_Z]));
 				text3.setTextColor(android.graphics.Color.GREEN);
-				
-			    y += e.values[0];
-			    x += e.values[1];
-			    z += e.values[2];
-			    mGLSurfaceView.updateGyro(x, y, z);
-			   
-			    int j = i;
-			    i = (j + 1);
-			    if (j % 50 != 0)
-			      return;
-			    Log.i("gyro", "x=" + x + " y=" +y + " z=" + z);
+
+				y += e.values[0];
+				x += e.values[1];
+				z += e.values[2];
+				mGLSurfaceView.updateGyro(x, y, z);
+
+				int j = i;
+				i = (j + 1);
+				if (j % 50 != 0)
+					return;
+				Log.i("gyro", "x=" + x + " y=" + y + " z=" + z);
 			}
 
 		};
 
-		Sensor sensors = sensorManager
-				.getDefaultSensor(Sensor.TYPE_GYROSCOPE);
+		Sensor sensors = sensorManager.getDefaultSensor(Sensor.TYPE_GYROSCOPE);
 
 		sensorManager.registerListener(lsn, sensors,
 				SensorManager.SENSOR_DELAY_NORMAL);
@@ -150,7 +140,7 @@ public class GyroscopeTestActivity extends Activity {
 	}
 
 	//
-	
+
 	protected void onStop() {
 		super.onStop();
 		sensorManager.unregisterListener(lsn);
