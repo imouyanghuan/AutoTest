@@ -63,7 +63,7 @@
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.LAUNCHER" />
                
-            </intent-filter>
+            </intent-filter>
             -->
         </activity>
         <activity
@@ -617,7 +617,8 @@
 
                 <data
                     android:host="86"
-                    android:scheme="android_secret_code" /> <!-- *#*#86#*#* -->
+                    android:scheme="android_secret_code" />
+ <!-- *#*#86#*#* -->
             </intent-filter>
         </receiver>
 
