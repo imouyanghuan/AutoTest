@@ -34,9 +34,9 @@ import com.DeviceTest.helper.ControlButtonUtil;
 import android.os.SystemProperties;
 
 import android.text.TextUtils;
-import com.mediatek.common.featureoption.FeatureOption;
+//import com.mediatek.common.featureoption.FeatureOption;
 //chang by xinw
-import com.mediatek.common.telephony.ITelephonyEx;
+//import com.mediatek.common.telephony.ITelephonyEx;
 import android.os.ServiceManager;
 import android.os.IBinder;
 
@@ -139,17 +139,17 @@ public class VersionTestActivity extends Activity {
 		// chang by xinw
 		String sn = "";
 		String barcode_string = "";
-		try {
-			ITelephonyEx mTelEx = ITelephonyEx.Stub
-					.asInterface(android.os.ServiceManager
-							.getService("phoneEx"));
-			sn = mTelEx.getSerialNumber();
+//		try {
+			// ITelephonyEx mTelEx = ITelephonyEx.Stub
+			// .asInterface(android.os.ServiceManager
+			// .getService("phoneEx"));
+			// sn = mTelEx.getSerialNumber();
 			// String sn = Build.SERIAL;
 			barcode_string = sn;
 			Log.i("xinw", "sn:" + sn);
 			Log.i("xinw", "barcode_string:" + barcode_string);
-		} catch (RemoteException e) {
-		}
+//		} catch (RemoteException e) {
+//		}
 		// ///////////////////////////////////////////////////////////////////////
 		snVersion.setText(sn);// tm.getSN());
 		/*
@@ -161,8 +161,8 @@ public class VersionTestActivity extends Activity {
 		 * (NullPointerException ex) { }
 		 */
 
-		Log.v("",
-				">>>>>>>>>>>>>>>>>>> TelephonyManager  getSN :  " + tm.getSN());
+//		Log.v("",
+//				">>>>>>>>>>>>>>>>>>> TelephonyManager  getSN :  " + tm.getSN());
 
 		String barcode = barcode_string;// tm.getSN();
 		if (null != barcode) {
@@ -185,13 +185,13 @@ public class VersionTestActivity extends Activity {
 		return version;
 	}
 
-	private String getSN() {
-		PhoneFactory.makeDefaultPhones(this);
-		// Get the default phone
-		phone = PhoneFactory.getDefaultPhone();
-
-		return phone.getSN();
-	}
+//	private String getSN() {
+//		PhoneFactory.makeDefaultPhones(this);
+//		// Get the default phone
+//		phone = PhoneFactory.getDefaultPhone();
+//
+//		return phone.getSN();
+//	}
 
 	private ITelephony getITelephony() {
 		return ITelephony.Stub.asInterface(ServiceManager
@@ -273,16 +273,16 @@ public class VersionTestActivity extends Activity {
 		imeivalue += "0";
 
 		// String imeiString[] = { "AT+EGMR=1,", "" };
-		if (FeatureOption.MTK_GEMINI_SUPPORT) {
-			int simId = mPhone.getMySimId();
-			if (simId == PhoneConstants.GEMINI_SIM_1) {
-				imeiString[0] = "AT+EGMR=1,7,\"" + imeivalue + "\"";
-			} else if (simId == PhoneConstants.GEMINI_SIM_2) {
-				imeiString[0] = "AT+EGMR=1,10,\"" + imeivalue + "\"";
-			}
-		} else {
-			imeiString[0] = "AT+EGMR=1,7,\"" + imeivalue + "\"";
-		}
+		// if (FeatureOption.MTK_GEMINI_SUPPORT) {
+		// int simId = mPhone.getMySimId();
+		// if (simId == PhoneConstants.GEMINI_SIM_1) {
+		// imeiString[0] = "AT+EGMR=1,7,\"" + imeivalue + "\"";
+		// } else if (simId == PhoneConstants.GEMINI_SIM_2) {
+		// imeiString[0] = "AT+EGMR=1,10,\"" + imeivalue + "\"";
+		// }
+		// } else {
+		// imeiString[0] = "AT+EGMR=1,7,\"" + imeivalue + "\"";
+		// }
 		Log.v("ZZP", "IMEI String:" + imeiString[0] + imeiString[1]);
 		return imeiString;
 	}

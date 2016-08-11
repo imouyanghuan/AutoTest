@@ -23,19 +23,19 @@ import android.widget.Toast;
 
 import com.DeviceTest.helper.ControlButtonUtil;
 import com.android.internal.telephony.PhoneFactory;
-import com.android.internal.telephony.gemini.GeminiNetworkSubUtil;
-import com.android.internal.telephony.gemini.GeminiPhone;
+//import com.android.internal.telephony.gemini.GeminiNetworkSubUtil;
+//import com.android.internal.telephony.gemini.GeminiPhone;
 import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.PhoneConstants;
 import com.android.internal.telephony.PhoneStateIntentReceiver;
-import static android.provider.Telephony.Intents.EXTRA_PLMN;
-import static android.provider.Telephony.Intents.EXTRA_SHOW_PLMN;
-import static android.provider.Telephony.Intents.EXTRA_SHOW_SPN;
-import static android.provider.Telephony.Intents.EXTRA_SPN;
-import static android.provider.Telephony.Intents.SPN_STRINGS_UPDATED_ACTION;
+//import static android.provider.Telephony.Intents.EXTRA_PLMN;
+//import static android.provider.Telephony.Intents.EXTRA_SHOW_PLMN;
+//import static android.provider.Telephony.Intents.EXTRA_SHOW_SPN;
+//import static android.provider.Telephony.Intents.EXTRA_SPN;
+//import static android.provider.Telephony.Intents.SPN_STRINGS_UPDATED_ACTION;
 
 import android.preference.Preference;
-import android.provider.Telephony.SIMInfo;
+//import android.provider.Telephony.SIMInfo;
 import android.telephony.PhoneNumberUtils;
 import android.telephony.ServiceState;
 
@@ -173,7 +173,7 @@ public class SignalStatusActivity extends Activity {
 
 		IntentFilter filter = new IntentFilter();
 		filter.addAction(Intent.ACTION_BATTERY_CHANGED);
-		filter.addAction(SPN_STRINGS_UPDATED_ACTION);
+//		filter.addAction(SPN_STRINGS_UPDATED_ACTION);
 		registerReceiver(mBatteryInfoReceiver, filter);
 		mHandler.sendEmptyMessage(EVENT_UPDATE_STATS);
 	}
@@ -353,40 +353,41 @@ public class SignalStatusActivity extends Activity {
 				// mBatteryLevel.setSummary(Utils.getBatteryPercentage(intent));
 				// mBatteryStatus.setSummary(Utils.getBatteryStatus(getResources(),
 				// intent));
-			} else if (SPN_STRINGS_UPDATED_ACTION.equals(action)) {
+			} 
+//			else if (SPN_STRINGS_UPDATED_ACTION.equals(action)) {
 
-				String operatorName = null;
-				String plmn = null;
-				String spn = null;
-				if (intent.getBooleanExtra(EXTRA_SHOW_PLMN, false)) {
-
-					plmn = intent.getStringExtra(EXTRA_PLMN);
-					if (plmn != null) {
-						operatorName = plmn;
-					}
-					Log.v(TAG, ">>>>>>>>>>> EXTRA_SHOW_PLMN plmn != null: "
-							+ (plmn != null));
-				}
-				if (intent.getBooleanExtra(EXTRA_SHOW_SPN, false)) {
-					spn = intent.getStringExtra(EXTRA_SPN);
-					if (spn != null) {
-						operatorName = spn;
-					}
-					Log.v(TAG, ">>>>>>>>>>> EXTRA_SHOW_PLMN spn != null: "
-							+ (spn != null));
-				}
-				Log.v(TAG, ">>>>>>>>>>> operatorName : " + operatorName);
-				if (operatorName != null) {
-					networkTV.setVisibility(View.VISIBLE);
-					networkTV.setText(getString(R.string.status_operator)
-							+ " : " + operatorName);
-				} else
-					networkTV.setVisibility(View.GONE);
-				// Preference p = findPreference(KEY_OPERATOR_NAME);
-				// if (p != null) {
-				// mExt.updateOpNameFromRec(p,operatorName);
-				// }
-			}
+//				String operatorName = null;
+//				String plmn = null;
+//				String spn = null;
+//				if (intent.getBooleanExtra(EXTRA_SHOW_PLMN, false)) {
+//
+//					plmn = intent.getStringExtra(EXTRA_PLMN);
+//					if (plmn != null) {
+//						operatorName = plmn;
+//					}
+//					Log.v(TAG, ">>>>>>>>>>> EXTRA_SHOW_PLMN plmn != null: "
+//							+ (plmn != null));
+//				}
+//				if (intent.getBooleanExtra(EXTRA_SHOW_SPN, false)) {
+//					spn = intent.getStringExtra(EXTRA_SPN);
+//					if (spn != null) {
+//						operatorName = spn;
+//					}
+//					Log.v(TAG, ">>>>>>>>>>> EXTRA_SHOW_PLMN spn != null: "
+//							+ (spn != null));
+//				}
+//				Log.v(TAG, ">>>>>>>>>>> operatorName : " + operatorName);
+//				if (operatorName != null) {
+//					networkTV.setVisibility(View.VISIBLE);
+//					networkTV.setText(getString(R.string.status_operator)
+//							+ " : " + operatorName);
+//				} else
+//					networkTV.setVisibility(View.GONE);
+//				// Preference p = findPreference(KEY_OPERATOR_NAME);
+//				// if (p != null) {
+//				// mExt.updateOpNameFromRec(p,operatorName);
+//				// }
+//			}
 		}
 	};
 

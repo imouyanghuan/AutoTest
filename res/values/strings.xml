@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">设备测试工具</string>
+    <string name="app_name">AutoTest</string>
     <string name="SpeakerTitle">扬声器测试</string>
     <string name="SpeakerContent">是否听到声音?</string>
     <string name="Left">左</string>
