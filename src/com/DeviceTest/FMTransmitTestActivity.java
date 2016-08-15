@@ -3,39 +3,20 @@ package com.DeviceTest;
 import static android.view.WindowManager.LayoutParams.FLAG_FULLSCREEN;
 import static android.view.WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON;
 
-import java.io.BufferedOutputStream;
-import java.io.BufferedWriter;
-import java.io.DataInputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.FileReader;
 import java.io.IOException;
-import java.io.OutputStreamWriter;
 
 import com.DeviceTest.helper.ControlButtonUtil;
-import com.DeviceTest.helper.SystemUtil;
-import com.rockchip.newton.UserModeManager;
 
-import android.R.integer;
 import android.app.Activity;
 import android.content.BroadcastReceiver;
-import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.content.res.AssetFileDescriptor;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
-import android.os.BatteryManager;
 import android.os.Bundle;
-import android.os.PowerManager;
 import android.provider.Settings;
 import android.text.Html;
-import android.util.Log;
 import android.view.KeyEvent;
-import android.view.View;
-import android.view.Window;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.SeekBar.OnSeekBarChangeListener;
@@ -45,7 +26,6 @@ public class FMTransmitTestActivity extends Activity {
 	private BroadcastReceiver mBatteryInfoReceiver;
 	TextView textFrequency;
 	TextView mVoltage;
-	TextView mCurrent;
 	TextView mCapacity;
 	TextView mPlug;
 	private static final String CURRENT_PATH = "/sys/class/power_supply/*battery/current_now";
@@ -78,7 +58,6 @@ public class FMTransmitTestActivity extends Activity {
 
 		this.textFrequency = (TextView) findViewById(R.id.textFrequency);
 		this.mVoltage = (TextView) findViewById(R.id.voltageText);
-		this.mCurrent = (TextView) findViewById(R.id.currentText);
 		this.mCapacity = (TextView) findViewById(R.id.capacityText);
 		this.mPlug = (TextView) findViewById(R.id.plugText);
 
@@ -90,18 +69,21 @@ public class FMTransmitTestActivity extends Activity {
 		// 875-1080
 		// 0- 205
 		fmSeekBar.setMax(205);
-		int nowFrequency = SettingUtil.getFmFrequceny(this);
+		int nowFrequency = SettingUtil.getFmFrequencyConfig(this);
 		fmSeekBar.setProgress(nowFrequency / 10 - 875);
 
 		textFrequency.setText(Html
 				.fromHtml(getString(R.string.transmit_frequency) + ":"
 						+ "<font color=yellow>" + nowFrequency / 100.0f
-						+ "</font>" + " MHz"));
+						+ "</font>" + " MHz"
+						+ getString(R.string.open_fm_and_test)));
 
 		fmSeekBar.setOnSeekBarChangeListener(new OnSeekBarChangeListener() {
 			@Override
 			public void onStopTrackingTouch(SeekBar seekBar) {
-				SettingUtil.setFmFrequency(getApplicationContext(),
+				SettingUtil.setFmFrequencyNode(getApplicationContext(),
+						(seekBar.getProgress() + 875) * 10);
+				SettingUtil.setFmFrequencyConfig(getApplicationContext(),
 						(seekBar.getProgress() + 875) * 10);
 			}
 
@@ -118,7 +100,7 @@ public class FMTransmitTestActivity extends Activity {
 				textFrequency.setText(Html
 						.fromHtml(getString(R.string.transmit_frequency) + ":"
 								+ "<font color=yellow>" + frequency + "</font>"
-								+ " MHz"));
+								+ " MHz" + getString(R.string.open_fm_and_test)));
 			}
 		});
 
@@ -129,18 +111,18 @@ public class FMTransmitTestActivity extends Activity {
 	 */
 	private void initialFmTransmit() {
 		try {
-			int freq = SettingUtil.getFmFrequceny(this);
+			int freq = SettingUtil.getFmFrequencyConfig(this);
 
 			if (freq >= 8750 && freq <= 10800) {
-				SettingUtil.setFmFrequency(this, freq);
+				SettingUtil.setFmFrequencyNode(this, freq);
 			} else {
-				SettingUtil.setFmFrequency(this, 8750);
-				freq = 8750;
+				SettingUtil.setFmFrequencyNode(this, 9600);
+				freq = 9600;
 			}
 			textFrequency.setText(Html
 					.fromHtml(getString(R.string.transmit_frequency) + ":"
 							+ "<font color=yellow>" + freq / 100.0f + "</font>"
-							+ " MHz"));
+							+ " MHz" + getString(R.string.open_fm_and_test)));
 
 			openFmTransmit(true);
 
@@ -154,8 +136,8 @@ public class FMTransmitTestActivity extends Activity {
 		SettingUtil.SaveFileToNode(SettingUtil.nodeFmEnable, (isOpen ? "1"
 				: "0"));
 
-		sendBroadcast(new Intent(isOpen ? "com.tchip.FM_OPEN_CARLAUNCHER"
-				: "com.tchip.FM_CLOSE_CARLAUNCHER"));
+		sendBroadcast(new Intent(isOpen ? "tchip.intent.action.FM_ON"
+				: "tchip.intent.action.FM_OFF"));
 	}
 
 	private AudioManager mAudioManager;
@@ -173,13 +155,10 @@ public class FMTransmitTestActivity extends Activity {
 			mPlayer.prepare();
 			mPlayer.setLooping(true);
 		} catch (IllegalArgumentException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IllegalStateException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
@@ -190,14 +169,12 @@ public class FMTransmitTestActivity extends Activity {
 		this.mPlayer.start();
 
 		mVoltage.setText(getString(R.string.music_playing));
-		mCurrent.setText(getString(R.string.open_fm_and_test));
 	}
 
 	private void stopMediaPlayBack() {
 		Intent i = new Intent("com.android.music.musicservicecommand");
 		i.putExtra("command", "pause");
 		sendBroadcast(i);
-
 	}
 
 	protected void onResume() {

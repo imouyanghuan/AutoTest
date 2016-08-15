@@ -453,7 +453,7 @@
     <string name="title_fm_transmit">FM发射测试</string>
     <string name="transmit_frequency">当前发射频率</string>
     <string name="music_playing">正在播放:(左-男声:《单身情歌》 右-女声:《单眼皮女生》)</string>
-    <string name="open_fm_and_test">请将FM接收器调至以上频段进行收听</string>
+    <string name="open_fm_and_test">,请将FM接收器调至该频段收听</string>
     <string name="title_goc_bt">蓝牙测试(GocSdk.BT)</string>
     <string name="bt_test_hint">提示：请在测试点旁开启一台手机蓝牙设备(且对其他设备可见)</string>
     <string name="bt_scanning_with_result">测试通过，已扫描到%d台设备</string>

@@ -1,40 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
-    android:layout_height="80dp"
+    android:layout_height="@dimen/below_button_height"
     android:layout_alignParentBottom="true"
     android:layout_gravity="bottom"
-    android:orientation="horizontal"
-    android:background="#000000" >
-<Button
+    android:background="#000000"
+    android:orientation="horizontal" >
+
+    <Button
         android:id="@+id/btn_return"
         android:layout_width="0dip"
-        android:layout_height="80dp"
+        android:layout_height="match_parent"
         android:layout_weight="1.3"
-        android:textSize="22sp"
-        android:text="@string/btnreturnText" />
+        android:text="@string/btnreturnText"
+        android:textSize="22sp" />
     <Button
         android:id="@+id/btn_Pass"
         android:layout_width="0dip"
-        android:layout_height="80dp"
+        android:layout_height="match_parent"
         android:layout_weight="0.7"
-        android:textSize="22sp"
-        android:text="@string/btnPassText" />
-
+        android:text="@string/btnPassText"
+        android:textSize="22sp" />
     <Button
         android:id="@+id/btn_Fail"
         android:layout_width="0dip"
-        android:layout_height="80dp"
+        android:layout_height="match_parent"
         android:layout_weight="0.7"
-        android:textSize="22sp"
-        android:text="@string/btnFailText" />
-
+        android:text="@string/btnFailText"
+        android:textSize="22sp" />
     <Button
         android:id="@+id/btn_Skip"
         android:layout_width="0dip"
-        android:layout_height="80dp"
+        android:layout_height="match_parent"
         android:layout_weight="1.3"
-        android:textSize="22sp"
-        android:text="@string/btnSkipText" />
+        android:text="@string/btnSkipText"
+        android:textSize="22sp" />
 
 </LinearLayout>
