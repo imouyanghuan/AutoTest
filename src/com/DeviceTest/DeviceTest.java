@@ -147,7 +147,7 @@ public class DeviceTest extends Activity {
 		if (!InitTestData()) {
 			System.exit(-1);
 		}
-		this.setTitle("AutoTest");
+		this.setTitle(getResources().getString(R.string.app_name_cn));
 		mTestCases = xmldoc.mTestCases;
 		try {
 			loadData();

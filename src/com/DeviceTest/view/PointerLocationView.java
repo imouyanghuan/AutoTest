@@ -13,6 +13,8 @@ import android.widget.RelativeLayout;
 
 import java.util.ArrayList;
 
+import com.DeviceTest.R;
+
 public class PointerLocationView extends View implements OnTouchListener {
 	public static class PointerState {
 		private final ArrayList<Float> mXs = new ArrayList<Float>();
@@ -153,8 +155,9 @@ public class PointerLocationView extends View implements OnTouchListener {
 			if (onPointCountChangeListener != null) {
 				onPointCountChangeListener.onPointCountChange(mPointers.size());
 			}
-			canvas.drawText("Max Point:" + NP, getWidth() / 2, getHeight() / 2,
-					mTextPaint);
+			canvas.drawText(
+					getResources().getString(R.string.multi_point) + NP,
+					(getWidth() / 2) + 50, (getHeight() / 2) + 50, mTextPaint);
 
 			for (int p = 0; p < NP; p++) {
 				final PointerState ps = mPointers.get(p);

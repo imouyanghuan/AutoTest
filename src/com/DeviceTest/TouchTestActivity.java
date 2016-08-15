@@ -6,6 +6,7 @@ import com.DeviceTest.helper.ControlButtonUtil;
 import com.DeviceTest.view.PointerLocationView;
 import com.DeviceTest.view.PointerLocationView.OnPointCountChangeListener;
 import com.DeviceTest.view.TouchView;
+import com.DeviceTest.view.TouchView.OnRectangleChangeListener;
 
 import android.app.Activity;
 import android.graphics.Color;
@@ -18,11 +19,14 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.util.Log;
 
 public class TouchTestActivity extends Activity implements OnClickListener {
 	TextView mText;
 	TextView mTitle;
+
+	/** Multiple touch */
 	PointerLocationView mPointerView;
 	private Button passButton;
 
@@ -36,7 +40,7 @@ public class TouchTestActivity extends Activity implements OnClickListener {
 
 	public void onCreate(Bundle paramBundle) {
 		super.onCreate(paramBundle);
-		DeviceTest.lockScreenOrientation(this);
+		// DeviceTest.lockScreenOrientation(this);
 		setTitle(getTitle() + "----("
 				+ getIntent().getStringExtra(DeviceTest.EXTRA_TEST_PROGRESS)
 				+ ")");
@@ -46,7 +50,23 @@ public class TouchTestActivity extends Activity implements OnClickListener {
 		setContentView(R.layout.touchtest);
 
 		btns = (LinearLayout) findViewById(R.id.btns);
+		btns.setVisibility(View.GONE);
 		mTouchView = (TouchView) findViewById(R.id.touchview);
+		mTouchView
+				.setOnRectangleChangeListener(new OnRectangleChangeListener() {
+
+					@Override
+					public void onRectangleChange(int newRectangleCount) {
+						Log.v("AZ", "countTouchRectangle:" + newRectangleCount);
+						if (36 == newRectangleCount) { // Finish Rectangle Test,
+														// Jump to Multiple
+														// touch
+							testTouchcell.setVisibility(View.GONE);
+							testMaxpoint.setVisibility(View.VISIBLE);
+							btns.setVisibility(View.VISIBLE);
+						}
+					}
+				});
 		enterTestTouchcell = (Button) findViewById(R.id.enter_test_touchcell);
 		enterTestMaxpoint = (Button) findViewById(R.id.enter_test_maxpoint);
 		reset = (Button) findViewById(R.id.reset);
@@ -60,7 +80,6 @@ public class TouchTestActivity extends Activity implements OnClickListener {
 
 		mPointerView = (PointerLocationView) findViewById(R.id.pointerview);
 		mPointerView.setBackgroundColor(Color.TRANSPARENT);
-
 		mPointerView
 				.setOnPointCountChangeListener(new OnPointCountChangeListener() {
 
@@ -70,12 +89,22 @@ public class TouchTestActivity extends Activity implements OnClickListener {
 							// passButton.setVisibility(View.VISIBLE);
 							passButton.performClick();
 						}
+
+						if (newPointCount >= 5) {
+							Toast.makeText(
+									TouchTestActivity.this,
+									getResources().getString(
+											R.string.auto_touch_success),
+									Toast.LENGTH_SHORT).show();
+							ControlButtonUtil
+									.autoVerifyPass(TouchTestActivity.this);
+						}
 					}
 				});
 
 		ControlButtonUtil.initControlButtonView(this);
-		// passButton = (Button) findViewById(R.id.btn_Pass);
-		// passButton.setVisibility(View.INVISIBLE);
+		findViewById(R.id.btn_Pass).setVisibility(View.INVISIBLE);
+		findViewById(R.id.btn_Fail).setVisibility(View.INVISIBLE);
 	}
 
 	public boolean dispatchKeyEvent(KeyEvent event) {

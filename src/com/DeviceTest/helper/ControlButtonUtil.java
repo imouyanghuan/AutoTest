@@ -86,6 +86,30 @@ public class ControlButtonUtil {
 
 	}
 
+	public static void autoVerifyPass(Activity paramActivity) {
+		ControlButtonUtil.mActivity
+				.setResult(RESULT.OK.ordinal(), resultIntent);
+		if (ControlButtonUtil.mNotificationManager != null)
+			ControlButtonUtil.mNotificationManager.cancelAll();
+		if (mAction != null) {
+			Intent intent = new Intent(mAction);
+			ControlButtonUtil.mActivity.stopService(intent);
+		}
+		ControlButtonUtil.mActivity.finish();
+	}
+
+	public static void autoVerifyFail(Activity paramActivity) {
+		ControlButtonUtil.mActivity
+				.setResult(RESULT.NG.ordinal(), resultIntent);
+		if (ControlButtonUtil.mNotificationManager != null)
+			ControlButtonUtil.mNotificationManager.cancelAll();
+		if (mAction != null) {
+			Intent intent = new Intent(mAction);
+			ControlButtonUtil.mActivity.stopService(intent);
+		}
+		ControlButtonUtil.mActivity.finish();
+	}
+
 	//
 	// public static void back() {
 	// }

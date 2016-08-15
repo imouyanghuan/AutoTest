@@ -32,18 +32,18 @@
             android:layout_marginBottom="93dp"
             android:text="@string/EnterTesMaxPoint"
             android:textColor="@android:color/black"
-            android:textSize="24sp" />
+            android:textSize="24sp"
+            android:visibility="gone" />
 
         <Button
             android:id="@+id/reset"
-            android:layout_width="150dp"
-            android:layout_height="60dp"
-            android:layout_above="@+id/enter_test_maxpoint"
-            android:layout_centerHorizontal="true"
+            android:layout_width="80dp"
+            android:layout_height="40dp"
+            android:layout_centerInParent="true"
             android:layout_marginBottom="26dp"
             android:text="@string/Reset"
             android:textColor="@android:color/black"
-            android:textSize="24sp" />
+            android:textSize="18sp" />
     </RelativeLayout>
 
     <RelativeLayout
@@ -61,10 +61,10 @@
             android:id="@+id/TouchtextTitle"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="20dp"
             android:gravity="center_horizontal"
             android:text="@string/TouchtestTitle"
             android:textSize="30sp"
-            android:layout_margin="20dp"
             android:visibility="visible" />
 
         <TextView
@@ -82,8 +82,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/TouchInfoText"
-            android:visibility="gone"
-            android:paddingBottom="20dip" >
+            android:paddingBottom="20dip"
+            android:visibility="gone" >
 
             <TextView
                 android:id="@+id/TouchtextMsg"
@@ -102,7 +102,8 @@
             android:layout_alignParentRight="true"
             android:layout_marginBottom="150dp"
             android:layout_marginRight="30dp"
-            android:text="@string/EnterTesTouchcell" />
+            android:text="@string/EnterTesTouchcell"
+            android:visibility="gone" />
     </RelativeLayout>
 
     <include

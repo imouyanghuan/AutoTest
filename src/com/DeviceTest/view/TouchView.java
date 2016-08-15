@@ -120,6 +120,17 @@ public class TouchView extends View {
 		}
 	}
 
+	public interface OnRectangleChangeListener {
+		public void onRectangleChange(int newRectangleCount);
+	}
+
+	private OnRectangleChangeListener onRectangleChangeListener;
+
+	public void setOnRectangleChangeListener(
+			OnRectangleChangeListener onRectangleChangeListener) {
+		this.onRectangleChangeListener = onRectangleChangeListener;
+	}
+
 	public TouchView(Context context) {
 		super(context);
 		initView();
@@ -151,13 +162,18 @@ public class TouchView extends View {
 		if (mGrid == null)
 			return;
 
+		int countTouchRectangle = 0;
 		int state;
 		for (int gridY = 0; gridY < mGrid.getYNum(); gridY++) {
 			for (int gridX = 0; gridX < mGrid.getXNum(); gridX++) {
 				mGrid.setRect(gridX, gridY, mScratchRect);
 				state = mGrid.getState(gridX, gridY);
 				canvas.drawRect(mScratchRect, mPaint[state]);
+				countTouchRectangle = countTouchRectangle + state;
 			}
+		}
+		if (onRectangleChangeListener != null) {
+			onRectangleChangeListener.onRectangleChange(countTouchRectangle);
 		}
 	}
 
@@ -236,12 +252,12 @@ public class TouchView extends View {
 		case MotionEvent.ACTION_DOWN:
 			if (mGrid.setState(ev.getX(), ev.getY(), 1) == 0)
 				doInvalidate = true;
-			if (btns != null)
-				btns.setVisibility(View.GONE);
+			// if (btns != null)
+			// btns.setVisibility(View.GONE);
 			break;
 		case MotionEvent.ACTION_UP:
-			if (btns != null)
-				btns.setVisibility(View.VISIBLE);
+			// if (btns != null)
+			// btns.setVisibility(View.VISIBLE);
 			break;
 		default:
 			return false;

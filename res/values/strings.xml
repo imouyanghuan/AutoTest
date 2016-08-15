@@ -2,6 +2,7 @@
 <resources>
 
     <string name="app_name">AutoTest</string>
+    <string name="app_name_cn">设备测试</string>
     <string name="SpeakerTitle">扬声器测试</string>
     <string name="SpeakerContent">是否听到声音?</string>
     <string name="Left">左</string>
@@ -56,11 +57,6 @@
     <string name="SdCardFail">失败！找不到SD卡</string>
     <string name="SdCardFind">发现SD卡，容量大小 ： </string>
     <string name="SdCardAvailable"> , 可用空间 : </string>
-    <string name="TouchtestTitle">触屏测试</string>
-    <string name="TouchtestSubTitle">请先做单点滑动测试，再做多点测试</string>
-    <string name="EnterTesTouchcell">进入触屏格子</string>
-    <string name="EnterTesMaxPoint">进入多点测试</string>
-    <string name="Reset">重置</string>
     <string name="VersionTitle">版本测试</string>
     <string name="ClientVersion">客户版本号：</string>
     <string name="Firmwareversion">固件版本:</string>
@@ -488,5 +484,13 @@
     <string name="item_autonavi_copy">地图拷贝</string>
     <string name="autonavi_title">高德地图拷贝</string>
     <string name="autonavi_coping">正在拷贝地图数据，请稍候…</string>
+    <!-- TouchTest -->
+    <string name="multi_point">多点:</string>
+    <string name="auto_touch_success">触屏测试通过</string>
+    <string name="TouchtestTitle">触屏测试</string>
+    <string name="TouchtestSubTitle">多点测试(使用5个手指触摸屏幕)</string>
+    <string name="EnterTesTouchcell">进入触屏格子</string>
+    <string name="EnterTesMaxPoint">进入多点测试</string>
+    <string name="Reset">重置</string>
 
 </resources>
