@@ -5,13 +5,13 @@
     android:layout_height="fill_parent"
     android:orientation="vertical" >
 
-    <com.DeviceTest.SatelliteSkyView
+    <com.tchip.autotest.SatelliteSkyView
         android:id="@+id/sky_view"
         android:layout_width="match_parent"
         android:layout_height="fill_parent"
         android:layout_weight="1" />
 
-    <com.DeviceTest.SatelliteSignalView
+    <com.tchip.autotest.SatelliteSignalView
         android:id="@+id/signal_view"
         android:layout_width="match_parent"
         android:layout_height="fill_parent"

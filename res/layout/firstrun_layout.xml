@@ -1,308 +1,370 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent" 
-    android:orientation="vertical">
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
     <!-- firmeware version -->
-    <LinearLayout 
-        android:background="@drawable/per_bk"
+
+    <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="0dip"
         android:layout_weight="1"
-        android:orientation="horizontal">
-        <TextView 
+        android:background="@drawable/per_bk"
+        android:orientation="horizontal" >
+
+        <TextView
             android:id="@+id/product_name"
-            android:textColor="@android:color/white"
-            android:paddingLeft="20dip"
-            android:gravity="center_vertical"
             android:layout_width="0dip"
+            android:layout_height="fill_parent"
             android:layout_weight="1"
-            android:layout_height="fill_parent"/>
-        <TextView 
-            android:id="@+id/product_version"
-            android:textColor="@android:color/white"
+            android:gravity="center_vertical"
             android:paddingLeft="20dip"
+            android:textColor="@android:color/white" />
+
+        <TextView
+            android:id="@+id/product_version"
+            android:layout_width="0dip"
+            android:layout_height="fill_parent"
+            android:layout_weight="3"
             android:gravity="center_vertical"
             android:maxLines="1"
-            android:layout_width="0dip"
-            android:layout_weight="3"
-            android:layout_height="fill_parent"/>
-    </LinearLayout>    
-    
-    <!-- Storage inforamtion -->
-    <LinearLayout 
-        android:background="@drawable/per_bk"
-        android:layout_width="fill_parent"
-        android:layout_height="0dip"
-        android:layout_weight="1">
-        <TextView 
-            android:id="@+id/nand_storage"
-            android:textColor="@android:color/white"
             android:paddingLeft="20dip"
-            android:gravity="center_vertical"
-            android:layout_width="0dip"
-            android:layout_weight="1"
-            android:layout_height="fill_parent"/>
-        <TextView 
-            android:id="@+id/available_nand_storage"
-            android:textColor="@android:color/white"
-            android:paddingLeft="20dip"
-            android:gravity="center_vertical"
-            android:layout_width="0dip"
-            android:layout_weight="1"
-            android:layout_height="fill_parent"/>
+            android:textColor="@android:color/white" />
     </LinearLayout>
-    
-    <!-- wifi & sdcard & otg -->
-    <LinearLayout 
+
+    <!-- Storage inforamtion -->
+
+    <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="0dip"
-        android:layout_weight="2">
-        <com.DeviceTest.view.TestView 
-        	android:background="@drawable/per_bk"
+        android:layout_weight="1"
+        android:background="@drawable/per_bk" >
+
+        <TextView
+            android:id="@+id/nand_storage"
+            android:layout_width="0dip"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:paddingLeft="20dip"
+            android:textColor="@android:color/white" />
+
+        <TextView
+            android:id="@+id/available_nand_storage"
+            android:layout_width="0dip"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:paddingLeft="20dip"
+            android:textColor="@android:color/white" />
+    </LinearLayout>
+
+    <!-- wifi & sdcard & otg -->
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="0dip"
+        android:layout_weight="2" >
+
+        <com.tchip.autotest.view.TestView
             android:id="@+id/wifitestview"
             android:layout_width="0dip"
-            android:layout_weight="1"
             android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:background="@drawable/per_bk"
+            android:paddingLeft="20dip"
+            android:paddingTop="20dip"
+            android:text="@string/Wifitest"
             android:textColor="@android:color/white"
-        	android:paddingLeft="20dip"
-        	android:paddingTop="20dip"
-            android:textSize="22sp"
-            android:text="@string/Wifitest"/>
-        <com.DeviceTest.view.TestView 
-        	android:background="@drawable/per_bk"
+            android:textSize="22sp" />
+
+        <com.tchip.autotest.view.TestView
             android:id="@+id/sdcardtestview"
             android:layout_width="0dip"
-            android:layout_weight="1"
             android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:background="@drawable/per_bk"
+            android:paddingLeft="20dip"
+            android:paddingTop="20dip"
+            android:text="@string/SdCardTitle"
             android:textColor="@android:color/white"
-        	android:paddingLeft="20dip"
-        	android:paddingTop="20dip"
-            android:textSize="22sp"
-            android:text="@string/SdCardTitle"/>
-        <com.DeviceTest.view.TestView 
-        	android:background="@drawable/per_bk"
+            android:textSize="22sp" />
+
+        <com.tchip.autotest.view.TestView
             android:id="@+id/usbhosttestview"
             android:layout_width="0dip"
-            android:layout_weight="1"
             android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:background="@drawable/per_bk"
+            android:paddingLeft="20dip"
+            android:paddingTop="20dip"
+            android:text="@string/UsbHostTestTitle"
             android:textColor="@android:color/white"
-        	android:paddingLeft="20dip"
-        	android:paddingTop="20dip"
-            android:textSize="22sp"
-            android:text="@string/UsbHostTestTitle"/>
+            android:textSize="22sp" />
     </LinearLayout>
-    
-    <!--powerinformation & gsensor & camera -->
-    <LinearLayout 
+
+    <!-- powerinformation & gsensor & camera -->
+
+    <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="0dip"
         android:layout_weight="4"
-        android:orientation="horizontal">
+        android:orientation="horizontal" >
+
         <LinearLayout
-            android:orientation="vertical"
-        	android:background="@drawable/per_bk"
             android:layout_width="0dip"
+            android:layout_height="fill_parent"
             android:layout_weight="1"
-            android:layout_height="fill_parent">   
-			<TextView 
-                android:textColor="@android:color/white"
-                android:textSize="22sp" android:layout_width="fill_parent"
-				android:layout_height="wrap_content" android:layout_centerInParent="true"
-				android:gravity="left" android:paddingTop="10sp"
-				android:visibility="visible" android:id="@+id/chargeStatusText" />
-			<TextView 
-                android:textColor="@android:color/white"
-                android:textSize="22sp" android:layout_width="fill_parent"
-				android:layout_height="wrap_content" android:layout_centerInParent="true"
-				android:gravity="left" android:paddingTop="10sp"
-				android:visibility="visible" android:id="@+id/voltageText" />
-			<TextView 
-                android:textColor="@android:color/white"
-                android:textSize="22sp" android:layout_width="fill_parent"
-				android:layout_height="wrap_content" android:layout_centerInParent="true"
-				android:gravity="left" android:paddingTop="10sp"
-				android:visibility="visible" android:id="@+id/currentText" />
-			<TextView 
-                android:textColor="@android:color/white"
-                android:textSize="22sp" android:layout_width="fill_parent"
-				android:layout_height="wrap_content" android:layout_centerInParent="true"
-				android:gravity="left" android:paddingTop="10sp"
-				android:visibility="visible" android:id="@+id/capacityText" />
-			<TextView 
-                android:textColor="@android:color/white"
-                android:textSize="22sp" android:layout_width="fill_parent"
-				android:layout_height="wrap_content" android:layout_centerInParent="true"
-				android:gravity="left" android:paddingTop="10sp"
-				android:visibility="visible" android:id="@+id/plugText" />         
-        </LinearLayout>
-        <FrameLayout 
-        	android:background="@drawable/per_bk"
-            android:layout_width="0dip"
-            android:layout_weight="1"
-            android:layout_height="fill_parent">
-			<com.DeviceTest.view.GsensorBall 
-			    android:id="@+id/gsensorball"
-			    android:layout_width="fill_parent"
-			    android:layout_height="fill_parent"/>
-            <TextView 
-                android:id="@+id/gsensortext"
+            android:background="@drawable/per_bk"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/chargeStatusText"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:gravity="left"
+                android:paddingTop="10sp"
                 android:textColor="@android:color/white"
                 android:textSize="22sp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>        
-        </FrameLayout>
-        <FrameLayout 
-        	android:background="@drawable/per_bk"
-            android:layout_width="0dip"
-            android:layout_weight="1"
-            android:layout_height="fill_parent">
-            <SurfaceView 
+                android:visibility="visible" />
+
+            <TextView
+                android:id="@+id/voltageText"
                 android:layout_width="fill_parent"
-                android:layout_height="fill_parent"
-                android:id="@+id/camera_preview"/>
-            <Button 
-                android:layout_gravity="top|right"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:gravity="left"
+                android:paddingTop="10sp"
+                android:textColor="@android:color/white"
+                android:textSize="22sp"
+                android:visibility="visible" />
+
+            <TextView
+                android:id="@+id/currentText"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:gravity="left"
+                android:paddingTop="10sp"
+                android:textColor="@android:color/white"
+                android:textSize="22sp"
+                android:visibility="visible" />
+
+            <TextView
+                android:id="@+id/capacityText"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:gravity="left"
+                android:paddingTop="10sp"
+                android:textColor="@android:color/white"
+                android:textSize="22sp"
+                android:visibility="visible" />
+
+            <TextView
+                android:id="@+id/plugText"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:gravity="left"
+                android:paddingTop="10sp"
+                android:textColor="@android:color/white"
+                android:textSize="22sp"
+                android:visibility="visible" />
+        </LinearLayout>
+
+        <FrameLayout
+            android:layout_width="0dip"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:background="@drawable/per_bk" >
+
+            <com.tchip.autotest.view.GsensorBall
+                android:id="@+id/gsensorball"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent" />
+
+            <TextView
+                android:id="@+id/gsensortext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/white"
+                android:textSize="22sp" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="0dip"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:background="@drawable/per_bk" >
+
+            <SurfaceView
+                android:id="@+id/camera_preview"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent" />
+
+            <Button
+                android:id="@+id/camera_switch_btu"
                 android:layout_width="100dip"
                 android:layout_height="60dip"
-                android:id="@+id/camera_switch_btu"
+                android:layout_gravity="top|right"
                 android:text="@string/camera_switch"
-                android:textStyle="bold"
+                android:textColor="#ffffff00"
                 android:textSize="20sp"
-                android:textColor="#ffffff00"/>
-            <TextView 
+                android:textStyle="bold" />
+
+            <TextView
                 android:id="@+id/nocamera"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
                 android:text="@string/nocamera"
-                android:visibility="gone"
-                android:textStyle="bold"
+                android:textColor="#ffff0000"
                 android:textSize="20sp"
-                android:textColor="#ffff0000"/>
+                android:textStyle="bold"
+                android:visibility="gone" />
         </FrameLayout>
     </LinearLayout>
-    
-    
+
     <!-- record & button(single test & close application) -->
-    <LinearLayout 
+
+    <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="0dip"
-        android:orientation="horizontal"
         android:layout_weight="5"
-        >
-	     <LinearLayout 
-	        	android:background="@drawable/per_bk"
-	            android:orientation="vertical"
-	            android:layout_width="0dip"
-	            android:layout_weight="2"
-	            android:layout_height="fill_parent">    
-	        <!-- brightness -->
-		    <LinearLayout 
-		        android:background="@drawable/per_bk"
-		        android:layout_width="fill_parent"
-		        android:layout_height="50dp"
-		        android:orientation="horizontal">
-		        <Button 
-		            android:id="@+id/brightnesstestbut"
-		            android:layout_width="0dip"
-		            android:layout_weight="3"
-		            android:layout_height="fill_parent"
-		            android:text="@string/BrightnessTitle"
-		            android:textStyle="bold"
-		            android:textSize="18sp"
-		            android:textColor="#ffffff00"/>
-		        <ProgressBar android:id="@+id/brightnessBar"
-		            android:layout_gravity="center_vertical"
-		            android:layout_width="0dip"
-		            android:layout_weight="7"
-					android:layout_height="wrap_content"
-					android:orientation="horizontal" 
-					android:layout_centerInParent="true"
-					style="?android:attr/progressBarStyleHorizontal" />
-		    </LinearLayout>
-		    <LinearLayout 
-		        android:layout_width="fill_parent"
-		        android:layout_height="fill_parent"
-		        android:orientation="horizontal">
-		        <LinearLayout 
-		        	android:background="@drawable/per_bk"
-		            android:orientation="vertical"
-		            android:layout_width="0dip"
-		            android:layout_weight="1"
-		            android:layout_height="fill_parent">            
-		            <com.DeviceTest.helper.VUMeter android:id="@+id/uvMeter"
-		            	android:background="@drawable/vumeter"
-		            	android:layout_gravity="center_horizontal"
-		                android:layout_width="150dp"
-		                android:layout_height="80dp"
-		                android:layout_centerInParent="true" />
-		            <LinearLayout 
-		                android:orientation="horizontal"
-		                android:layout_width="fill_parent"
-		                android:layout_height="fill_parent">
-		                <TextView 
-		                    android:gravity="center_vertical|center_horizontal"
-		                    android:textSize="20sp"
-		                    android:id="@+id/recordtext"
-		                    android:layout_width="0dip"
-		                    android:layout_weight="1"
-		                    android:layout_height="fill_parent"/>
-		                <Button 
-		                    android:id="@+id/recordtestbutton"
-		                    android:text="@string/RecordTest"
-				            android:textStyle="bold"
-				            android:textSize="20sp"
-				            android:textColor="#ffffff00"
-		                    android:layout_width="0dip"
-		                    android:layout_weight="1"
-		                    android:layout_height="fill_parent"/>
-		            </LinearLayout>
-		        </LinearLayout>
-		        <LinearLayout 
-		        	android:background="@drawable/per_bk"
-		            android:layout_width="0dip"
-		            android:layout_weight="1"
-		            android:layout_height="fill_parent"
-		            android:orientation="vertical">
-		            <TextView 
-		                android:text="@string/KeyboardTestTitle"
-		                android:textColor="@android:color/white"
-		                android:textSize="18sp"
-		                android:layout_width="fill_parent"
-		                android:layout_height="wrap_content"
-		                />
-		            <com.DeviceTest.view.KeyTestView 
-					    android:id="@+id/keytestview"
-					    android:layout_width="fill_parent"
-		                android:layout_height="wrap_content"
-		                />
-		        </LinearLayout>
-	        </LinearLayout>
-	    </LinearLayout>
-        <LinearLayout 
-        	android:background="@drawable/per_bk"
-        	android:orientation="vertical"
+        android:orientation="horizontal" >
+
+        <LinearLayout
             android:layout_width="0dip"
+            android:layout_height="fill_parent"
+            android:layout_weight="2"
+            android:background="@drawable/per_bk"
+            android:orientation="vertical" >
+
+            <!-- brightness -->
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/per_bk"
+                android:orientation="horizontal" >
+
+                <Button
+                    android:id="@+id/brightnesstestbut"
+                    android:layout_width="0dip"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="3"
+                    android:text="@string/BrightnessTitle"
+                    android:textColor="#ffffff00"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <ProgressBar
+                    android:id="@+id/brightnessBar"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="0dip"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="7"
+                    android:orientation="horizontal" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:orientation="horizontal" >
+
+                <LinearLayout
+                    android:layout_width="0dip"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/per_bk"
+                    android:orientation="vertical" >
+
+                    <com.tchip.autotest.helper.VUMeter
+                        android:id="@+id/uvMeter"
+                        android:layout_width="150dp"
+                        android:layout_height="80dp"
+                        android:layout_centerInParent="true"
+                        android:layout_gravity="center_horizontal"
+                        android:background="@drawable/vumeter" />
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:orientation="horizontal" >
+
+                        <TextView
+                            android:id="@+id/recordtext"
+                            android:layout_width="0dip"
+                            android:layout_height="fill_parent"
+                            android:layout_weight="1"
+                            android:gravity="center_vertical|center_horizontal"
+                            android:textSize="20sp" />
+
+                        <Button
+                            android:id="@+id/recordtestbutton"
+                            android:layout_width="0dip"
+                            android:layout_height="fill_parent"
+                            android:layout_weight="1"
+                            android:text="@string/RecordTest"
+                            android:textColor="#ffffff00"
+                            android:textSize="20sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dip"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/per_bk"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/KeyboardTestTitle"
+                        android:textColor="@android:color/white"
+                        android:textSize="18sp" />
+
+                    <com.tchip.autotest.view.KeyTestViewView
+                        android:id="@+id/keytestview"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dip"
+            android:layout_height="fill_parent"
             android:layout_weight="1"
-            android:layout_height="fill_parent"> 
-            <Button 
+            android:background="@drawable/per_bk"
+            android:orientation="vertical" >
+
+            <Button
                 android:id="@+id/singletest"
+                android:layout_width="fill_parent"
+                android:layout_height="0dip"
+                android:layout_weight="1"
                 android:text="@string/SingleTest"
-	            android:textStyle="bold"
-	            android:textSize="22sp"
-	            android:textColor="#ffffff00"
-                android:layout_width="fill_parent"
-                android:layout_height="0dip"
-                android:layout_weight="1"/>       
-            <Button 
+                android:textColor="#ffffff00"
+                android:textSize="22sp"
+                android:textStyle="bold" />
+
+            <Button
                 android:id="@+id/closefirstrun"
-                android:text="@string/Cancel"
-	            android:textStyle="bold"
-	            android:textSize="22sp"
-	            android:textColor="#ffffff00"
-               	android:layout_marginTop="5dip"
                 android:layout_width="fill_parent"
                 android:layout_height="0dip"
-                android:layout_weight="1"/>          
+                android:layout_marginTop="5dip"
+                android:layout_weight="1"
+                android:text="@string/Cancel"
+                android:textColor="#ffffff00"
+                android:textSize="22sp"
+                android:textStyle="bold" />
         </LinearLayout>
     </LinearLayout>
+
 </LinearLayout>

@@ -13,7 +13,7 @@
 	</RelativeLayout>
 
 <include layout="@xml/control_buttons" android:id="@+id/compass_buttons"/>
-	<com.DeviceTest.view.CompassView
+	<com.tchip.autotest.view.CompassView
 		android:id="@+id/compasstestview" android:layout_above="@id/compass_buttons"
 		android:layout_below="@id/Titles" android:layout_width="match_parent"
 		android:layout_height="match_parent" />

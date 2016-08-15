@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.DeviceTest"
+    package="com.tchip.autotest"
     android:sharedUserId="android.uid.system"
     android:versionCode="2"
     android:versionName="2.0" >
@@ -48,18 +48,18 @@
     <uses-permission android:name="android.permission.CALL_PHONE" />
 
     <application
-        android:name=".DeviceTestApplication"
+        android:name="com.tchip.autotest.DeviceTestApplication"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name" >
         <activity
-            android:name=".FirstRun"
+            android:name="com.tchip.autotest.FirstRun"
             android:configChanges="orientation|keyboardHidden"
             android:label="@string/app_name_cn"
             android:screenOrientation="unspecified" >
 
         </activity>
         <activity
-            android:name=".DeviceTest"
+            android:name="com.tchip.autotest.DeviceTest"
             android:configChanges="orientation|keyboardHidden"
             android:screenOrientation="unspecified" >
             <intent-filter>
@@ -75,7 +75,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".VersionTestActivity"
+            android:name="com.tchip.autotest.VersionTestActivity"
             android:screenOrientation="unspecified" >
             <intent-filter>
                 <action android:name="android.intent.action.VersionTestActivity" />
@@ -84,7 +84,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".StorageActivity"
+            android:name="com.tchip.autotest.StorageActivity"
             android:screenOrientation="unspecified" >
             <intent-filter>
                 <action android:name="android.intent.action.StorageActivity" />
@@ -93,7 +93,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".LcdTestActivity"
+            android:name="com.tchip.autotest.LcdTestActivity"
             android:screenOrientation="unspecified" >
             <intent-filter>
                 <action android:name="android.intent.action.LcdTestActivity" />
@@ -102,7 +102,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".TouchTestActivity"
+            android:name="com.tchip.autotest.TouchTestActivity"
             android:screenOrientation="unspecified" >
             <intent-filter>
                 <action
@@ -113,7 +113,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".CameraTestActivity"
+            android:name="com.tchip.autotest.CameraTestActivity"
             android:screenOrientation="unspecified" >
             <intent-filter>
                 <action
@@ -124,7 +124,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".VibrationTestActivity"
+            android:name="com.tchip.autotest.VibrationTestActivity"
             android:screenOrientation="unspecified" >
             <intent-filter>
                 <action
@@ -135,7 +135,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".SpeakerTestActivity"
+            android:name="com.tchip.autotest.SpeakerTestActivity"
             android:screenOrientation="unspecified" >
             <intent-filter>
                 <action
@@ -146,7 +146,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".GsensorTestActivity"
+            android:name="com.tchip.autotest.GsensorTestActivity"
             android:screenOrientation="unspecified" >
             <intent-filter>
                 <action
@@ -157,7 +157,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MsensorTestActivity"
+            android:name="com.tchip.autotest.MsensorTestActivity"
             android:screenOrientation="unspecified" >
             <intent-filter>
                 <action
@@ -168,7 +168,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".GyroscopeTestActivity"
+            android:name="com.tchip.autotest.GyroscopeTestActivity"
             android:screenOrientation="portrait" >
             <intent-filter>
                 <action
@@ -179,7 +179,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".LightsensorTestActivity"
+            android:name="com.tchip.autotest.LightsensorTestActivity"
             android:screenOrientation="unspecified" >
             <intent-filter>
                 <action
@@ -190,7 +190,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".GocBtTestActivity"
+            android:name="com.tchip.autotest.GocBtTestActivity"
             android:screenOrientation="unspecified" >
             <intent-filter>
                 <action
@@ -201,7 +201,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".EDogTestActivity"
+            android:name="com.tchip.autotest.EDogTestActivity"
             android:screenOrientation="unspecified" >
             <intent-filter>
                 <action
@@ -212,7 +212,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".RecordTestActivity"
+            android:name="com.tchip.autotest.RecordTestActivity"
             android:screenOrientation="unspecified" >
             <intent-filter>
                 <action
@@ -223,7 +223,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".BluetoothTestActivity"
+            android:name="com.tchip.autotest.BluetoothTestActivity"
             android:screenOrientation="unspecified" >
             <intent-filter>
                 <action
@@ -234,7 +234,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".WifiTestActivity"
+            android:name="com.tchip.autotest.WifiTestActivity"
             android:screenOrientation="unspecified" >
             <intent-filter>
                 <action
@@ -245,7 +245,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".HeadsetMicTestActivity"
+            android:name="com.tchip.autotest.HeadsetMicTestActivity"
             android:screenOrientation="unspecified" >
             <intent-filter>
                 <action
@@ -256,7 +256,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".PhoneMicTestActivity"
+            android:name="com.tchip.autotest.PhoneMicTestActivity"
             android:screenOrientation="unspecified" >
             <intent-filter>
                 <action
@@ -267,7 +267,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".GpsTestActivity"
+            android:name="com.tchip.autotest.GpsTestActivity"
             android:screenOrientation="unspecified" >
             <intent-filter>
                 <action
@@ -278,7 +278,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".GpsLocationTestActivity"
+            android:name="com.tchip.autotest.GpsLocationTestActivity"
             android:screenOrientation="unspecified" >
             <intent-filter>
                 <action
@@ -289,7 +289,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".SdCardTestActivity"
+            android:name="com.tchip.autotest.SdCardTestActivity"
             android:screenOrientation="unspecified" >
             <intent-filter>
                 <action
@@ -300,7 +300,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".FMTransmitTestActivity"
+            android:name="com.tchip.autotest.FMTransmitTestActivity"
             android:screenOrientation="unspecified" >
             <intent-filter>
                 <action
@@ -311,7 +311,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".DSACopyActivity"
+            android:name="com.tchip.autotest.DSACopyActivity"
             android:screenOrientation="unspecified" >
             <intent-filter>
                 <action
@@ -322,7 +322,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".AutonaviCopyActivity"
+            android:name="com.tchip.autotest.AutonaviCopyActivity"
             android:screenOrientation="unspecified" >
             <intent-filter>
                 <action
@@ -333,7 +333,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".PowerTestActivity"
+            android:name="com.tchip.autotest.PowerTestActivity"
             android:screenOrientation="unspecified" >
             <intent-filter>
                 <action
@@ -355,7 +355,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".KeyboardTestActivity"
+            android:name="com.tchip.autotest.KeyboardTestActivity"
             android:screenOrientation="unspecified" >
             <intent-filter>
                 <action
@@ -380,7 +380,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".SimCardTestActivity"
+            android:name="com.tchip.autotest.SimCardTestActivity"
             android:screenOrientation="unspecified" >
             <intent-filter>
                 <action
@@ -391,7 +391,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".FMRadioTestActivity"
+            android:name="com.tchip.autotest.FMRadioTestActivity"
             android:screenOrientation="unspecified" >
             <intent-filter>
                 <action
@@ -402,7 +402,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".DialSpeakerTestActivity"
+            android:name="com.tchip.autotest.DialSpeakerTestActivity"
             android:screenOrientation="unspecified" >
             <intent-filter>
                 <action
@@ -413,7 +413,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".CompassTestActivity"
+            android:name="com.tchip.autotest.CompassTestActivity"
             android:screenOrientation="unspecified" >
             <intent-filter>
                 <action
@@ -424,7 +424,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".HdmiTestActivity"
+            android:name="com.tchip.autotest.HdmiTestActivity"
             android:screenOrientation="unspecified" >
             <intent-filter>
                 <action
@@ -435,7 +435,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".HdmiTestMTKActivity"
+            android:name="com.tchip.autotest.HdmiTestMTKActivity"
             android:screenOrientation="unspecified" >
             <intent-filter>
                 <action
@@ -446,7 +446,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".LevelTestActivity"
+            android:name="com.tchip.autotest.LevelTestActivity"
             android:screenOrientation="unspecified" >
             <intent-filter>
                 <action
@@ -468,7 +468,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".UsbHostTestActivity"
+            android:name="com.tchip.autotest.UsbHostTestActivity"
             android:screenOrientation="unspecified" >
             <intent-filter>
                 <action
@@ -479,7 +479,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".HardwareInfoTestActivity"
+            android:name="com.tchip.autotest.HardwareInfoTestActivity"
             android:screenOrientation="unspecified" >
             <intent-filter>
                 <action
@@ -490,7 +490,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".CirTestActivity"
+            android:name="com.tchip.autotest.CirTestActivity"
             android:screenOrientation="unspecified" >
             <intent-filter>
                 <action
@@ -501,7 +501,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".LedTestActivity"
+            android:name="com.tchip.autotest.LedTestActivity"
             android:screenOrientation="unspecified" >
             <intent-filter>
                 <action
@@ -512,7 +512,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".IrdaTestActivity"
+            android:name="com.tchip.autotest.IrdaTestActivity"
             android:screenOrientation="unspecified" >
             <intent-filter>
                 <action
@@ -523,7 +523,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".RuninTestActivity"
+            android:name="com.tchip.autotest.RuninTestActivity"
             android:configChanges="orientation"
             android:screenOrientation="portrait" >
             <intent-filter>
@@ -535,7 +535,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".RockVideoPlayer"
+            android:name="com.tchip.autotest.RockVideoPlayer"
             android:clearTaskOnLaunch="true"
             android:configChanges="orientation|keyboardHidden"
             android:label="@string/app_name"
@@ -548,7 +548,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ClockTestActivity"
+            android:name="com.tchip.autotest.ClockTestActivity"
             android:screenOrientation="unspecified" >
             <intent-filter>
                 <action
@@ -561,7 +561,7 @@
 
         <!-- HandsetTestActivity -->
         <activity
-            android:name=".HandsetTestActivity"
+            android:name="com.tchip.autotest.HandsetTestActivity"
             android:screenOrientation="unspecified" >
             <intent-filter>
                 <action
@@ -572,7 +572,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".SignalStatusActivity"
+            android:name="com.tchip.autotest.SignalStatusActivity"
             android:screenOrientation="unspecified" >
             <intent-filter>
                 <action
@@ -583,7 +583,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ProximitySensorTestActivity"
+            android:name="com.tchip.autotest.ProximitySensorTestActivity"
             android:screenOrientation="unspecified" >
             <intent-filter>
                 <action
@@ -594,12 +594,12 @@
             </intent-filter>
         </activity>
 
-        <receiver android:name=".EnableAppReceiver" >
+        <receiver android:name="com.tchip.autotest.EnableAppReceiver" >
             <intent-filter>
                 <action android:name="android.rockchip.devicetest.action.APP_STATE_CHANGE" />
             </intent-filter>
         </receiver>
-        <receiver android:name=".SecretCodeReceiver" >
+        <receiver android:name="com.tchip.autotest.SecretCodeReceiver" >
 
             <!-- 开机启动 -->
             <intent-filter>
@@ -617,7 +617,7 @@
 
         <!-- YGPS -->
         <activity
-            android:name=".YgpsActivity"
+            android:name="com.tchip.autotest.YgpsActivity"
             android:exported="true"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
@@ -633,20 +633,20 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".CopyrightInfo"
+            android:name="com.tchip.autotest.CopyrightInfo"
             android:label="@string/ygps_copyright_infor" >
         </activity>
         <activity
-            android:name=".ViewFileActivity"
+            android:name="com.tchip.autotest.ViewFileActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustUnspecified|stateHidden" />
         <activity
-            android:name=".ViewDetailActivity"
+            android:name="com.tchip.autotest.ViewDetailActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustUnspecified|stateHidden" />
 
         <service
-            android:name=".YgpsService"
+            android:name="com.tchip.autotest.YgpsService"
             android:exported="false" >
         </service>
     </application>

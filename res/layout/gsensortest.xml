@@ -43,7 +43,7 @@
 		</ScrollView>
 	</RelativeLayout>
 	
-	<com.DeviceTest.view.GsensorBall 
+	<com.tchip.autotest.view.GsensorBall 
 	    android:id="@+id/gsensorball"
 	    android:layout_width="fill_parent"
 	    android:layout_height="0dip"

@@ -68,7 +68,7 @@
         android:layout_above="@id/btnLayout"
         android:layout_alignParentTop="true" >
 
-        <com.DeviceTest.view.MyGridView
+        <com.tchip.autotest.view.MyGridView
             android:id="@+id/myGridView"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent" />

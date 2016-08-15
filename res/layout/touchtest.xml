@@ -9,7 +9,7 @@
         android:layout_height="fill_parent"
         android:gravity="center" >
 
-        <com.DeviceTest.view.TouchView
+        <com.tchip.autotest.view.TouchView
             android:id="@+id/touchview"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent" />
@@ -52,7 +52,7 @@
         android:layout_height="fill_parent"
         android:visibility="gone" >
 
-        <com.DeviceTest.view.PointerLocationView
+        <com.tchip.autotest.view.PointerLocationView
             android:id="@+id/pointerview"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent" />

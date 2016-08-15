@@ -4,7 +4,7 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent" >
 
-    <com.DeviceTest.view.LcdTestView
+    <com.tchip.autotest.view.LcdTestView
         android:id="@+id/lcdtestview"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />

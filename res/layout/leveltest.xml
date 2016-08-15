@@ -5,7 +5,7 @@
 	
  <include layout="@xml/control_buttons" android:id="@+id/level_buttons"/>
 
-	<com.DeviceTest.view.LevelView android:id="@+id/leveltestview"
+	<com.tchip.autotest.view.LevelView android:id="@+id/leveltestview"
 		android:layout_above="@id/level_buttons" android:layout_width="match_parent"
 		android:layout_height="match_parent" />
 
