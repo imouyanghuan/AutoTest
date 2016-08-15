@@ -142,8 +142,7 @@ public class DeviceTest extends Activity {
 		if (!InitTestData()) {
 			System.exit(-1);
 		}
-		this.setTitle("DeviceTest Version:"
-				+ getResources().getString(R.string.Version));
+		this.setTitle("AutoTest");
 		mTestCases = xmldoc.mTestCases;
 		try {
 			loadData();
@@ -153,7 +152,7 @@ public class DeviceTest extends Activity {
 		}
 
 		myGridView = (MyGridView) findViewById(R.id.myGridView);
-		myGridView.setColumnCount(3);
+		myGridView.setColumnCount(4);
 
 		for (TestCase testCase : mTestCases) {
 			MyItemView itemView = new MyItemView(this);

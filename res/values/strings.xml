@@ -210,7 +210,7 @@
     <string name="available_space">可用存储空间</string>
     <string name="camera_switch">切换</string>
     <string name="SingleTest">单项测试</string>
-    <string name="testall">测试选中的选项</string>
+    <string name="testall">测试选中</string>
     <string name="nocamera">没有摄像头</string>
     <string name="btnRetest">重测</string>
     <string name="btnreturnText">返回测试界面</string>
