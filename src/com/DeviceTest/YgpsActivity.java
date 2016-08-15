@@ -32,6 +32,7 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -1117,6 +1118,8 @@ public class YgpsActivity extends Activity implements SatelliteDataProvider {
 	public void onCreate(Bundle savedInstanceState) {
 		Xlog.v(TAG, "Enter onCreate  function of Main Activity");
 		super.onCreate(savedInstanceState);
+		getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+				WindowManager.LayoutParams.FLAG_FULLSCREEN);
 		setTitle(getTitle() + "----("
 				+ getIntent().getStringExtra(DeviceTest.EXTRA_TEST_PROGRESS)
 				+ ")");

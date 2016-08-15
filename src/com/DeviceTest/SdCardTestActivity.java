@@ -23,6 +23,7 @@ import android.os.StatFs;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
 import android.text.format.Formatter;
@@ -51,12 +52,14 @@ public class SdCardTestActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 
 		super.onCreate(savedInstanceState);
+
+		getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+				WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
 		DeviceTest.lockScreenOrientation(this);
 		setTitle(getTitle() + "----("
 				+ getIntent().getStringExtra(DeviceTest.EXTRA_TEST_PROGRESS)
 				+ ")");
-		// requestWindowFeature(Window.FEATURE_NO_TITLE);
-		// getWindow().addFlags(1152);
 		setContentView(R.layout.sdcardtest);
 
 		if (mStorageManager == null) {

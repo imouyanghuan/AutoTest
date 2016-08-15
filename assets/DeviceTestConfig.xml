@@ -103,7 +103,7 @@
 -->
     <TestCase
         class_name="SignalStatusActivity"
-        test_group="TEST ALL" >SIM卡状态</TestCase>
+        test_group="TEST ALL" >SIM卡</TestCase>
 <!--
     <TestCase
         class_name="UsbHostTestActivity"
@@ -119,7 +119,7 @@
 
     <TestCase
         class_name="YgpsActivity"
-        test_group="TEST ALL" >GPS 定位</TestCase>
+        test_group="TEST ALL" >GPS定位</TestCase>
     
       <TestCase
         class_name="EDogTestActivity"

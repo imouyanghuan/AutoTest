@@ -15,19 +15,18 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
+            android:layout_marginTop="5dp"
             android:gravity="center_horizontal"
-            android:layout_margin="20px"
             android:text="@string/SdCardTitle"
-            android:textSize="30sp"
+            android:textSize="25sp"
             android:visibility="visible" />
 
-            <TextView
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-            	android:layout_margin="10px"
-            	android:text="@string/sdcard_str"
-            	android:textSize="22sp"
-                android:visibility="visible" />
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/sdcard_str"
+            android:textSize="22sp"
+            android:visibility="visible" />
 
         <ScrollView
             android:layout_width="fill_parent"
@@ -37,22 +36,19 @@
                 android:id="@+id/sdresultText"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:paddingTop="10px"
-                android:textSize="22sp"
                 android:textColor="#ff0000"
+                android:textSize="22sp"
                 android:visibility="visible" />
         </ScrollView>
 
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/sdcard2_str"
+            android:textSize="22sp"
+            android:visibility="visible" />
 
-            <TextView
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-            	android:layout_margin="10px"
-            	android:text="@string/sdcard2_str"
-            	android:textSize="22sp"
-                android:visibility="visible" />
-
-         <ScrollView
+        <ScrollView
             android:layout_width="fill_parent"
             android:layout_height="wrap_content" >
 
@@ -60,9 +56,8 @@
                 android:id="@+id/sd2resultText"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:paddingTop="10px"
-                android:textSize="22sp"
                 android:textColor="#ff0000"
+                android:textSize="22sp"
                 android:visibility="visible" />
         </ScrollView>
     </LinearLayout>
