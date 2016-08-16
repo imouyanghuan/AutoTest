@@ -101,9 +101,11 @@
         class_name="FMRadioTestActivity"
         test_group="TEST ALL" >收音机</TestCase>
 -->
+<!-- 
     <TestCase
         class_name="SignalStatusActivity"
         test_group="TEST ALL" >SIM卡</TestCase>
+-->
 <!--
     <TestCase
         class_name="UsbHostTestActivity"
@@ -121,12 +123,12 @@
         class_name="YgpsActivity"
         test_group="TEST ALL" >GPS定位</TestCase>
     
-      <TestCase
+      <!-- <TestCase
         class_name="EDogTestActivity"
-        test_group="TEST ALL" >电子狗</TestCase>
+        test_group="TEST ALL" >电子狗</TestCase> -->
       
       <TestCase
-        class_name="RecordTestActivity"
+        class_name="CameraTestActivity"
         test_group="TEST ALL" >摄像头</TestCase>
     
 

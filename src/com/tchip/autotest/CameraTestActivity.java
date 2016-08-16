@@ -5,6 +5,7 @@ import static android.view.WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON;
 
 import com.tchip.autotest.R;
 import com.tchip.autotest.helper.ControlButtonUtil;
+import com.tchip.autotest.util.OpenUtil;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -26,8 +27,15 @@ public class CameraTestActivity extends Activity {
 		getWindow().addFlags(FLAG_FULLSCREEN | FLAG_KEEP_SCREEN_ON);
 
 		setContentView(R.layout.cameratest);
-
 		ControlButtonUtil.initControlButtonView(this);
+	}
+
+	@Override
+	protected void onResume() {
+		super.onResume();
+		// Kill AutoRecord
+		sendBroadcast(new Intent("tchip.intent.action.RELEASE_RECORD_TEST"));
+		OpenUtil.killApp(getApplicationContext(), "com.tchip.autorecord");
 	}
 
 	public boolean onTouchEvent(MotionEvent paramMotionEvent) {

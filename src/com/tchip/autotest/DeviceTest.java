@@ -49,6 +49,7 @@ import com.tchip.autotest.helper.SystemUtil;
 import com.tchip.autotest.helper.TestCase;
 import com.tchip.autotest.helper.XmlDeal;
 import com.tchip.autotest.helper.TestCase.RESULT;
+import com.tchip.autotest.util.OpenUtil;
 import com.tchip.autotest.view.MyGridView;
 import com.tchip.autotest.view.MyItemView;
 
@@ -295,8 +296,12 @@ public class DeviceTest extends Activity {
 
 	@Override
 	protected void onResume() {
-		enableitemclick = true;
 		super.onResume();
+		enableitemclick = true;
+
+		// Kill AutoRecord
+		sendBroadcast(new Intent("tchip.intent.action.RELEASE_RECORD_TEST"));
+		OpenUtil.killApp(getApplicationContext(), "com.tchip.autorecord");
 	}
 
 	private void createAssetFile(String name, String destPath) {

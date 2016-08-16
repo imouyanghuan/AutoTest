@@ -23,8 +23,6 @@
     <string name="BluetoothDeviceIsOpen">蓝牙设备已正常打开</string>
     <string name="BluetoothFindS">找到设备....\n 测试通过!</string>
     <string name="BluetoothMAC">蓝牙 MAC: </string>
-    <string name="CameraTitle">摄像头测试</string>
-    <string name="CameratextMsgText">请点击屏幕打开摄像头</string>
     <string name="GpsTestTitle">Gps C/No 测试</string>
     <string name="GpsTestSubTitle">请察看设备</string>
     <string name="GpsTestResult">请等待设备初始化</string>
@@ -444,25 +442,21 @@
     <string name="dialog_message_error">Error dialog ID</string>
     <string name="command_error">Command error</string>
     <string name="gps_test_running_warn">Please stop GPS test</string>
-
-    <!-- Below lines added by TChip ZJ -->
-    <string name="title_fm_transmit">FM发射测试</string>
-    <string name="transmit_frequency">当前发射频率</string>
-    <string name="music_playing">正在播放:(左-男声:《单身情歌》 右-女声:《单眼皮女生》)</string>
-    <string name="open_fm_and_test">,请将FM接收器调至该频段收听</string>
+    <!-- Bluetooth -->
     <string name="title_goc_bt">蓝牙测试(GocSdk.BT)</string>
     <string name="bt_test_hint">提示：请在测试点旁开启一台手机蓝牙设备(且对其他设备可见)</string>
     <string name="bt_scanning_with_result">测试通过，已扫描到%d台设备</string>
     <string name="bt_scan_finish_with_result">扫描结束，共扫描到%d台设备</string>
     <string name="bt_scan_finish_not_find">测试失败，未扫描到设备</string>
     <string name="bt_scan_start">正在扫描…</string>
+    <!-- EDog -->
     <string name="title_edog_test">电子狗测试</string>
     <string name="edog_test_hint">以上文本框有数据持续打印，表明电子狗工作正常</string>
-    <string name="title_record_test">摄像头测试</string>
-    <string name="record_test_hint">请检测后拉、前置摄像头：</string>
-    <string name="record_test_hint_back">1.后拉：连接倒车线，观察倒车界面是否正常预览</string>
-    <string name="record_test_hint_front">2.前置：点击主页键回到主界面，观察录像是否正常预览</string>
-    <string name="record_test_hint_end">二者都正常预览测试通过，否则失败。</string>
+    <!-- FM Transmit -->
+    <string name="title_fm_transmit">FM发射测试</string>
+    <string name="transmit_frequency">当前发射频率</string>
+    <string name="music_playing">正在播放:(左-男声:《单身情歌》 右-女声:《单眼皮女生》)</string>
+    <string name="open_fm_and_test">,请将FM接收器调至该频段收听</string>
     <string name="fre_875">87.5\n|</string>
     <string name="fre_900">90.0\n|</string>
     <string name="fre_920">92.0\n|</string>
@@ -474,6 +468,15 @@
     <string name="fre_1040">104.0 \n|</string>
     <string name="fre_1060">106.0 \n|</string>
     <string name="fre_1080">108.0 \n|</string>
+    <!-- Camera -->
+    <string name="title_record_test">摄像头测试</string>
+    <string name="record_test_hint">请检测后拉、前置摄像头：</string>
+    <string name="record_test_hint_back">1.后拉：连接倒车线，观察倒车界面是否正常预览</string>
+    <string name="record_test_hint_front">2.前置：点击主页键回到主界面，观察录像是否正常预览</string>
+    <string name="record_test_hint_end">二者都正常预览测试通过，否则失败。</string>
+    <string name="CameraTitle">摄像头测试</string>
+    <string name="CameratextMsgText">请点击屏幕打开摄像头，检查前后摄像头是否正常</string>
+    <!-- Data Copy -->
     <string name="item_dsa_copy">DSA拷贝</string>
     <string name="dsa_title">DSA数据拷贝</string>
     <string name="dsa_coping">正在拷贝DSA数据，请稍候…</string>
