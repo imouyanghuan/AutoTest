@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <dimen name="item_text_size">28sp</dimen>
-    
+    <!-- Test Item TextSize -->
+    <dimen name="item_text_size">24sp</dimen>
+
     <!-- Below Button -->
     <dimen name="below_button_height">50dp</dimen>
     <dimen name="below_button_text_size">18sp</dimen>
-    
+
     <!-- Test Item -->
     <dimen name="test_item_text_size">25sp</dimen>
 

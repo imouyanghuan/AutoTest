@@ -300,8 +300,8 @@ public class DeviceTest extends Activity {
 		enableitemclick = true;
 
 		// Kill AutoRecord
-		sendBroadcast(new Intent("tchip.intent.action.RELEASE_RECORD_TEST"));
-		OpenUtil.killApp(getApplicationContext(), "com.tchip.autorecord");
+		// sendBroadcast(new Intent("tchip.intent.action.RELEASE_RECORD_TEST"));
+		// OpenUtil.killApp(getApplicationContext(), "com.tchip.autorecord");
 	}
 
 	private void createAssetFile(String name, String destPath) {

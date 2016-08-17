@@ -52,6 +52,7 @@ import android.view.Window;
 import android.widget.ProgressBar;
 import android.widget.RemoteViews;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class WifiTestActivity extends Activity {
 
@@ -139,10 +140,10 @@ public class WifiTestActivity extends Activity {
 		stop = false;
 		Log.i("Jeffy", "try to enable wifi");
 		mWifiManager.setWifiEnabled(true);
-		mInfoText.setText(getString(R.string.WifiIsOpen));
-		mInfoText.append("\n" + getString(R.string.Wifi_test_environment_tips));
-		mInfoText.append("\n" + getString(R.string.WifiMAC)
-				+ mWifiManager.getConnectionInfo().getMacAddress() + "\n");
+		mInfoText.setText(getString(R.string.WifiIsOpen)
+				+ getString(R.string.WifiMAC)
+				+ mWifiManager.getConnectionInfo().getMacAddress() + ")\n"
+				+ getString(R.string.wifi_is_searching));
 		mHandler.sendEmptyMessage(MSG_SCAN);
 
 		Log.i("Jeffy", "start test");
@@ -275,7 +276,6 @@ public class WifiTestActivity extends Activity {
 				return;
 			}
 			String action = intent.getAction();
-
 			Log.i("Jeffy", "action:" + action);
 
 			if (WifiManager.WIFI_STATE_CHANGED_ACTION.equals(action)) {
@@ -316,9 +316,15 @@ public class WifiTestActivity extends Activity {
 			}
 
 			if (WifiManager.SCAN_RESULTS_AVAILABLE_ACTION.equals(action)) {
+				// Auto Test Success
+				Toast.makeText(WifiTestActivity.this,
+						getResources().getString(R.string.wifi_test_success),
+						Toast.LENGTH_SHORT).show();
+				ControlButtonUtil.autoVerifyPass(WifiTestActivity.this);
+
 				if (mWifiTestResult.getText().toString()
 						.contentEquals(getString(R.string.test_passed))) {
-					Log.v("",
+					Log.v(TAG,
 							">>>>>>>>>>>>>>>>>>>>>>>>>>>> passed contentEquals");
 					return;
 				}
@@ -399,8 +405,8 @@ public class WifiTestActivity extends Activity {
 
 					Log.i("Jeffy", "--selected ap:" + selectAp);
 					if (null == selectAp) {
-						mWifiConn.append("\n"
-								+ getString(R.string.WifiConnectErr));
+						// mWifiConn.append("\n"
+						// + getString(R.string.WifiConnectErr));
 						wifiProgressBar.setVisibility(View.GONE);
 						mHandler.sendEmptyMessageDelayed(MSG_FAIL,
 								TEST_FAILED_DELAY);

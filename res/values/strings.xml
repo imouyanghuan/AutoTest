@@ -65,6 +65,7 @@
     <string name="set_imei">已自动写入可用IMEI码（重启可见）</string>
     <string name="VibrationTest">震动测试</string>
     <string name="VibrationContent">请判断当前设备是否正在震动</string>
+    <!-- WiFi -->
     <string name="wififindtest">已找到Wifi</string>
     <string name="Wifitest">无线测试</string>
     <string name="WifiSubText">请查看设备</string>
@@ -76,13 +77,15 @@
     <string name="WifiConnectErr">找不到一个可连接的路由！</string>
     <string name="WifiPing">Ping 测试 : </string>
     <string name="WifiHttp">Http 连接测试: </string>
-    <string name="WifiIsOpen">Wifi设备已经打开</string>
+    <string name="WifiIsOpen">Wifi已打开</string>
     <string name="WifiSignal3">信号(强)</string>
     <string name="WifiSignal2">信号(中)</string>
     <string name="WifiSignal1">信号(弱)</string>
     <string name="WifiSignal0">信号(差)</string>
-    <string name="WifiMAC">WIFI MAC: </string>
+    <string name="WifiMAC">(MAC: </string>
     <string name="Wifi_test_environment_tips">提示: wifi测试环境需要提供开放AP</string>
+    <string name="wifi_is_searching">正在搜索WiFi</string>
+    <string name="wifi_test_success">WiFi测试通过</string>
     <string name="SensorTest">感应器测试</string>
     <string name="num200">200</string>
     <string name="gsensorvalue">gsensor值: </string>
@@ -211,7 +214,6 @@
     <string name="barcode_version">条码:</string>
     <string name="calibration_status">校准标志位:</string>
     <string name="final_status">最终结果:</string>
-
     <!-- SIM -->
     <string name="sim_test_passed">已检测到插入SIM卡，测试通过！</string>
     <string name="sim_test_failed">未检测到SIM卡，测试失败！</string>
