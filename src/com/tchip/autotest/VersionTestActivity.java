@@ -11,6 +11,7 @@ import android.os.SystemProperties;
 import android.telephony.TelephonyManager;
 import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
 import com.android.internal.telephony.PhoneFactory;
@@ -18,6 +19,7 @@ import com.android.internal.telephony.Phone;
 import com.android.internal.telephony.PhoneConstants;
 import com.android.internal.telephony.ITelephony;
 import com.tchip.autotest.helper.ControlButtonUtil;
+import com.mediatek.internal.telephony.ITelephonyEx;
 
 import android.os.ServiceManager;
 import android.os.Build.VERSION_CODES;
@@ -96,6 +98,8 @@ public class VersionTestActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle paramBundle) {
 		super.onCreate(paramBundle);
+		getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+				WindowManager.LayoutParams.FLAG_FULLSCREEN);
 		DeviceTest.lockScreenOrientation(this);
 		setTitle(getTitle() + "----("
 				+ getIntent().getStringExtra(DeviceTest.EXTRA_TEST_PROGRESS)
@@ -142,17 +146,22 @@ public class VersionTestActivity extends Activity {
 		// chang by xinw
 		String sn = "";
 		String barcode_string = "";
-//		try {
-			// ITelephonyEx mTelEx = ITelephonyEx.Stub
-			// .asInterface(android.os.ServiceManager
-			// .getService("phoneEx"));
-			// sn = mTelEx.getSerialNumber();
-			// String sn = Build.SERIAL;
-			barcode_string = sn;
-			Log.i("xinw", "sn:" + sn);
-			Log.i("xinw", "barcode_string:" + barcode_string);
-//		} catch (RemoteException e) {
-//		}
+		// try {
+		// ITelephonyEx mTelEx = ITelephonyEx.Stub
+		// .asInterface(android.os.ServiceManager
+		// .getService("phoneEx"));
+		// sn = mTelEx.getSerialNumber();
+		// // String sn = Build.SERIAL;
+		// barcode_string = sn;
+		// Log.i("xinw", "sn:" + sn);
+		// Log.i("xinw", "barcode_string:" + barcode_string);
+		// } catch (RemoteException e) {
+		// }
+
+		// com.android.internal.telephony.Phone phone;
+		// sn = getSN();
+		MyLog.v("********************************SN:" + sn);
+
 		// ///////////////////////////////////////////////////////////////////////
 		snVersion.setText(sn);// tm.getSN());
 		/*
@@ -164,8 +173,8 @@ public class VersionTestActivity extends Activity {
 		 * (NullPointerException ex) { }
 		 */
 
-//		Log.v("",
-//				">>>>>>>>>>>>>>>>>>> TelephonyManager  getSN :  " + tm.getSN());
+		// Log.v("",
+		// ">>>>>>>>>>>>>>>>>>> TelephonyManager  getSN :  " + tm.getSN());
 
 		String barcode = barcode_string;// tm.getSN();
 		if (null != barcode) {
@@ -185,16 +194,18 @@ public class VersionTestActivity extends Activity {
 		String version = SystemProperties.get("ro.esky.build.version");
 		if (TextUtils.isEmpty(version))
 			version = SystemProperties.get("ro.custom.build.version");
+		if (TextUtils.isEmpty(version))
+			version = SystemProperties.get("ro.mediatek.version.release");
 		return version;
 	}
 
-//	private String getSN() {
-//		PhoneFactory.makeDefaultPhones(this);
-//		// Get the default phone
-//		phone = PhoneFactory.getDefaultPhone();
-//
-//		return phone.getSN();
-//	}
+	// private String getSN() {
+	// com.android.internal.telephony.PhoneFactory.makeDefaultPhones(this);
+	// // Get the default phone
+	// phone = com.android.internal.telephony.PhoneFactory.getDefaultPhone();
+	//
+	// return phone.getSN();
+	// }
 
 	private ITelephony getITelephony() {
 		return ITelephony.Stub.asInterface(ServiceManager

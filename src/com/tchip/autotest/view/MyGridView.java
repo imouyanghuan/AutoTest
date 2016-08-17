@@ -3,15 +3,10 @@ package com.tchip.autotest.view;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.util.Log;
-import android.view.Gravity;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewParent;
-import android.widget.AdapterView.OnItemClickListener;
-import android.widget.AdapterView;
 import android.widget.FrameLayout;
-import android.widget.FrameLayout.LayoutParams;
 
 public class MyGridView extends FrameLayout implements View.OnClickListener {
 	private String TAG = "MyGridView";
