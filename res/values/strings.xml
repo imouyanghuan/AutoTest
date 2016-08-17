@@ -497,5 +497,7 @@
     <string name="EnterTesTouchcell">进入触屏格子</string>
     <string name="EnterTesMaxPoint">进入多点测试</string>
     <string name="Reset">重置</string>
+    <!-- Goc Bluetooth Test -->
+    <string name="auto_bluetooth_success">蓝牙测试通过,搜索到:</string>
 
 </resources>

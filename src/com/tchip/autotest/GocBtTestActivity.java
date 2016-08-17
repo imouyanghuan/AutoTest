@@ -17,6 +17,7 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class GocBtTestActivity extends Activity {
 	private static final String TAG = GocBtTestActivity.class.getSimpleName();
@@ -104,6 +105,14 @@ public class GocBtTestActivity extends Activity {
 					textResult.setText(String.format(
 							getString(R.string.bt_scanning_with_result),
 							numberFindDevice));
+
+					// Auto Test Success
+					Toast.makeText(
+							GocBtTestActivity.this,
+							getResources().getString(
+									R.string.auto_bluetooth_success)
+									+ deviceName, Toast.LENGTH_SHORT).show();
+					ControlButtonUtil.autoVerifyPass(GocBtTestActivity.this);
 				}
 			} else if (action.equals("com.tchip.DISCOVERY_DONE")) {
 				// Scan Done
