@@ -12,7 +12,7 @@
     <string name="SetSpeakerphoneOff">扬声器已关闭</string>
     <string name="BrightnessTitle">背光测试</string>
     <string name="BrightnessTitleStop">停止背光测试</string>
-    <string name="BrightnessSubTitle">请观察背光的变化</string>
+    <string name="BrightnessSubTitle">请观察背光有无明显变化</string>
     <string name="BluetoothTitle">蓝牙测试</string>
     <string name="BluetoothSubTitle">提示：为节省时间，请在测试点旁开启一台蓝牙设备用于本机搜索</string>
     <string name="BluetoothAdapterFail">获取适配器失败!</string>

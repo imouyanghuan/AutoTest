@@ -11,4 +11,7 @@
     <!-- Test Item -->
     <dimen name="test_item_text_size">25sp</dimen>
 
+    <!-- Brightness Test -->
+    <dimen name="color_block_margin_right">5dp</dimen>
+
 </resources>

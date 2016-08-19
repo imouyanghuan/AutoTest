@@ -42,59 +42,79 @@
             <View
                 android:layout_width="0dp"
                 android:layout_height="70dp"
-                android:layout_margin="10dp"
+                android:layout_marginLeft="@dimen/color_block_margin_right"
+                android:layout_marginRight="@dimen/color_block_margin_right"
                 android:layout_weight="1"
                 android:background="#ff0000" />
 
             <View
                 android:layout_width="0dp"
                 android:layout_height="70dp"
-                android:layout_margin="10dp"
+                android:layout_marginRight="@dimen/color_block_margin_right"
                 android:layout_weight="1"
                 android:background="#00ff00" />
-        </LinearLayout>
-        
-           <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal" >
 
             <View
                 android:layout_width="0dp"
                 android:layout_height="70dp"
-                android:layout_margin="10dp"
+                android:layout_marginRight="@dimen/color_block_margin_right"
                 android:layout_weight="1"
                 android:background="#0000ff" />
 
             <View
                 android:layout_width="0dp"
                 android:layout_height="70dp"
-                android:layout_margin="10dp"
+                android:layout_marginRight="@dimen/color_block_margin_right"
                 android:layout_weight="1"
                 android:background="#ffffff" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="70dp"
+                android:layout_marginRight="@dimen/color_block_margin_right"
+                android:layout_weight="1"
+                android:background="#00ffff" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="70dp"
+                android:layout_marginRight="@dimen/color_block_margin_right"
+                android:layout_weight="1"
+                android:background="#ff00ff" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="70dp"
+                android:layout_marginRight="@dimen/color_block_margin_right"
+                android:layout_weight="1"
+                android:background="#ffff00" />
+            <View
+                android:layout_width="0dp"
+                android:layout_height="70dp"
+                android:layout_marginRight="@dimen/color_block_margin_right"
+                android:layout_weight="1"
+                android:background="#cccccc" />
         </LinearLayout>
-        
-       <TextView
-        android:id="@+id/progressText"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:paddingTop="20px"
-        android:textSize="22sp"
-        android:visibility="visible" />
 
+        <TextView
+            android:id="@+id/progressText"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:paddingTop="20px"
+            android:textSize="22sp"
+            android:visibility="visible" />
 
-
-    <ProgressBar
-        android:id="@+id/brightnessBar"
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/linearLayout1"
-        android:orientation="horizontal" />
+        <ProgressBar
+            android:id="@+id/brightnessBar"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/linearLayout1"
+            android:orientation="horizontal" />
     </LinearLayout>
 
-        <include layout="@xml/control_buttons" />
+    <include layout="@xml/control_buttons" />
 
 </RelativeLayout>
